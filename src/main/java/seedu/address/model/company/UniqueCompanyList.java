@@ -9,15 +9,15 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.company.exceptions.DuplicateCompanyException;
 import seedu.address.model.company.exceptions.CompanyNotFoundException;
+import seedu.address.model.company.exceptions.DuplicateCompanyException;
 
 /**
  * A list of companies that enforces uniqueness between its elements and does not allow nulls.
- * A company is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * companies uses Person#isSamePerson(Person) for equality so as to ensure that the company being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a company uses Person#equals(Object) so
- * as to ensure that the company with exactly the same fields will be removed.
+ * A company is considered unique by comparing using {@code Company#isSameCompany(Company)}. As such, adding
+ * and updating of companies uses Company#isSameCompany(Company) for equality so as to ensure that the company being
+ * added or updated is unique in terms of identity in the UniqueCompanyList. However, the removal of a company uses
+ * Company#equals(Object) so as to ensure that the company with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -50,9 +50,25 @@ public class UniqueCompanyList implements Iterable<Company> {
     }
 
     /**
+     * Removes the equivalent company from the list.
+     * The company must exist in the list.
+     */
+    public void remove(Company toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new CompanyNotFoundException();
+        }
+    }
+
+    public void setCompany(UniqueCompanyList replacement) {
+        requireNonNull(replacement);
+        internalList.setAll(replacement.internalList);
+    }
+
+    /**
      * Replaces the company {@code target} in the list with {@code editedCompany}.
      * {@code target} must exist in the list.
-     * The company identity of {@code editedPerson} must not be the same as another existing company in the list.
+     * The company identity of {@code editedCompany} must not be the same as another existing company in the list.
      */
     public void setCompany(Company target, Company editedCompany) {
         requireAllNonNull(target, editedCompany);
@@ -67,22 +83,6 @@ public class UniqueCompanyList implements Iterable<Company> {
         }
 
         internalList.set(index, editedCompany);
-    }
-
-    /**
-     * Removes the equivalent company from the list.
-     * The company must exist in the list.
-     */
-    public void remove(Company toRemove) {
-        requireNonNull(toRemove);
-        if (!internalList.remove(toRemove)) {
-            throw new CompanyNotFoundException();
-        }
-    }
-
-    public void setCompany(UniqueCompanyList replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
     }
 
     /**

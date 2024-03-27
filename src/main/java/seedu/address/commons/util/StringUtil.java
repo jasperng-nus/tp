@@ -63,7 +63,7 @@ public class StringUtil {
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
         return Arrays.stream(wordsInPreppedSentence)
-                .anyMatch(s -> s.startsWith(preppedWord));
+                .anyMatch(s -> s.toLowerCase().startsWith(preppedWord.toLowerCase()));
     }
 
 

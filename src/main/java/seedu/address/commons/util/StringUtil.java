@@ -1,5 +1,7 @@
 package seedu.address.commons.util;
 
+import seedu.address.model.tag.Tag;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -37,6 +39,33 @@ public class StringUtil {
         return Arrays.stream(wordsInPreppedSentence)
                 .anyMatch(preppedWord::equalsIgnoreCase);
     }
+
+    /**
+     * Returns true if any word in the {@code sentence} starts the {@code word}.
+     *   Ignores case, and a substring match suffices.
+     *   <br>examples:<pre>
+     *       containsStartSubstringIgnoreCase("ABc def", "ab") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "de") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "ef") == false //not the starting part of the word.
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty, must be a single word
+     */
+    public static boolean containsStartSubstringIgnoreCase(String sentence, String word) {
+        requireNonNull(sentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+
+        String preppedSentence = sentence;
+        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
+
+        return Arrays.stream(wordsInPreppedSentence)
+                .anyMatch(s -> s.startsWith(preppedWord));
+    }
+
 
     /**
      * Returns a detailed message of the t, including the stack trace.

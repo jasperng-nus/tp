@@ -20,7 +20,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Company> {
     public boolean test(Company company) {
         return keywords.stream()
                 .anyMatch(keyword -> (StringUtil.containsStartSubstringIgnoreCase(company.getName().fullName, keyword))
-                || company.getTags().stream().anyMatch(tag -> StringUtil.containsStartSubstringIgnoreCase(tag.getTagName(), keyword))
+                || company.getTags().stream().anyMatch(
+                        tag -> StringUtil.containsStartSubstringIgnoreCase(tag.getTagName(), keyword))
                         );
     }
 

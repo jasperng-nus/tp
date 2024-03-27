@@ -22,6 +22,7 @@ public class Company {
     private final Email email;
 
     // Data fields
+    private final Date startDate;
     private final Date deadline;
     private final Set<Tag> tags = new HashSet<>();
 
@@ -34,18 +35,20 @@ public class Company {
         this.phone = phone;
         this.email = email;
         this.tags.addAll(tags);
-        this.deadline = new Date("2024-01-01");
+        this.startDate = new Date("2024-01-01");
+        this.deadline = new Date("2024-01-02");
     }
 
     /**
      * This constructor is used for integration with date. Remove this comment and old constructor after completion.
      */
-    public Company(Name name, Phone phone, Email email, Date deadline, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, tags);
+    public Company(Name name, Phone phone, Email email, Date startDate, Date deadline, Set<Tag> tags) {
+        requireAllNonNull(name, phone, startDate, deadline, email, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.tags.addAll(tags);
+        this.startDate = startDate;
         this.deadline = deadline;
     }
 
@@ -61,6 +64,9 @@ public class Company {
         return email;
     }
 
+    public Date getStartDate() {
+        return deadline;
+    }
     public Date getDeadline() {
         return deadline;
     }
@@ -74,21 +80,23 @@ public class Company {
     }
 
     /**
-     * Returns true if both companies have the same name.
-     * This defines a weaker notion of equality between two companies.
+     * Returns true if both companies have the same name, email, phone, startDate, deadline and tags.
      */
     public boolean isSameCompany(Company otherCompany) {
         if (otherCompany == this) {
             return true;
         }
+        return name.equals(otherCompany.name)
+                && phone.equals(otherCompany.phone)
+                && email.equals(otherCompany.email)
+                && startDate.equals(otherCompany.startDate)
+                && deadline.equals(otherCompany.deadline)
+                && tags.equals(otherCompany.tags);
 
-        return otherCompany != null
-                && otherCompany.getName().equals(getName())
-                && otherCompany.getEmail().equals(getEmail());
     }
 
     /**
-     * Returns true if both companies have the same identity and data fields (exclusive of date).
+     * Returns true if both companies have the same identity and data fields
      * This defines a stronger notion of equality between two companies.
      */
     @Override
@@ -106,13 +114,15 @@ public class Company {
         return name.equals(otherCompany.name)
                 && phone.equals(otherCompany.phone)
                 && email.equals(otherCompany.email)
+                && startDate.equals(otherCompany.startDate)
+                && deadline.equals(otherCompany.deadline)
                 && tags.equals(otherCompany.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, tags);
+        return Objects.hash(name, phone, email, startDate, deadline, tags);
     }
 
     @Override
@@ -121,6 +131,8 @@ public class Company {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
+                .add("startDate", startDate)
+                .add("deadline", deadline)
                 .add("tags", tags)
                 .toString();
     }

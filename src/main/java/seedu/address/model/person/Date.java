@@ -57,4 +57,9 @@ public class Date {
         Date otherDate = (Date) other;
         return date.equals(otherDate.date);
     }
+
+    @Override
+    public int hashCode() {
+        return date.hashCode();
+    }
 }

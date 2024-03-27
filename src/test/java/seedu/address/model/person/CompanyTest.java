@@ -24,7 +24,7 @@ public class CompanyTest {
     }
 
     @Test
-    public void isSamePerson() {
+    public void isSameCompany() {
         // same object -> returns true
         assertTrue(ALICE.isSameCompany(ALICE));
 

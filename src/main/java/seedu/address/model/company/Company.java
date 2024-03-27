@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.company;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -65,7 +65,7 @@ public class Company {
     }
 
     public Date getStartDate() {
-        return deadline;
+        return startDate;
     }
     public Date getDeadline() {
         return deadline;
@@ -83,6 +83,9 @@ public class Company {
      * Returns true if both companies have the same name, email, phone, startDate, deadline and tags.
      */
     public boolean isSameCompany(Company otherCompany) {
+        if (otherCompany == null) {
+            return false;
+        }
         if (otherCompany == this) {
             return true;
         }

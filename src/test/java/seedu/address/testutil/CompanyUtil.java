@@ -9,7 +9,7 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -18,14 +18,14 @@ import seedu.address.model.tag.Tag;
 public class CompanyUtil {
 
     /**
-     * Returns an add command string for adding the {@code person}.
+     * Returns an add command string for adding the {@code company}.
      */
     public static String getAddCommand(Company company) {
         return AddCommand.COMMAND_WORD + " " + getPersonDetails(company);
     }
 
     /**
-     * Returns the part of command string for the given {@code person}'s details.
+     * Returns the part of command string for the given {@code company}'s details.
      */
     public static String getPersonDetails(Company company) {
         StringBuilder sb = new StringBuilder();

@@ -5,11 +5,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.InternBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Company;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.ReadOnlyInternBook;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.Email;
+import seedu.address.model.company.Name;
+import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -33,7 +33,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static ReadOnlyInternBook getSampleAddressBook() {
         InternBook sampleAb = new InternBook();
         for (Company sampleCompany : getSampleCompanies()) {
             sampleAb.addCompany(sampleCompany);

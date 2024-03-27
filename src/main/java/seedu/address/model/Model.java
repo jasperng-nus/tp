@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 
 /**
  * The API of the Model component.
@@ -47,32 +47,32 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAddressBook(ReadOnlyInternBook addressBook);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyInternBook getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a company with the same identity as {@code company} exists in the address book.
      */
     boolean hasCompany(Company company);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Deletes the given company.
+     * The company must exist in the address book.
      */
     void deletePerson(Company target);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Adds the given company.
+     * {@code company} must not already exist in the address book.
      */
     void addCompany(Company company);
 
     /**
      * Replaces the given company {@code target} with {@code editedCompany}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedCompany} must not be the same as another existing company
+     * The company identity of {@code editedCompany} must not be the same as another existing company
      * in the address book.
      */
     void setPerson(Company target, Company editedCompany);

@@ -17,8 +17,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Company;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.exceptions.DuplicateCompanyException;
 import seedu.address.testutil.CompanyBuilder;
 
 public class InternBookTest {
@@ -43,58 +43,56 @@ public class InternBookTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Company editedAlice = new CompanyBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
-                .build();
+    public void resetData_withDuplicateCompanies_throwsDuplicateCompanyException() {
+        // Two companies with the same identity fields and data fields
+        Company editedAlice = new CompanyBuilder(ALICE).build();
         List<Company> newCompanies = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newCompanies);
+        InternBookStub newData = new InternBookStub(newCompanies);
 
-        assertThrows(DuplicatePersonException.class, () -> internBook.resetData(newData));
+        assertThrows(DuplicateCompanyException.class, () -> internBook.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasCompany_nullCompany_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> internBook.hasCompany(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasCompany_companyNotInAddressBook_returnsFalse() {
         assertFalse(internBook.hasCompany(ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasCompany_companyInAddressBook_returnsTrue() {
         internBook.addCompany(ALICE);
         assertTrue(internBook.hasCompany(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasCompany_companyWithSameIdentityFieldsInAddressBook_returnsTrue() {
         internBook.addCompany(ALICE);
-        Company editedAlice = new CompanyBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Company editedAlice = new CompanyBuilder(ALICE).build();
         assertTrue(internBook.hasCompany(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getCompanyList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> internBook.getCompanyList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = InternBook.class.getCanonicalName() + "{persons=" + internBook.getCompanyList() + "}";
+        String expected = InternBook.class.getCanonicalName() + "{companies=" + internBook.getCompanyList() + "}";
         assertEquals(expected, internBook.toString());
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyInternBook whose companies list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class InternBookStub implements ReadOnlyInternBook {
         private final ObservableList<Company> companies = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Company> companies) {
+        InternBookStub(Collection<Company> companies) {
             this.companies.setAll(companies);
         }
 

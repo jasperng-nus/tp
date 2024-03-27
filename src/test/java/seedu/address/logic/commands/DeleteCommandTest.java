@@ -17,7 +17,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -97,7 +97,7 @@ public class DeleteCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different company -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 

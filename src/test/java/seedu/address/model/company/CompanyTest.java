@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.company;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -65,7 +65,7 @@ public class CompanyTest {
         // different type -> returns false
         assertFalse(ALICE.equals(5));
 
-        // different person -> returns false
+        // different company -> returns false
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
@@ -87,8 +87,16 @@ public class CompanyTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Company.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", tags=" + ALICE.getTags() + "}";
+        String expected = Company.class.getCanonicalName()
+                + "{name=" + ALICE.getName()
+                + ", phone=" + ALICE.getPhone()
+                + ", email=" + ALICE.getEmail()
+                + ", startDate=" + ALICE.getStartDate()
+                + ", deadline=" + ALICE.getDeadline()
+                + ", tags=" + ALICE.getTags()
+                + "}";
+        System.out.println(expected);
+        System.out.println(ALICE.toString());
         assertEquals(expected, ALICE.toString());
     }
 }

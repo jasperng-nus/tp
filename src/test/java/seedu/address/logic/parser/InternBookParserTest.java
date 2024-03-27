@@ -30,9 +30,9 @@ import seedu.address.testutil.CompanyUtil;
 import seedu.address.testutil.EditCompanyDescriptorBuilder;
 
 
-public class AddressBookParserTest {
+public class InternBookParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final InternBookParser parser = new InternBookParser();
 
     @Test
     public void parseCommand_add() throws Exception {

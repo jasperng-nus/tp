@@ -19,7 +19,7 @@ import seedu.address.model.person.Company;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final InternBook internBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Company> filteredCompanies;
 
@@ -31,13 +31,13 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.internBook = new InternBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredCompanies = new FilteredList<>(this.addressBook.getCompanyList());
+        filteredCompanies = new FilteredList<>(this.internBook.getCompanyList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new InternBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -79,28 +79,28 @@ public class ModelManager implements Model {
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+        this.internBook.resetData(addressBook);
     }
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+        return internBook;
     }
 
     @Override
     public boolean hasCompany(Company company) {
         requireNonNull(company);
-        return addressBook.hasCompany(company);
+        return internBook.hasCompany(company);
     }
 
     @Override
     public void deletePerson(Company target) {
-        addressBook.removeCompany(target);
+        internBook.removeCompany(target);
     }
 
     @Override
     public void addCompany(Company company) {
-        addressBook.addCompany(company);
+        internBook.addCompany(company);
         updateFilteredCompanyList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -108,7 +108,7 @@ public class ModelManager implements Model {
     public void setPerson(Company target, Company editedCompany) {
         requireAllNonNull(target, editedCompany);
 
-        addressBook.setCompany(target, editedCompany);
+        internBook.setCompany(target, editedCompany);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -130,7 +130,7 @@ public class ModelManager implements Model {
 
     @Override
     public void sortCompanyList() {
-        addressBook.sortPersonList();
+        internBook.sortCompanyList();
     }
 
     @Override
@@ -145,7 +145,7 @@ public class ModelManager implements Model {
         }
 
         ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
+        return internBook.equals(otherModelManager.internBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredCompanies.equals(otherModelManager.filteredCompanies);
     }

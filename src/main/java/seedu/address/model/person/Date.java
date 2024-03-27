@@ -43,7 +43,6 @@ public class Date {
         return date.toString();
     }
 
-    //Might not be used, delete later.
     @Override
     public boolean equals(Object other) {
         if (other == this) {

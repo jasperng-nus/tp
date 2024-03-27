@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.InternBook;
 import seedu.address.model.person.Company;
 
 /**
@@ -59,8 +59,8 @@ public class UnsortedTypicalCompanies {
     /**
      * Returns an {@code AddressBook} with all the typical persons.
      */
-    public static AddressBook getUnsortedTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static InternBook getUnsortedTypicalAddressBook() {
+        InternBook ab = new InternBook();
         for (Company company : getUnsortedTypicalPersons()) {
             ab.addCompany(company);
         }

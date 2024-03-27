@@ -13,7 +13,7 @@ import seedu.address.model.person.UniqueCompanyList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class InternBook implements ReadOnlyAddressBook {
 
     private final UniqueCompanyList companies;
 
@@ -28,12 +28,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         companies = new UniqueCompanyList();
     }
 
-    public AddressBook() {}
+    public InternBook() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public InternBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -115,17 +115,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddressBook)) {
+        if (!(other instanceof InternBook)) {
             return false;
         }
 
-        AddressBook otherAddressBook = (AddressBook) other;
-        return companies.equals(otherAddressBook.companies);
+        InternBook otherInternBook = (InternBook) other;
+        return companies.equals(otherInternBook.companies);
     }
     /**
      * Sorts the list of companies by their name in ascending order, ignoring case.
      */
-    public void sortPersonList() {
+    public void sortCompanyList() {
         companies.sort();
     }
     @Override

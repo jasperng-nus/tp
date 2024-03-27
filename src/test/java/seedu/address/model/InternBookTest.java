@@ -21,25 +21,25 @@ import seedu.address.model.person.Company;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.CompanyBuilder;
 
-public class AddressBookTest {
+public class InternBookTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final InternBook internBook = new InternBook();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getCompanyList());
+        assertEquals(Collections.emptyList(), internBook.getCompanyList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> internBook.resetData(null));
     }
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        InternBook newData = getTypicalAddressBook();
+        internBook.resetData(newData);
+        assertEquals(newData, internBook);
     }
 
     @Test
@@ -50,42 +50,42 @@ public class AddressBookTest {
         List<Company> newCompanies = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newCompanies);
 
-        assertThrows(DuplicatePersonException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicatePersonException.class, () -> internBook.resetData(newData));
     }
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasCompany(null));
+        assertThrows(NullPointerException.class, () -> internBook.hasCompany(null));
     }
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasCompany(ALICE));
+        assertFalse(internBook.hasCompany(ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addCompany(ALICE);
-        assertTrue(addressBook.hasCompany(ALICE));
+        internBook.addCompany(ALICE);
+        assertTrue(internBook.hasCompany(ALICE));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addCompany(ALICE);
+        internBook.addCompany(ALICE);
         Company editedAlice = new CompanyBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(addressBook.hasCompany(editedAlice));
+        assertTrue(internBook.hasCompany(editedAlice));
     }
 
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getCompanyList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> internBook.getCompanyList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getCompanyList() + "}";
-        assertEquals(expected, addressBook.toString());
+        String expected = InternBook.class.getCanonicalName() + "{persons=" + internBook.getCompanyList() + "}";
+        assertEquals(expected, internBook.toString());
     }
 
     /**

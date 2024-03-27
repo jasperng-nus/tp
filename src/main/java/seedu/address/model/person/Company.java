@@ -22,7 +22,7 @@ public class Company {
     private final Email email;
 
     // Data fields
-
+    private final Date deadline;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -34,6 +34,19 @@ public class Company {
         this.phone = phone;
         this.email = email;
         this.tags.addAll(tags);
+        this.deadline = new Date("2024-01-01");
+    }
+
+    /**
+     * This constructor is used for integration with date. Remove this comment and old constructor after completion.
+     */
+    public Company(Name name, Phone phone, Email email, Date deadline, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.tags.addAll(tags);
+        this.deadline = deadline;
     }
 
     public Name getName() {
@@ -48,6 +61,9 @@ public class Company {
         return email;
     }
 
+    public Date getDeadline() {
+        return deadline;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -58,8 +74,8 @@ public class Company {
     }
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both companies have the same name.
+     * This defines a weaker notion of equality between two companies.
      */
     public boolean isSameCompany(Company otherCompany) {
         if (otherCompany == this) {
@@ -72,8 +88,8 @@ public class Company {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both companies have the same identity and data fields (exclusive of date).
+     * This defines a stronger notion of equality between two companies.
      */
     @Override
     public boolean equals(Object other) {

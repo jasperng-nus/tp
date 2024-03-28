@@ -128,6 +128,28 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void sortPersonList() {
         companies.sort();
     }
+
+    /**
+     * Marks the given company as applied.
+     */
+    public void markCompany(Company target) {
+        companies.mark(target);
+    }
+
+    /**
+     * Unmarks the given company as applied.
+     */
+    public void unmarkCompany(Company target) {
+        companies.unmark(target);
+    }
+
+    /**
+     * Returns true if the given company is marked.
+     */
+    public boolean isCompanyMarked(Company target) {
+        return companies.isMarked(target);
+    }
+
     @Override
     public int hashCode() {
         return companies.hashCode();

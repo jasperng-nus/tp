@@ -1,0 +1,6 @@
+#applicationStatusCheckBox {
+    -fx-font-size: 40px; /* Adjust the font size to make the checkbox label larger */
+    -fx-padding: 10px; /* Add padding to increase the overall size of the checkbox */
+    -fx-border-radius: 5px; /* Optional: if you want rounded corners */
+    -fx-background-radius: 5px; /* Optional: if you want rounded corners for the background */
+}

@@ -12,22 +12,21 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Company;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Unmarks a company as applied using it's displayed index from the InternBook.
  */
-public class DeleteCommand extends Command {
-
-    public static final String COMMAND_WORD = "delete";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+public class UnmarkCommand extends Command {
+    public static final String COMMAND_WORD = "unmark";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Unmarks a company as applied.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_UNMARK_COMPANY_SUCCESS = "Company unmarked as applied: %1$s";
+    public static final String MESSAGE_NUMBER_INVALID = "The index provided is invalid";
+    public static final String MESSAGE_COMPANY_ALREADY_UNMARKED = "This company has not been marked as applied yet";
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public UnmarkCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -40,9 +39,13 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }
 
-        Company companyToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(companyToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(companyToDelete)));
+        Company companyToUnmark = lastShownList.get(targetIndex.getZeroBased());
+        if (!model.isCompanyMarked(companyToUnmark)) {
+            throw new CommandException(MESSAGE_COMPANY_ALREADY_UNMARKED);
+        }
+
+        model.unmarkCompany(companyToUnmark);
+        return new CommandResult(String.format(MESSAGE_UNMARK_COMPANY_SUCCESS, Messages.format(companyToUnmark)));
     }
 
     @Override
@@ -51,13 +54,12 @@ public class DeleteCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof UnmarkCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        UnmarkCommand otherUnmarkCommand = (UnmarkCommand) other;
+        return targetIndex.equals(otherUnmarkCommand.targetIndex);
     }
 
     @Override

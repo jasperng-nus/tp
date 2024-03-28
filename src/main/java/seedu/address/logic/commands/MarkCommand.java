@@ -12,22 +12,20 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Company;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Marks a company as applied using it's displayed index from the InternBook.
  */
-public class DeleteCommand extends Command {
-
-    public static final String COMMAND_WORD = "delete";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+public class MarkCommand extends Command {
+    public static final String COMMAND_WORD = "mark";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a company as applied.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_MARK_COMPANY_SUCCESS = "Company marked as applied: %1$s";
+    public static final String MESSAGE_COMPANY_ALREADY_MARKED = "This company has already been marked as applied";
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public MarkCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -40,9 +38,13 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }
 
-        Company companyToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(companyToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(companyToDelete)));
+        Company companyToMark = lastShownList.get(targetIndex.getZeroBased());
+        if (model.isCompanyMarked(companyToMark)) {
+            throw new CommandException(MESSAGE_COMPANY_ALREADY_MARKED);
+        }
+
+        model.markCompany(companyToMark);
+        return new CommandResult(String.format(MESSAGE_MARK_COMPANY_SUCCESS, Messages.format(companyToMark)));
     }
 
     @Override
@@ -51,13 +53,12 @@ public class DeleteCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof MarkCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        MarkCommand otherMarkCommand = (MarkCommand) other;
+        return targetIndex.equals(otherMarkCommand.targetIndex);
     }
 
     @Override

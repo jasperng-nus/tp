@@ -14,8 +14,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.DuplicateCompanyException;
+import seedu.address.model.person.exceptions.CompanyNotFoundException;
 import seedu.address.testutil.CompanyBuilder;
 
 public class UniqueCompanyListTest {
@@ -54,7 +54,7 @@ public class UniqueCompanyListTest {
     @Test
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniqueCompanyList.add(ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueCompanyList.add(ALICE));
+        assertThrows(DuplicateCompanyException.class, () -> uniqueCompanyList.add(ALICE));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class UniqueCompanyListTest {
 
     @Test
     public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class, () -> uniqueCompanyList.setPerson(ALICE, ALICE));
+        assertThrows(CompanyNotFoundException.class, () -> uniqueCompanyList.setPerson(ALICE, ALICE));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class UniqueCompanyListTest {
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniqueCompanyList.add(ALICE);
         uniqueCompanyList.add(BOB);
-        assertThrows(DuplicatePersonException.class, () -> uniqueCompanyList.setPerson(ALICE, BOB));
+        assertThrows(DuplicateCompanyException.class, () -> uniqueCompanyList.setPerson(ALICE, BOB));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class UniqueCompanyListTest {
 
     @Test
     public void remove_personDoesNotExist_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class, () -> uniqueCompanyList.remove(ALICE));
+        assertThrows(CompanyNotFoundException.class, () -> uniqueCompanyList.remove(ALICE));
     }
 
     @Test
@@ -158,7 +158,7 @@ public class UniqueCompanyListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<Company> listWithDuplicateCompanies = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniqueCompanyList.setCompany(listWithDuplicateCompanies));
+        assertThrows(DuplicateCompanyException.class, () -> uniqueCompanyList.setCompany(listWithDuplicateCompanies));
     }
 
     @Test

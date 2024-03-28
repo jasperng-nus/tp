@@ -9,8 +9,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.CompanyAlreadyMarkedOrUnmarked;
+import seedu.address.model.person.exceptions.CompanyNotFoundException;
+import seedu.address.model.person.exceptions.DuplicateCompanyException;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -44,7 +45,7 @@ public class UniqueCompanyList implements Iterable<Company> {
     public void add(Company toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateCompanyException();
         }
         internalList.add(toAdd);
     }
@@ -59,11 +60,11 @@ public class UniqueCompanyList implements Iterable<Company> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new CompanyNotFoundException();
         }
 
         if (!target.isSameCompany(editedCompany) && contains(editedCompany)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateCompanyException();
         }
 
         internalList.set(index, editedCompany);
@@ -76,7 +77,7 @@ public class UniqueCompanyList implements Iterable<Company> {
     public void remove(Company toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new CompanyNotFoundException();
         }
     }
 
@@ -92,7 +93,7 @@ public class UniqueCompanyList implements Iterable<Company> {
     public void setCompany(List<Company> companies) {
         requireAllNonNull(companies);
         if (!companiesAreUnique(companies)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateCompanyException();
         }
 
         internalList.setAll(companies);
@@ -156,5 +157,45 @@ public class UniqueCompanyList implements Iterable<Company> {
     public void sort() {
         Comparator<Company> compareByName = Comparator.comparing(company -> company.getName().fullName.toLowerCase());
         FXCollections.sort(internalList, compareByName);
+    }
+
+    /**
+     * Marks the given company as applied.
+     */
+    public void mark(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else if (target.isMarked()) {
+            throw new CompanyAlreadyMarkedOrUnmarked();
+        } else {
+            target.mark();
+        }
+    }
+
+    /**
+     * Unmarks the given company as applied.
+     */
+    public void unmark(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else if (!target.isMarked()) {
+            throw new CompanyAlreadyMarkedOrUnmarked();
+        } else {
+            target.unmark();
+        }
+    }
+
+    /**
+     * Returns true if the given company is marked.
+     */
+    public boolean isMarked(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else {
+            return target.isMarked();
+        }
     }
 }

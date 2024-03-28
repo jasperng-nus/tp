@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -24,6 +26,10 @@ public class Company {
     // Data fields
 
     private final Set<Tag> tags = new HashSet<>();
+    private boolean isMarked;
+
+    // GUI fields
+    private final BooleanProperty checkboxIsMarked = new SimpleBooleanProperty();
 
     /**
      * Every field must be present and not null.
@@ -34,6 +40,7 @@ public class Company {
         this.phone = phone;
         this.email = email;
         this.tags.addAll(tags);
+        this.isMarked = false;
     }
 
     public Name getName() {
@@ -109,4 +116,34 @@ public class Company {
                 .toString();
     }
 
+    /**
+     * Sets the application status of the company to marked.
+     */
+    public void mark() {
+        isMarked = true;
+        checkboxIsMarked.set(true);
+    }
+
+    /**
+     * Sets the application status of the company to unmarked.
+     */
+    public void unmark() {
+        isMarked = false;
+        checkboxIsMarked.set(false);
+    }
+
+    /**
+     * Returns the application status of the company.
+     */
+    public boolean isMarked() {
+        return isMarked;
+    }
+
+    /**
+     * Returns the application status of the company as a BooleanProperty.
+     * This is used to bind the application status of the company to the GUI.
+     */
+    public BooleanProperty checkboxIsMarked() {
+        return checkboxIsMarked;
+    }
 }

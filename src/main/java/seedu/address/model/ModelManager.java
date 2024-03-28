@@ -134,6 +134,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void markCompany(Company target) {
+        addressBook.markCompany(target);
+    }
+
+    @Override
+    public void unmarkCompany(Company target) {
+        addressBook.unmarkCompany(target);
+    }
+
+    @Override
+    public boolean isCompanyMarked(Company target) {
+        return addressBook.isCompanyMarked(target);
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;

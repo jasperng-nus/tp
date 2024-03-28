@@ -21,7 +21,6 @@ public class UnmarkCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_UNMARK_COMPANY_SUCCESS = "Company unmarked as applied: %1$s";
-    public static final String MESSAGE_NUMBER_INVALID = "The index provided is invalid";
     public static final String MESSAGE_COMPANY_ALREADY_UNMARKED = "This company has not been marked as applied yet";
 
     private final Index targetIndex;

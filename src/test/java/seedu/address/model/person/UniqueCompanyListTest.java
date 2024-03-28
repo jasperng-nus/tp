@@ -14,8 +14,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.exceptions.DuplicateCompanyException;
 import seedu.address.model.person.exceptions.CompanyNotFoundException;
+import seedu.address.model.person.exceptions.DuplicateCompanyException;
 import seedu.address.testutil.CompanyBuilder;
 
 public class UniqueCompanyListTest {

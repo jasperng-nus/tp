@@ -11,7 +11,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Company in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Company {
@@ -23,11 +23,11 @@ public class Company {
 
     // Data fields
     private final Date startDate;
-    private final Date deadline;
+    private final Date endDate;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
-     * Every field must be present and not null.
+     * Every field must be present and not null. This constructor is to be deprecated soon.
      */
     public Company(Name name, Phone phone, Email email, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, tags);
@@ -36,20 +36,20 @@ public class Company {
         this.email = email;
         this.tags.addAll(tags);
         this.startDate = new Date("2024-01-01");
-        this.deadline = new Date("2024-01-02");
+        this.endDate = new Date("2024-01-02");
     }
 
     /**
      * This constructor is used for integration with date. Remove this comment and old constructor after completion.
      */
-    public Company(Name name, Phone phone, Email email, Date startDate, Date deadline, Set<Tag> tags) {
-        requireAllNonNull(name, phone, startDate, deadline, email, tags);
+    public Company(Name name, Phone phone, Email email, Date startDate, Date endDate, Set<Tag> tags) {
+        requireAllNonNull(name, phone, startDate, endDate, email, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.tags.addAll(tags);
         this.startDate = startDate;
-        this.deadline = deadline;
+        this.endDate = endDate;
     }
 
     public Name getName() {
@@ -67,8 +67,8 @@ public class Company {
     public Date getStartDate() {
         return startDate;
     }
-    public Date getDeadline() {
-        return deadline;
+    public Date getEndDate() {
+        return endDate;
     }
 
     /**
@@ -93,7 +93,7 @@ public class Company {
                 && phone.equals(otherCompany.phone)
                 && email.equals(otherCompany.email)
                 && startDate.equals(otherCompany.startDate)
-                && deadline.equals(otherCompany.deadline)
+                && endDate.equals(otherCompany.endDate)
                 && tags.equals(otherCompany.tags);
 
     }
@@ -118,14 +118,14 @@ public class Company {
                 && phone.equals(otherCompany.phone)
                 && email.equals(otherCompany.email)
                 && startDate.equals(otherCompany.startDate)
-                && deadline.equals(otherCompany.deadline)
+                && endDate.equals(otherCompany.endDate)
                 && tags.equals(otherCompany.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, startDate, deadline, tags);
+        return Objects.hash(name, phone, email, startDate, endDate, tags);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class Company {
                 .add("phone", phone)
                 .add("email", email)
                 .add("startDate", startDate)
-                .add("deadline", deadline)
+                .add("endDate", endDate)
                 .add("tags", tags)
                 .toString();
     }

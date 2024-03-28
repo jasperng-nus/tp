@@ -45,9 +45,9 @@ public class EditCommand extends Command {
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_COMPANY_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This company already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_COMPANY = "This company already exists in the address book.";
 
     private final Index index;
     private final EditCompanyDescriptor editCompanyDescriptor;
@@ -70,19 +70,19 @@ public class EditCommand extends Command {
         List<Company> lastShownList = model.getFilteredCompanyList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }
 
         Company companyToEdit = lastShownList.get(index.getZeroBased());
         Company editedCompany = createEditedCompany(companyToEdit, editCompanyDescriptor);
 
         if (!companyToEdit.isSameCompany(editedCompany) && model.hasCompany(editedCompany)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_COMPANY);
         }
 
-        model.setPerson(companyToEdit, editedCompany);
+        model.setCompany(companyToEdit, editedCompany);
         model.updateFilteredCompanyList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedCompany)));
+        return new CommandResult(String.format(MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany)));
     }
 
     /**

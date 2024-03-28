@@ -42,7 +42,7 @@ public class InternBook implements ReadOnlyInternBook {
 
     /**
      * Replaces the contents of the company list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * {@code persons} must not contain duplicate companies.
      */
     public void setCompanies(List<Company> companies) {
         this.companies.setCompany(companies);

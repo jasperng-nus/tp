@@ -61,7 +61,7 @@ public interface Model {
      * Deletes the given company.
      * The company must exist in the address book.
      */
-    void deletePerson(Company target);
+    void deleteCompany(Company target);
 
     /**
      * Adds the given company.
@@ -75,7 +75,7 @@ public interface Model {
      * The company identity of {@code editedCompany} must not be the same as another existing company
      * in the address book.
      */
-    void setPerson(Company target, Company editedCompany);
+    void setCompany(Company target, Company editedCompany);
 
     /** Returns an unmodifiable view of the filtered company list */
     ObservableList<Company> getFilteredCompanyList();

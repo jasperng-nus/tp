@@ -37,11 +37,11 @@ public class DeleteCommand extends Command {
         List<Company> lastShownList = model.getFilteredCompanyList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }
 
         Company companyToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(companyToDelete);
+        model.deleteCompany(companyToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(companyToDelete)));
     }
 

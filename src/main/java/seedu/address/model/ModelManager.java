@@ -94,7 +94,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deletePerson(Company target) {
+    public void deleteCompany(Company target) {
         internBook.removeCompany(target);
     }
 
@@ -105,7 +105,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setPerson(Company target, Company editedCompany) {
+    public void setCompany(Company target, Company editedCompany) {
         requireAllNonNull(target, editedCompany);
 
         internBook.setCompany(target, editedCompany);

@@ -7,7 +7,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 
 /**
- * Represents a Company's application date in the inter book.
+ * Represents a Company's application date in the intern book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
 public class Date {
@@ -24,6 +24,13 @@ public class Date {
         requireNonNull(date);
         checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         this.date = LocalDate.parse(date);
+    }
+
+    /**
+     * Constructs an empty {@code Date}
+     */
+    public Date() {
+        this.date = null;
     }
 
     /**

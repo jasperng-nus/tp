@@ -92,7 +92,7 @@ public class CompanyTest {
                 + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail()
                 + ", startDate=" + ALICE.getStartDate()
-                + ", deadline=" + ALICE.getDeadline()
+                + ", endDate=" + ALICE.getEndDate()
                 + ", tags=" + ALICE.getTags()
                 + "}";
         System.out.println(expected);

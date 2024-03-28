@@ -139,12 +139,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Company target) {
+        public void deleteCompany(Company target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Company target, Company editedCompany) {
+        public void setCompany(Company target, Company editedCompany) {
             throw new AssertionError("This method should not be called.");
         }
 

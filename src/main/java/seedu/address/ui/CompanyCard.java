@@ -45,9 +45,6 @@ public class CompanyCard extends UiPart<Region> {
 
     @FXML
     private Label period;
-//
-//    @FXML
-//    private Label endDate;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -74,7 +71,8 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPeriod() {
-        if (company.getStartDate().getDate().equals(Date.DEFAULT_DATE) || company.getEndDate().getDate().equals(Date.DEFAULT_DATE)) {
+        if (company.getStartDate().getDate().equals(Date.getDefaultDate())
+                || company.getEndDate().getDate().equals(Date.getDefaultDate())) {
             period.setText("");
         } else {
             period.setText(company.getStartDate().toString() + " to " + company.getEndDate().toString());

@@ -109,6 +109,12 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
     public static Date parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();

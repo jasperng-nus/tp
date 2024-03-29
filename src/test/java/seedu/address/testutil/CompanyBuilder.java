@@ -4,7 +4,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.company.*;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
+import seedu.address.model.company.Email;
+import seedu.address.model.company.Name;
+import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -93,19 +97,7 @@ public class CompanyBuilder {
         return this;
     }
 
-    public CompanyBuilder withDates(String startDate, String endDate) {
-        this.startDate = new Date(startDate);
-        this.endDate = new Date(endDate);
-        return this;
-    }
-    public CompanyBuilder withDates() {
-        this.startDate = new Date();
-        this.endDate = new Date();
-        return this;
-    }
-
     public Company build() {
-        return new Company(name, phone, email, startDate, endDate,tags);
+        return new Company(name, phone, email, startDate, endDate, tags);
     }
-
 }

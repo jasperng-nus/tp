@@ -13,9 +13,9 @@ import java.time.LocalDate;
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
             "Date should be in the format YYYY-MM-DD";
+    private static final String DEFAULT_DATE_STRING = "0000-01-01";
+    private static final LocalDate DEFAULT_DATE = LocalDate.parse(DEFAULT_DATE_STRING);
     public final LocalDate date;
-    public static String DEFAULT_DATE_STRING = "0000-01-01";
-    public static LocalDate DEFAULT_DATE = LocalDate.parse(DEFAULT_DATE_STRING);
 
     /**
      * Constructs a {@code Date}.
@@ -74,5 +74,9 @@ public class Date {
 
     public LocalDate getDate() {
         return this.date;
+    }
+
+    public static LocalDate getDefaultDate() {
+        return DEFAULT_DATE;
     }
 }

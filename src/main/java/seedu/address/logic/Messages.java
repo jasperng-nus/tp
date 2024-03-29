@@ -45,8 +45,8 @@ public class Messages {
         }
         builder.append("; Email: ")
                 .append(company.getEmail());
-        if (!company.getStartDate().getDate().equals(Date.DEFAULT_DATE) &&
-                !company.getEndDate().getDate().equals(Date.DEFAULT_DATE)) {
+        if (!company.getStartDate().getDate().equals(Date.getDefaultDate())
+                && !company.getEndDate().getDate().equals(Date.getDefaultDate())) {
             builder.append("; Period: ")
                     .append(company.getStartDate())
                     .append(" to ")

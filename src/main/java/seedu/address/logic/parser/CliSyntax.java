@@ -12,5 +12,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_STARTDATE = new Prefix("-sd");
     public static final Prefix PREFIX_DEADLINE = new Prefix("-ed");
     public static final Prefix PREFIX_TAG = new Prefix("-t");
+    public static final Prefix PREFIX_SETREMINDER = new Prefix("-r");
+    public static final Prefix PREFIX_REMINDERDAYS = new Prefix("-days");
 
 }

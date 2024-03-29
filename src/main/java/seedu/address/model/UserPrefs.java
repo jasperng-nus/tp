@@ -40,6 +40,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
     }
 
+
     public GuiSettings getGuiSettings() {
         return guiSettings;
     }
@@ -47,6 +48,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         this.guiSettings = guiSettings;
+    }
+
+    public ReminderSettings getReminderSettings() {
+        return reminderSettings;
+    }
+
+    public void setReminderSettings(ReminderSettings reminderSettings) {
+        requireNonNull(reminderSettings);
+        this.reminderSettings = reminderSettings;
     }
 
     public Path getAddressBookFilePath() {

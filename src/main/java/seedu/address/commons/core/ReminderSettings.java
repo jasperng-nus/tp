@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.reminder.Days;
+import seedu.address.model.reminder.ReminderOnOff;
 
 public class ReminderSettings implements Serializable {
-    private static final boolean DEFAULT_REMINDER = false;
-    private static final int DEFAULT_NUMOFDAYS = 0;
+    private static final ReminderOnOff DEFAULT_REMINDER = new ReminderOnOff();
+    private static final Days DEFAULT_NUMOFDAYS = new Days();
 
-    private boolean reminder;
-    private int numOfDays = 0;
+    private ReminderOnOff reminder;
+    private Days numOfDays;
 
     /**
      * Constructs a {@code ReminderSettings} with the default reminder setting and number of days.
@@ -24,17 +26,17 @@ public class ReminderSettings implements Serializable {
      * Constructs a {@Code ReminderSettings} with the specified reminder setting, to on or off reminder,
      * and the number of days left till application end date.
      */
-    public ReminderSettings(boolean reminder, int numOfDays) {
+    public ReminderSettings(ReminderOnOff reminder, Days numOfDays) {
         this.reminder = reminder;
         this.numOfDays = numOfDays;
     }
 
     public boolean getReminder() {
-        return this.reminder;
+        return this.reminder.getReminder();
     }
 
-    public int getNumOfDays() {
-        return this.numOfDays;
+    public long getNumOfDays() {
+        return this.numOfDays.getNumOfDays();
     }
 
     @Override

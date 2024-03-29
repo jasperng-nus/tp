@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.company.Company;
+import seedu.address.model.reminder.Reminder;
 
 /**
  * Container for user visible messages.
@@ -45,5 +46,4 @@ public class Messages {
         company.getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }

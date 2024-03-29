@@ -5,7 +5,9 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
+import seedu.address.model.reminder.Reminder;
 
 /**
  * The API of the Model component.
@@ -33,6 +35,16 @@ public interface Model {
      * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns the user prefs' Reminder settings
+     */
+    ReminderSettings getReminderSettings();
+
+    /**
+     * Sets the user prefs' Reminder settings
+     */
+    void setReminderSettings(ReminderSettings reminderSettings);
 
     /**
      * Returns the user prefs' address book file path.

@@ -11,7 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
+import seedu.address.model.reminder.Reminder;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -56,6 +58,17 @@ public class ModelManager implements Model {
     @Override
     public GuiSettings getGuiSettings() {
         return userPrefs.getGuiSettings();
+    }
+
+    @Override
+    public ReminderSettings getReminderSettings() {
+        return userPrefs.getReminderSettings();
+    }
+
+    @Override
+    public void setReminderSettings(ReminderSettings reminderSettings) {
+        requireNonNull(reminderSettings);
+        userPrefs.setReminderSettings(reminderSettings);
     }
 
     @Override

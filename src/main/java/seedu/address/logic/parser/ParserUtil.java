@@ -12,6 +12,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.company.Email;
 import seedu.address.model.company.Name;
 import seedu.address.model.company.Phone;
+import seedu.address.model.reminder.Days;
+import seedu.address.model.reminder.ReminderOnOff;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -20,6 +22,36 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+
+    /**
+     * Parses {@code String reminderOnOff} into a {@code ReminderOnOff}
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code reminderOnOff} is invalid
+     */
+    public  static ReminderOnOff parseReminderOnOff(String reminderOnOff) throws ParseException {
+        requireNonNull(reminderOnOff);
+        String trimmedReminderOnOff = reminderOnOff.trim();
+        if (!ReminderOnOff.isValidSetReminder(trimmedReminderOnOff)) {
+            throw new ParseException(ReminderOnOff.MESSAGE_CONSTRAINTS);
+        }
+        return new ReminderOnOff(trimmedReminderOnOff);
+    }
+
+    /**
+     * Parses {@code String days} into a {@code Days}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code days} is invalid.
+     */
+    public static Days parseDays(String days) throws ParseException {
+        requireNonNull(days);
+        String trimmedDays = days.trim();
+        if (!Days.isValidDays(trimmedDays)) {
+            throw new ParseException(Days.MESSAGE_CONSTRAINTS);
+        }
+        return new Days(trimmedDays);
+    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

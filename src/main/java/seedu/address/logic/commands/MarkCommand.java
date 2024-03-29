@@ -38,6 +38,9 @@ public class MarkCommand extends Command {
         requireNonNull(model);
         List<Company> lastShownList = model.getFilteredCompanyList();
 
+        // Assertion to ensure that the target index is not null
+        assert targetIndex != null : "Target index cannot be null";
+
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }

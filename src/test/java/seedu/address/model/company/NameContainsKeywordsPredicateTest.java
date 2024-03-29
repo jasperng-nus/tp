@@ -54,6 +54,10 @@ public class NameContainsKeywordsPredicateTest {
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate("Alice");
         assertTrue(predicate.test(new CompanyBuilder().withName("Alice Bob").build()));
 
+        // One keyword
+        predicate = new NameContainsKeywordsPredicate("Bob");
+        assertTrue(predicate.test(new CompanyBuilder().withName("Alice Bob").build()));
+
         // Multiple keywords
         predicate = new NameContainsKeywordsPredicate("Alice Bob");
         assertTrue(predicate.test(new CompanyBuilder().withName("Alice Bob").build()));
@@ -87,6 +91,10 @@ public class NameContainsKeywordsPredicateTest {
         // One keyword
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate("Prof");
         assertTrue(predicate.test(new CompanyBuilder().withName("Alice Bob").withTags("Professor").build()));
+
+        // Tags with spaces
+        predicate = new NameContainsKeywordsPredicate("Engineer");
+        assertTrue(predicate.test(new CompanyBuilder().withName("Alice Bob").withTags("Software Engineer").build()));
 
         // Multiple keywords
         predicate = new NameContainsKeywordsPredicate("Software Eng");

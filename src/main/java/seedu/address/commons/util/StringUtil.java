@@ -44,6 +44,7 @@ public class StringUtil {
      *   <br>examples:<pre>
      *       containsStartSubstringIgnoreCase("ABc def", "ab") == true
      *       containsStartSubstringIgnoreCase("ABc def", "de") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "abc d") == true
      *       containsStartSubstringIgnoreCase("ABc def", "ef") == false //not the starting part of the word.
      *       </pre>
      * @param sentence cannot be null
@@ -58,8 +59,14 @@ public class StringUtil {
 
         String preppedSentence = sentence.trim();
 
-
-        return preppedSentence.toLowerCase().startsWith(preppedWord.toLowerCase());
+        System.out.println(preppedSentence);
+        String[] wordsInPreppedSentence = preppedSentence.split(" ");
+        for (String t: wordsInPreppedSentence) {
+            System.out.println(t + "*");
+        }
+        return (preppedSentence.toLowerCase().startsWith(preppedWord.toLowerCase())) || (
+                Arrays.stream(wordsInPreppedSentence).anyMatch(s ->
+                        s.toLowerCase().startsWith(preppedWord.toLowerCase())));
     }
 
 

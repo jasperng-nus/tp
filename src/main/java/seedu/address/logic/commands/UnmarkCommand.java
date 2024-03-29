@@ -9,7 +9,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 
 /**
  * Unmarks a company as applied using it's displayed index from the InternBook.

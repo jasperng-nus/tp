@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 
 /**
  * Container for user visible messages.
@@ -32,7 +32,7 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code person} for display to the user.
+     * Formats the {@code company} for display to the user.
      */
     public static String format(Company company) {
         final StringBuilder builder = new StringBuilder();

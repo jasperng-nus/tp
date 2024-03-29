@@ -10,16 +10,16 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} or {@code Tag} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Company> {
-    private final List<String> keywords;
+    private final String keyword;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    public NameContainsKeywordsPredicate(String keyword) {
+        this.keyword = keyword;
     }
 
     @Override
     public boolean test(Company company) {
-        return keywords.stream()
-                .anyMatch(keyword -> (StringUtil.containsStartSubstringIgnoreCase(company.getName().fullName, keyword))
+        System.out.println(keyword);
+        return ((StringUtil.containsStartSubstringIgnoreCase(company.getName().fullName, keyword))
                 || company.getTags().stream().anyMatch(
                         tag -> StringUtil.containsStartSubstringIgnoreCase(tag.getTagName(), keyword))
                         );
@@ -37,11 +37,11 @@ public class NameContainsKeywordsPredicate implements Predicate<Company> {
         }
 
         NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        return keyword.equals(otherNameContainsKeywordsPredicate.keyword);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this).add("keyword", keyword).toString();
     }
 }

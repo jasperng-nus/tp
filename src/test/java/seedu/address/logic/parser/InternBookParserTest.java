@@ -23,16 +23,16 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Company;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.NameContainsKeywordsPredicate;
 import seedu.address.testutil.CompanyBuilder;
 import seedu.address.testutil.CompanyUtil;
 import seedu.address.testutil.EditCompanyDescriptorBuilder;
 
 
-public class AddressBookParserTest {
+public class InternBookParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final InternBookParser parser = new InternBookParser();
 
     @Test
     public void parseCommand_add() throws Exception {

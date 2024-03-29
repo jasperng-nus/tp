@@ -6,14 +6,14 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.person.Company;
-import seedu.address.model.person.UniqueCompanyList;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.UniqueCompanyList;
 
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class InternBook implements ReadOnlyInternBook {
 
     private final UniqueCompanyList companies;
 
@@ -28,12 +28,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         companies = new UniqueCompanyList();
     }
 
-    public AddressBook() {}
+    public InternBook() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public InternBook(ReadOnlyInternBook toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -41,8 +41,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the company list with {@code persons}.
+     * {@code persons} must not contain duplicate companies.
      */
     public void setCompanies(List<Company> companies) {
         this.companies.setCompany(companies);
@@ -51,16 +51,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyInternBook newData) {
         requireNonNull(newData);
 
         setCompanies(newData.getCompanyList());
     }
 
-    //// person-level operations
+    //// company-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a company with the same identity as {@code company} exists in the address book.
      */
     public boolean hasCompany(Company company) {
         requireNonNull(company);
@@ -76,14 +76,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given company {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The company identity of {@code editedCompany} must not be the
+     * same as another existing company in the intern book.
      */
     public void setCompany(Company target, Company editedCompany) {
         requireNonNull(editedCompany);
 
-        companies.setPerson(target, editedCompany);
+        companies.setCompany(target, editedCompany);
     }
 
     /**
@@ -99,7 +100,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", companies)
+                .add("companies", companies)
                 .toString();
     }
 
@@ -115,17 +116,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddressBook)) {
+        if (!(other instanceof InternBook)) {
             return false;
         }
 
-        AddressBook otherAddressBook = (AddressBook) other;
-        return companies.equals(otherAddressBook.companies);
+        InternBook otherInternBook = (InternBook) other;
+        return companies.equals(otherInternBook.companies);
     }
     /**
      * Sorts the list of companies by their name in ascending order, ignoring case.
      */
-    public void sortPersonList() {
+    public void sortCompanyList() {
         companies.sort();
     }
     @Override

@@ -1,6 +1,5 @@
 package seedu.address.model.company;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
@@ -18,7 +17,6 @@ public class NameContainsKeywordsPredicate implements Predicate<Company> {
 
     @Override
     public boolean test(Company company) {
-        System.out.println(keyword);
         return ((StringUtil.containsStartSubstringIgnoreCase(company.getName().fullName, keyword))
                 || company.getTags().stream().anyMatch(
                         tag -> StringUtil.containsStartSubstringIgnoreCase(tag.getTagName(), keyword))

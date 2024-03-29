@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCompanies.*;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
@@ -50,11 +49,10 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_COMPANIES_LISTED_OVERVIEW, 0);
+    public void execute_zeroKeywords_getException() {
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
-        FindCommand command = new FindCommand(predicate);
-        Throwable th = assertThrows(IllegalArgumentException.class, () -> expectedModel.updateFilteredCompanyList(predicate));
+        Throwable th = assertThrows(IllegalArgumentException.class, () ->
+                expectedModel.updateFilteredCompanyList(predicate));
         assertEquals("Word parameter cannot be empty", th.getMessage());
     }
 

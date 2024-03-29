@@ -40,7 +40,6 @@ public class AppParameters {
             configPathParameter = null;
         }
         appParameters.setConfigPath(configPathParameter != null ? Paths.get(configPathParameter) : null);
-
         return appParameters;
     }
 

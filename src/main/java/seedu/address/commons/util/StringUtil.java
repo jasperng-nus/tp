@@ -59,7 +59,7 @@ public class StringUtil {
 
         String preppedSentence = sentence.trim();
 
-        String[] wordsInPreppedSentence = preppedSentence.split(" ");
+        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
         return (preppedSentence.toLowerCase().startsWith(preppedWord.toLowerCase())) || (
                 Arrays.stream(wordsInPreppedSentence).anyMatch(s ->
                         s.toLowerCase().startsWith(preppedWord.toLowerCase())));

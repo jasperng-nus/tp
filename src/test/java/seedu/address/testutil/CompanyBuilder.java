@@ -36,7 +36,7 @@ public class CompanyBuilder {
      */
     public CompanyBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone("85355255");
+        phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         startDate = new Date(DEFAULT_STARTDATE);
         endDate = new Date(DEFAULT_ENDDATE);

@@ -63,7 +63,7 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPhone() {
-        if (company.getPhone().value.equals(Phone.DEFAULT_NUMBER)) {
+        if (!company.getPhone().isPhonePresent()) {
             phone.setText("No phone number");
         } else {
             phone.setText(company.getPhone().value);
@@ -71,8 +71,8 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPeriod() {
-        if (company.getStartDate().getDate().equals(Date.getDefaultDate())
-                || company.getEndDate().getDate().equals(Date.getDefaultDate())) {
+        if (!company.getStartDate().isDatePresent()
+                || !company.getEndDate().isDatePresent()) {
             period.setText("");
         } else {
             period.setText(company.getStartDate().toString() + " to " + company.getEndDate().toString());

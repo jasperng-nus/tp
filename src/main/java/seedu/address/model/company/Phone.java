@@ -65,4 +65,8 @@ public class Phone {
     public int hashCode() {
         return value.hashCode();
     }
+
+    public boolean isPhonePresent() {
+        return !value.equals(DEFAULT_NUMBER);
+    }
 }

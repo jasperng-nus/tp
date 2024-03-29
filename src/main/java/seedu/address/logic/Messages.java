@@ -39,14 +39,13 @@ public class Messages {
     public static String format(Company company) {
         final StringBuilder builder = new StringBuilder();
         builder.append(company.getName());
-        if (!company.getPhone().value.equals(Phone.DEFAULT_NUMBER)) {
+        if (company.getPhone().isPhonePresent()) {
             builder.append("; Phone: ")
                     .append(company.getPhone());
         }
         builder.append("; Email: ")
                 .append(company.getEmail());
-        if (!company.getStartDate().getDate().equals(Date.getDefaultDate())
-                && !company.getEndDate().getDate().equals(Date.getDefaultDate())) {
+        if (company.getStartDate().isDatePresent() && company.getEndDate().isDatePresent()) {
             builder.append("; Period: ")
                     .append(company.getStartDate())
                     .append(" to ")

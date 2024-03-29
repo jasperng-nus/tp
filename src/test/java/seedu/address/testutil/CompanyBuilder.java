@@ -4,10 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.company.Company;
-import seedu.address.model.company.Email;
-import seedu.address.model.company.Name;
-import seedu.address.model.company.Phone;
+import seedu.address.model.company.*;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -20,19 +17,25 @@ public class CompanyBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_TAG = "SoftwareEngineer";
+    public static final String DEFAULT_STARTDATE = "2024-07-07";
+    public static final String DEFAULT_ENDDATE = "2024-08-08";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Set<Tag> tags;
+    private Date startDate;
+    private Date endDate;
 
     /**
      * Creates a {@code CompanyBuilder} with the default details.
      */
     public CompanyBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        phone = new Phone("85355255");
         email = new Email(DEFAULT_EMAIL);
+        startDate = new Date(DEFAULT_STARTDATE);
+        endDate = new Date(DEFAULT_ENDDATE);
         tags = new HashSet<>(Arrays.asList(new Tag(DEFAULT_TAG)));
     }
 
@@ -43,6 +46,8 @@ public class CompanyBuilder {
         name = companyToCopy.getName();
         phone = companyToCopy.getPhone();
         email = companyToCopy.getEmail();
+        startDate = companyToCopy.getStartDate();
+        endDate = companyToCopy.getEndDate();
         tags = new HashSet<>(companyToCopy.getTags());
     }
 
@@ -88,8 +93,19 @@ public class CompanyBuilder {
         return this;
     }
 
+    public CompanyBuilder withDates(String startDate, String endDate) {
+        this.startDate = new Date(startDate);
+        this.endDate = new Date(endDate);
+        return this;
+    }
+    public CompanyBuilder withDates() {
+        this.startDate = new Date();
+        this.endDate = new Date();
+        return this;
+    }
+
     public Company build() {
-        return new Company(name, phone, email, tags);
+        return new Company(name, phone, email, startDate, endDate,tags);
     }
 
 }

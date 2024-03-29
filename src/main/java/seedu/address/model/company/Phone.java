@@ -43,7 +43,7 @@ public class Phone {
 
     @Override
     public String toString() {
-        return value.equals(DEFAULT_NUMBER) ? "NIL" : value;
+        return value;
     }
 
     @Override
@@ -65,5 +65,4 @@ public class Phone {
     public int hashCode() {
         return value.hashCode();
     }
-
 }

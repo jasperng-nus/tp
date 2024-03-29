@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
+import seedu.address.model.company.Phone;
 
 /**
  * Container for user visible messages.
@@ -36,12 +38,21 @@ public class Messages {
      */
     public static String format(Company company) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(company.getName())
-                .append("; Phone: ")
-                .append(company.getPhone())
-                .append("; Email: ")
-                .append(company.getEmail())
-                .append("; Tags: ");
+        builder.append(company.getName());
+        if (!company.getPhone().value.equals(Phone.DEFAULT_NUMBER)) {
+            builder.append("; Phone: ")
+                    .append(company.getPhone());
+        }
+        builder.append("; Email: ")
+                .append(company.getEmail());
+        if (!company.getStartDate().getDate().equals(Date.DEFAULT_DATE) &&
+                !company.getEndDate().getDate().equals(Date.DEFAULT_DATE)) {
+            builder.append("; Period: ")
+                    .append(company.getStartDate())
+                    .append(" to ")
+                    .append(company.getEndDate());
+        }
+        builder.append("; Tags: ");
         company.getTags().forEach(builder::append);
         return builder.toString();
     }

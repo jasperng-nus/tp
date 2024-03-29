@@ -14,6 +14,8 @@ public class Date {
     public static final String MESSAGE_CONSTRAINTS =
             "Date should be in the format YYYY-MM-DD";
     public final LocalDate date;
+    public static String DEFAULT_DATE_STRING = "0000-01-01";
+    public static LocalDate DEFAULT_DATE = LocalDate.parse(DEFAULT_DATE_STRING);
 
     /**
      * Constructs a {@code Date}.
@@ -30,7 +32,7 @@ public class Date {
      * Constructs an empty {@code Date}
      */
     public Date() {
-        this.date = null;
+        this.date = LocalDate.parse(DEFAULT_DATE_STRING);
     }
 
     /**
@@ -47,7 +49,7 @@ public class Date {
 
     @Override
     public String toString() {
-        return date.toString();
+        return this.date.toString();
     }
 
     @Override
@@ -68,5 +70,9 @@ public class Date {
     @Override
     public int hashCode() {
         return date.hashCode();
+    }
+
+    public LocalDate getDate() {
+        return this.date;
     }
 }

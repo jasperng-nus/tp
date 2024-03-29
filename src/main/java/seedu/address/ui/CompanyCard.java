@@ -8,6 +8,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
+import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -41,6 +43,12 @@ public class CompanyCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+    @FXML
+    private Label period;
+//
+//    @FXML
+//    private Label endDate;
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -50,6 +58,7 @@ public class CompanyCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(company.getName().fullName);
         setPhone();
+        setPeriod();
         email.setText(company.getEmail().value);
         company.getTags().stream()
                 .sorted(Comparator.comparing(Tag::getTagName))
@@ -57,10 +66,18 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPhone() {
-        if (company.getPhone().value.equals("000")) {
-            phone.setText("no number");
+        if (company.getPhone().value.equals(Phone.DEFAULT_NUMBER)) {
+            phone.setText("No phone number");
         } else {
             phone.setText(company.getPhone().value);
+        }
+    }
+
+    public void setPeriod() {
+        if (company.getStartDate().getDate().equals(Date.DEFAULT_DATE) || company.getEndDate().getDate().equals(Date.DEFAULT_DATE)) {
+            period.setText("");
+        } else {
+            period.setText(company.getStartDate().toString() + " to " + company.getEndDate().toString());
         }
     }
 }

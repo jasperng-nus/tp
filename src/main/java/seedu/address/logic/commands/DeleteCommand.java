@@ -9,17 +9,17 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a company identified using it's displayed index from the address book.
  */
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Deletes the company identified by the index number used in the displayed company list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
@@ -37,11 +37,11 @@ public class DeleteCommand extends Command {
         List<Company> lastShownList = model.getFilteredCompanyList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_COMPANY_DISPLAYED_INDEX);
         }
 
         Company companyToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(companyToDelete);
+        model.deleteCompany(companyToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(companyToDelete)));
     }
 

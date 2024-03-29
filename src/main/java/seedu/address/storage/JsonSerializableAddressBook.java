@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Company;
+import seedu.address.model.InternBook;
+import seedu.address.model.ReadOnlyInternBook;
+import seedu.address.model.company.Company;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -19,7 +19,7 @@ import seedu.address.model.person.Company;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate company(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
 
@@ -32,11 +32,11 @@ class JsonSerializableAddressBook {
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyInternBook} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
+    public JsonSerializableAddressBook(ReadOnlyInternBook source) {
         persons.addAll(source.getCompanyList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 
@@ -45,16 +45,16 @@ class JsonSerializableAddressBook {
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public InternBook toModelType() throws IllegalValueException {
+        InternBook internBook = new InternBook();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Company company = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasCompany(company)) {
+            if (internBook.hasCompany(company)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addCompany(company);
+            internBook.addCompany(company);
         }
-        return addressBook;
+        return internBook;
     }
 
 }

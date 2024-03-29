@@ -18,11 +18,11 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.InternBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyInternBook;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.person.Company;
+import seedu.address.model.company.Company;
 import seedu.address.testutil.CompanyBuilder;
 
 public class AddCommandTest {
@@ -73,7 +73,7 @@ public class AddCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different person -> returns false
+        // different company -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
@@ -124,12 +124,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setAddressBook(ReadOnlyInternBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyInternBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -139,12 +139,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Company target) {
+        public void deleteCompany(Company target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Company target, Company editedCompany) {
+        public void setCompany(Company target, Company editedCompany) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -165,7 +165,7 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single company.
      */
     private class ModelStubWithPerson extends ModelStub {
         private final Company company;
@@ -183,7 +183,7 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the company being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
         final ArrayList<Company> personsAdded = new ArrayList<>();
@@ -201,8 +201,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyInternBook getAddressBook() {
+            return new InternBook();
         }
     }
 

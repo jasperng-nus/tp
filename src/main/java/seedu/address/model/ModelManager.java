@@ -129,8 +129,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortCompanyList() {
-        internBook.sortCompanyList();
+    public void sortCompanyListByName() {
+        internBook.sortCompanyListByName();
+    }
+
+    @Override
+    public void sortCompanyListByStartDate() {
+        internBook.sortCompanyListByStartDate();
+    }
+
+    @Override
+    public void sortCompanyListByEndDate() {
+        internBook.sortCompanyListByEndDate();
     }
 
     @Override

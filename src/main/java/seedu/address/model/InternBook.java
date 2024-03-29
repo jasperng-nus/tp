@@ -126,8 +126,16 @@ public class InternBook implements ReadOnlyInternBook {
     /**
      * Sorts the list of companies by their name in ascending order, ignoring case.
      */
-    public void sortCompanyList() {
-        companies.sort();
+    public void sortCompanyListByName() {
+        companies.sortCompanyListByName();
+    }
+
+    public void sortCompanyListByStartDate() {
+        companies.sortCompanyListByStartDate();
+    }
+
+    public void sortCompanyListByEndDate() {
+        companies.sortCompanyListByEndDate();
     }
     @Override
     public int hashCode() {

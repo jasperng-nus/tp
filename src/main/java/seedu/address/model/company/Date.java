@@ -72,7 +72,7 @@ public class Date {
     }
 
     public LocalDate getDate() {
-        return this.date;
+        return isDatePresent() ? date : LocalDate.MAX;
     }
 
     public final boolean isDatePresent() {

@@ -87,7 +87,17 @@ public interface Model {
     void updateFilteredCompanyList(Predicate<Company> predicate);
 
     /**
-     * Sorts the list of companies
+     * Sorts the list of companies alphabetically
      */
-    void sortCompanyList();
+    void sortCompanyListByName();
+
+    /**
+     * Sorts the list of companies in ascending order of startDate
+     */
+    void sortCompanyListByStartDate();
+
+    /**
+     * Sorts the list of companies in ascending order of endDate
+     */
+    void sortCompanyListByEndDate();
 }

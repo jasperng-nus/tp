@@ -25,6 +25,10 @@ public class MarkCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a MarkCommand to mark the specified {@code Company}
+     * @param targetIndex
+     */
     public MarkCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

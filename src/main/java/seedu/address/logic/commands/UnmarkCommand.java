@@ -25,6 +25,10 @@ public class UnmarkCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a UnmarkCommand to unmark the specified {@code Company}
+     * @param targetIndex
+     */
     public UnmarkCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

@@ -9,7 +9,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.company.exceptions.CompanyAlreadyMarkedOrUnmarked;
+import seedu.address.model.company.exceptions.CompanyAlreadyMarkedException;
+import seedu.address.model.company.exceptions.CompanyAlreadyUnmarkedException;
 import seedu.address.model.company.exceptions.CompanyNotFoundException;
 import seedu.address.model.company.exceptions.DuplicateCompanyException;
 
@@ -167,7 +168,7 @@ public class UniqueCompanyList implements Iterable<Company> {
         if (!internalList.contains(target)) {
             throw new CompanyNotFoundException();
         } else if (target.isMarked()) {
-            throw new CompanyAlreadyMarkedOrUnmarked();
+            throw new CompanyAlreadyMarkedException();
         } else {
             target.mark();
         }
@@ -181,7 +182,7 @@ public class UniqueCompanyList implements Iterable<Company> {
         if (!internalList.contains(target)) {
             throw new CompanyNotFoundException();
         } else if (!target.isMarked()) {
-            throw new CompanyAlreadyMarkedOrUnmarked();
+            throw new CompanyAlreadyUnmarkedException();
         } else {
             target.unmark();
         }

@@ -48,7 +48,7 @@ public class StringUtil {
      *       containsStartSubstringIgnoreCase("ABc def", "ef") == false //not the starting part of the word.
      *       </pre>
      * @param sentence cannot be null
-     * @param word cannot be null, cannot be empty, must be a single word
+     * @param word cannot be null, cannot be empty
      */
     public static boolean containsStartSubstringIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);

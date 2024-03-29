@@ -8,8 +8,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.company.Company;
-import seedu.address.model.company.Date;
-import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**

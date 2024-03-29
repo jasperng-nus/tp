@@ -6,8 +6,6 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.company.Company;
-import seedu.address.model.company.Date;
-import seedu.address.model.company.Phone;
 
 /**
  * Container for user visible messages.

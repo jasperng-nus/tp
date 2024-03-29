@@ -59,11 +59,7 @@ public class StringUtil {
 
         String preppedSentence = sentence.trim();
 
-        System.out.println(preppedSentence);
         String[] wordsInPreppedSentence = preppedSentence.split(" ");
-        for (String t: wordsInPreppedSentence) {
-            System.out.println(t + "*");
-        }
         return (preppedSentence.toLowerCase().startsWith(preppedWord.toLowerCase())) || (
                 Arrays.stream(wordsInPreppedSentence).anyMatch(s ->
                         s.toLowerCase().startsWith(preppedWord.toLowerCase())));

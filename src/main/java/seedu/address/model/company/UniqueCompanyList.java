@@ -152,12 +152,30 @@ public class UniqueCompanyList implements Iterable<Company> {
     }
 
     /**
-     * Sorts the list in alphabetical order.
-     * Sort is non case sensitive.
+     * Sorts the list of companies by their name in ascending order, and then by their start date in ascending order.
      */
-    public void sort() {
+    public void sortCompanyListByName() {
         Comparator<Company> compareByName = Comparator.comparing(company -> company.getName().fullName.toLowerCase());
-        FXCollections.sort(internalList, compareByName);
+        Comparator<Company> compareByStartDate = Comparator.comparing(company -> company.getStartDate().getDate());
+        FXCollections.sort(internalList, compareByName.thenComparing(compareByStartDate));
+    }
+
+    /**
+     * Sorts the list of companies by their start date in ascending order, and then by their name in ascending order.
+     */
+    public void sortCompanyListByStartDate() {
+        Comparator<Company> compareByStartDate = Comparator.comparing(company -> company.getStartDate().getDate());
+        Comparator<Company> compareByName = Comparator.comparing(company -> company.getName().fullName.toLowerCase());
+        FXCollections.sort(internalList, compareByStartDate.thenComparing(compareByName));
+    }
+
+    /**
+     * Sorts the list of companies by their name in ascending order, and then by their start date in ascending order.
+     */
+    public void sortCompanyListByEndDate() {
+        Comparator<Company> compareByStartDate = Comparator.comparing(company -> company.getEndDate().getDate());
+        Comparator<Company> compareByName = Comparator.comparing(company -> company.getName().fullName.toLowerCase());
+        FXCollections.sort(internalList, compareByStartDate.thenComparing(compareByName));
     }
 
     /**

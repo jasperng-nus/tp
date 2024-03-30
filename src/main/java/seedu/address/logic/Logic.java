@@ -58,4 +58,10 @@ public interface Logic {
      * Set the user prefs' Reminder settings.
      */
     void setReminderSettings(ReminderSettings reminderSettings);
+
+    /**
+     * Returns the user prefs' reminder status
+     * @return true for reminder switched on and false for reminder switched off.
+     */
+    boolean getReminderStatus();
 }

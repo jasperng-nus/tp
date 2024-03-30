@@ -47,6 +47,11 @@ public interface Model {
     void setReminderSettings(ReminderSettings reminderSettings);
 
     /**
+     * Returns the user prefs' reminder status
+     */
+    boolean getReminderStatus();
+
+    /**
      * Returns the user prefs' address book file path.
      */
     Path getAddressBookFilePath();

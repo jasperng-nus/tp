@@ -66,6 +66,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean getReminderStatus() {
+        return userPrefs.getReminderSettings().getReminder();
+    }
+
+    @Override
     public void setReminderSettings(ReminderSettings reminderSettings) {
         requireNonNull(reminderSettings);
         userPrefs.setReminderSettings(reminderSettings);

@@ -1,0 +1,9 @@
+#reminderMessageContainer {
+    -fx-background-color: derive(#799b78, 20%);
+}
+
+#reminderMessage {
+    -fx-font-size: 12pt;
+    -fx-padding: 5px;
+    -fx-wrap-text: true;
+}

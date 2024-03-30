@@ -34,6 +34,9 @@ public class SetReminderCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        // Assertion to ensure that the target index is not null
+        assert toUpdateReminder != null : "Reminder settings cannot be null";
+
         model.setReminderSettings(new ReminderSettings(toUpdateReminder.getReminderOnOff(),
                 toUpdateReminder.getDays()));
         return new CommandResult(String.format(MESSGAE_SUCCESS));

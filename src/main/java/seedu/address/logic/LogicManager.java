@@ -96,4 +96,9 @@ public class LogicManager implements Logic {
     public void setReminderSettings(ReminderSettings reminderSettings) {
         model.setReminderSettings(reminderSettings);
     }
+
+    @Override
+    public boolean getReminderStatus() {
+        return model.getReminderStatus();
+    }
 }

@@ -25,6 +25,11 @@ public class UnsortedTypicalCompanies {
             .withEmail("alice@example.com")
             .withPhone("94351253")
             .withTags("friends").build();
+
+    public static final Company ALICIA = new CompanyBuilder().withName("Alicia Pauline")
+            .withEmail("alice2@example.com")
+            .withPhone("94351233")
+            .withTags("test").build();
     public static final Company BENSON = new CompanyBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends").build();
@@ -68,6 +73,6 @@ public class UnsortedTypicalCompanies {
     }
 
     public static List<Company> getUnsortedTypicalPersons() {
-        return new ArrayList<>(Arrays.asList(CARL, FIONA, GEORGE, BENSON, DANIEL, ELLE, ALICE));
+        return new ArrayList<>(Arrays.asList(CARL, FIONA, GEORGE, BENSON, DANIEL, ELLE, ALICE, ALICIA));
     }
 }

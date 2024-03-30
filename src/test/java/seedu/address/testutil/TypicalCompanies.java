@@ -27,6 +27,11 @@ public class TypicalCompanies {
             .withEmail("alice@example.com")
             .withPhone("94351253")
             .withTags("friends").build();
+
+    public static final Company ALICIA = new CompanyBuilder().withName("Alicia Pauline")
+            .withEmail("alice2@example.com")
+            .withPhone("94351233")
+            .withTags("test").build();
     public static final Company BENSON = new CompanyBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends").build();
@@ -73,6 +78,6 @@ public class TypicalCompanies {
     }
 
     public static List<Company> getTypicalPersons() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(ALICE, ALICIA, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

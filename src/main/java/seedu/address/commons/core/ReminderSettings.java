@@ -8,11 +8,10 @@ import seedu.address.model.reminder.Days;
 import seedu.address.model.reminder.ReminderOnOff;
 
 public class ReminderSettings implements Serializable {
-    private static final ReminderOnOff DEFAULT_REMINDER = new ReminderOnOff();
-    private static final Days DEFAULT_NUMOFDAYS = new Days();
-
-    private ReminderOnOff reminder;
-    private Days numOfDays;
+    private static final boolean DEFAULT_REMINDER = false;
+    private static final long DEFAULT_NUMOFDAYS = 0;
+    private boolean reminder;
+    private long numOfDays;
 
     /**
      * Constructs a {@code ReminderSettings} with the default reminder setting and number of days.
@@ -27,16 +26,16 @@ public class ReminderSettings implements Serializable {
      * and the number of days left till application end date.
      */
     public ReminderSettings(ReminderOnOff reminder, Days numOfDays) {
-        this.reminder = reminder;
-        this.numOfDays = numOfDays;
+        this.reminder = reminder.getReminder();
+        this.numOfDays = numOfDays.getNumOfDays();
     }
 
     public boolean getReminder() {
-        return this.reminder.getReminder();
+        return this.reminder;
     }
 
     public long getNumOfDays() {
-        return this.numOfDays.getNumOfDays();
+        return this.numOfDays;
     }
 
     @Override

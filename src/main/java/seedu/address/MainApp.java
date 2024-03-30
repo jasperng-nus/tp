@@ -89,7 +89,6 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialData = new InternBook();
         }
-
         return new ModelManager(initialData, userPrefs);
     }
 

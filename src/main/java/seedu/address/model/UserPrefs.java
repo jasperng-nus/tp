@@ -38,6 +38,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setReminderSettings(newUserPrefs.getReminderSettings());
     }
 
 
@@ -93,7 +94,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("Reminder Serrings : " + reminderSettings);
+        sb.append("Reminder Settings : " + reminderSettings);
         sb.append("\nLocal data file location : " + addressBookFilePath);
         return sb.toString();
     }

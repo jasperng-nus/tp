@@ -44,6 +44,9 @@ public class CompanyCard extends UiPart<Region> {
     @FXML
     private CheckBox applicationStatusCheckBox;
 
+    @FXML
+    private Label period;
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -53,6 +56,7 @@ public class CompanyCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(company.getName().fullName);
         setPhone();
+        setPeriod();
         email.setText(company.getEmail().value);
         company.getTags().stream()
                 .sorted(Comparator.comparing(Tag::getTagName))
@@ -64,10 +68,19 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPhone() {
-        if (company.getPhone().value.equals("000")) {
-            phone.setText("no number");
+        if (!company.getPhone().isPhonePresent()) {
+            phone.setText("No phone number");
         } else {
             phone.setText(company.getPhone().value);
+        }
+    }
+
+    public void setPeriod() {
+        if (!company.getStartDate().isDatePresent()
+                || !company.getEndDate().isDatePresent()) {
+            period.setText("");
+        } else {
+            period.setText(company.getStartDate().toString() + " to " + company.getEndDate().toString());
         }
     }
 }

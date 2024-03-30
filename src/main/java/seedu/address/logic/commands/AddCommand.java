@@ -2,8 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -29,7 +31,9 @@ public class AddCommand extends Command {
             + PREFIX_NAME + " NUS "
             + PREFIX_TAG + " SoftwareEngineer "
             + PREFIX_EMAIL + " NUS@nus.edu.com "
-            + PREFIX_PHONE + " 91234567 ";
+            + PREFIX_PHONE + " 91234567 "
+            + PREFIX_STARTDATE + " 2024-07-07 "
+            + PREFIX_ENDDATE + " 2024-08-08 ";
     public static final String MESSAGE_SUCCESS = "New company added: %1$s";
     public static final String MESSAGE_DUPLICATE_COMPANY = "This company already exists in the address book";
 

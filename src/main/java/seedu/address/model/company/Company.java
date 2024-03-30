@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -25,6 +27,10 @@ public class Company {
     private final Date startDate;
     private final Date endDate;
     private final Set<Tag> tags = new HashSet<>();
+    private boolean isMarked;
+
+    // GUI fields
+    private final BooleanProperty checkboxIsMarked = new SimpleBooleanProperty();
 
     /**
      * Every field must be present and not null. This constructor is to be deprecated soon.
@@ -37,6 +43,7 @@ public class Company {
         this.tags.addAll(tags);
         this.startDate = new Date("2024-01-01");
         this.endDate = new Date("2024-01-02");
+        this.isMarked = false;
     }
 
     /**
@@ -50,6 +57,7 @@ public class Company {
         this.tags.addAll(tags);
         this.startDate = startDate;
         this.endDate = endDate;
+        this.isMarked = false;
     }
 
     public Name getName() {
@@ -80,7 +88,7 @@ public class Company {
     }
 
     /**
-     * Returns true if both companies have the same name, email, phone, startDate, deadline and tags.
+     * Returns true if both companies have the same name, email, phone, startDate, endDate and tags.
      */
     public boolean isSameCompany(Company otherCompany) {
         if (otherCompany == null) {
@@ -140,4 +148,34 @@ public class Company {
                 .toString();
     }
 
+    /**
+     * Sets the application status of the company to marked.
+     */
+    public void mark() {
+        isMarked = true;
+        checkboxIsMarked.set(true);
+    }
+
+    /**
+     * Sets the application status of the company to unmarked.
+     */
+    public void unmark() {
+        isMarked = false;
+        checkboxIsMarked.set(false);
+    }
+
+    /**
+     * Returns the application status of the company.
+     */
+    public boolean isMarked() {
+        return isMarked;
+    }
+
+    /**
+     * Returns the application status of the company as a BooleanProperty.
+     * This is used to bind the application status of the company to the GUI.
+     */
+    public BooleanProperty checkboxIsMarked() {
+        return checkboxIsMarked;
+    }
 }

@@ -162,6 +162,21 @@ public class AddCommandTest {
         public void sortCompanyList() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void markCompany(Company company) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void unmarkCompany(Company company) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean isCompanyMarked(Company company) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

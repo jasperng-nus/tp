@@ -4,10 +4,14 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.Logic;
 
 public class ReminderWindow extends UiPart<Stage> {
     public static final String REMINDER_MESSAGE =
@@ -15,7 +19,7 @@ public class ReminderWindow extends UiPart<Stage> {
 
     private static final Logger logger = LogsCenter.getLogger(ReminderWindow.class);
     private static final String FXML = "ReminderWindow.fxml";
-    private Stage primaryStage;
+    private Logic logic;
     @FXML
     private Label reminderMessage;
 
@@ -24,17 +28,20 @@ public class ReminderWindow extends UiPart<Stage> {
      *
      * @param root Stage to use as the root of the ReminderWindow.
      */
-    public ReminderWindow(Stage root) {
+    public ReminderWindow(Stage root, Logic logic) {
         super(FXML, root);
-//        reminderMessage.setText(REMINDER_MESSAGE);
-//        this.primaryStage = root;
+        this.logic = logic;
+    }
+
+    void fillInnerParts() {
+
     }
 
     /**
      * Creates a new ReminderWindow
      */
-    public ReminderWindow() {
-        this(new Stage());
+    public ReminderWindow(Logic logic) {
+        this(new Stage(), logic);
     }
 
     /**

@@ -100,4 +100,16 @@ public interface Model {
      * Sorts the list of companies in ascending order of endDate
      */
     void sortCompanyListByEndDate();
+
+    /**
+     * Marks the given company as applied.
+     */
+    void markCompany(Company target);
+
+    /**
+     * Unmarks the given company as applied.
+     */
+    void unmarkCompany(Company target);
+
+    boolean isCompanyMarked(Company target);
 }

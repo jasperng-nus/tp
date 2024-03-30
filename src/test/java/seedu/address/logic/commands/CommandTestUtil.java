@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -122,7 +121,7 @@ public class CommandTestUtil {
 
         Company company = model.getFilteredCompanyList().get(targetIndex.getZeroBased());
         final String[] splitName = company.getName().fullName.split("\\s+");
-        model.updateFilteredCompanyList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredCompanyList(new NameContainsKeywordsPredicate(splitName[0]));
 
         assertEquals(1, model.getFilteredCompanyList().size());
     }

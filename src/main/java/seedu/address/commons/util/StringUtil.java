@@ -39,6 +39,34 @@ public class StringUtil {
     }
 
     /**
+     * Returns true if any word in the {@code sentence} starts the {@code word}.
+     *   Ignores case, and a substring match suffices.
+     *   <br>examples:<pre>
+     *       containsStartSubstringIgnoreCase("ABc def", "ab") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "de") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "abc d") == true
+     *       containsStartSubstringIgnoreCase("ABc def", "ef") == false //not the starting part of the word.
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty
+     */
+    public static boolean containsStartSubstringIgnoreCase(String sentence, String word) {
+        requireNonNull(sentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+
+        String preppedSentence = sentence.trim();
+
+        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
+        return (preppedSentence.toLowerCase().startsWith(preppedWord.toLowerCase())) || (
+                Arrays.stream(wordsInPreppedSentence).anyMatch(s ->
+                        s.toLowerCase().startsWith(preppedWord.toLowerCase())));
+    }
+
+
+    /**
      * Returns a detailed message of the t, including the stack trace.
      */
     public static String getDetails(Throwable t) {

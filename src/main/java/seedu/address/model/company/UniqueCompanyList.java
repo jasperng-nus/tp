@@ -9,6 +9,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.company.exceptions.CompanyAlreadyMarkedException;
+import seedu.address.model.company.exceptions.CompanyAlreadyUnmarkedException;
 import seedu.address.model.company.exceptions.CompanyNotFoundException;
 import seedu.address.model.company.exceptions.DuplicateCompanyException;
 
@@ -174,5 +176,45 @@ public class UniqueCompanyList implements Iterable<Company> {
         Comparator<Company> compareByStartDate = Comparator.comparing(company -> company.getEndDate().getDate());
         Comparator<Company> compareByName = Comparator.comparing(company -> company.getName().fullName.toLowerCase());
         FXCollections.sort(internalList, compareByStartDate.thenComparing(compareByName));
+    }
+
+    /**
+     * Marks the given company as applied.
+     */
+    public void mark(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else if (target.isMarked()) {
+            throw new CompanyAlreadyMarkedException();
+        } else {
+            target.mark();
+        }
+    }
+
+    /**
+     * Unmarks the given company as applied.
+     */
+    public void unmark(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else if (!target.isMarked()) {
+            throw new CompanyAlreadyUnmarkedException();
+        } else {
+            target.unmark();
+        }
+    }
+
+    /**
+     * Returns true if the given company is marked.
+     */
+    public boolean isMarked(Company target) {
+        requireNonNull(target);
+        if (!internalList.contains(target)) {
+            throw new CompanyNotFoundException();
+        } else {
+            return target.isMarked();
+        }
     }
 }

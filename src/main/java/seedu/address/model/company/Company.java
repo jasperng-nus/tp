@@ -80,7 +80,7 @@ public class Company {
     }
 
     /**
-     * Returns true if both companies have the same name, email, phone, startDate, deadline and tags.
+     * Returns true if both companies have the same name, email, phone, startDate, endDate and tags.
      */
     public boolean isSameCompany(Company otherCompany) {
         if (otherCompany == null) {

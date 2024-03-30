@@ -99,7 +99,19 @@ public interface Model {
     void updateFilteredCompanyList(Predicate<Company> predicate);
 
     /**
-     * Sorts the list of companies
+     * Sorts the list of companies.
      */
     void sortCompanyList();
+
+    /**
+     * Marks the given company as applied.
+     */
+    void markCompany(Company target);
+
+    /**
+     * Unmarks the given company as applied.
+     */
+    void unmarkCompany(Company target);
+
+    boolean isCompanyMarked(Company target);
 }

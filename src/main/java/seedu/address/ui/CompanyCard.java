@@ -3,6 +3,7 @@ package seedu.address.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -15,7 +16,7 @@ import seedu.address.model.tag.Tag;
  */
 public class CompanyCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "CompanyListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -40,6 +41,11 @@ public class CompanyCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private CheckBox applicationStatusCheckBox;
+
+    @FXML
+    private Label period;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -50,17 +56,31 @@ public class CompanyCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(company.getName().fullName);
         setPhone();
+        setPeriod();
         email.setText(company.getEmail().value);
         company.getTags().stream()
                 .sorted(Comparator.comparing(Tag::getTagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.capitalise())));
+        applicationStatusCheckBox.selectedProperty().bind(company.checkboxIsMarked());
+        // Disable the checkbox to make it unclickable
+        applicationStatusCheckBox.setDisable(true);
+
     }
 
     public void setPhone() {
-        if (company.getPhone().value.equals("000")) {
-            phone.setText("no number");
+        if (!company.getPhone().isPhonePresent()) {
+            phone.setText("No phone number");
         } else {
             phone.setText(company.getPhone().value);
+        }
+    }
+
+    public void setPeriod() {
+        if (!company.getStartDate().isDatePresent()
+                || !company.getEndDate().isDatePresent()) {
+            period.setText("");
+        } else {
+            period.setText(company.getStartDate().toString() + " to " + company.getEndDate().toString());
         }
     }
 }

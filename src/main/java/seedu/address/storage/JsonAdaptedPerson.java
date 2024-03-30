@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
 import seedu.address.model.company.Email;
 import seedu.address.model.company.Name;
 import seedu.address.model.company.Phone;
@@ -26,19 +27,24 @@ class JsonAdaptedPerson {
     private final String name;
     private final String phone;
     private final String email;
-
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String startDate;
+    private final String endDate;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given company details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("email") String email,
+                             @JsonProperty("startDate") String startDate,
+                             @JsonProperty("endDate") String endDate,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.startDate = startDate;
+        this.endDate = endDate;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -51,6 +57,8 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
+        startDate = source.getStartDate().toString();
+        endDate = source.getEndDate().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -91,9 +99,24 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
 
+        if (startDate == null) {
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName())));
+        }
+        if (!Date.isValidDate(startDate)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+        }
+        final Date modelStartDate = new Date(startDate);
+
+        if (endDate == null) {
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName())));
+        }
+        if (!Date.isValidDate(endDate)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+        }
+        final Date modelEndDate = new Date(endDate);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Company(modelName, modelPhone, modelEmail, modelTags);
+        return new Company(modelName, modelPhone, modelEmail, modelStartDate, modelEndDate, modelTags);
     }
 
 }

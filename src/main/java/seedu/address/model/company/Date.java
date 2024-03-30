@@ -13,6 +13,7 @@ import java.time.LocalDate;
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
             "Date should be in the format YYYY-MM-DD";
+    private static final LocalDate DEFAULT_DATE = LocalDate.parse("0000-01-01");
     public final LocalDate date;
 
     /**
@@ -30,7 +31,7 @@ public class Date {
      * Constructs an empty {@code Date}
      */
     public Date() {
-        this.date = null;
+        this.date = DEFAULT_DATE;
     }
 
     /**
@@ -68,5 +69,13 @@ public class Date {
     @Override
     public int hashCode() {
         return date.hashCode();
+    }
+
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public final boolean isDatePresent() {
+        return !date.equals(DEFAULT_DATE);
     }
 }

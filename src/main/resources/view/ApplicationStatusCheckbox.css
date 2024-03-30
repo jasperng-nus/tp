@@ -1,0 +1,6 @@
+#applicationStatusCheckBox {
+    -fx-font-size: 40px;
+    -fx-padding: 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}

@@ -113,9 +113,10 @@ public class HelpWindow extends UiPart<Stage> {
     /**
      * Opens the user guide in web view.
      */
-    @FXML
-    private void openUserGuide() {
-        getRoot().setScene(new Scene(webView, 800, 600));
+    public void openUserGuide() {
+        if (webView.getScene() == null) {
+            getRoot().setScene(new Scene(webView, 800, 600));
+        }
         getRoot().show();
     }
 }

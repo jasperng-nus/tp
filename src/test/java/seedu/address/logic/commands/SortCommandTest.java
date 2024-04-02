@@ -17,9 +17,27 @@ public class SortCommandTest {
     private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_sortCompanyList() {
+    public void execute_sortCompanyListAlphabetical() {
         SortCommand command = new SortCommand(SortType.ALPHABETICAL_ASCENDING);
         String expectedMessage = SortCommand.MESSAGE_SUCCESS + SortCommand.MESSAGE_ALPHABETICAL;
+        model.sortCompanyListByName();
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(model.getFilteredCompanyList(), expectedModel.getFilteredCompanyList());
+    }
+
+    @Test
+    public void execute_sortCompanyListStartingDate() {
+        SortCommand command = new SortCommand(SortType.STARTDATE_ASCENDING);
+        String expectedMessage = SortCommand.MESSAGE_SUCCESS + SortCommand.MESSAGE_START_DATE;
+        model.sortCompanyListByName();
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(model.getFilteredCompanyList(), expectedModel.getFilteredCompanyList());
+    }
+
+    @Test
+    public void execute_sortCompanyListEndDate() {
+        SortCommand command = new SortCommand(SortType.ENDDATE_ASCENDING);
+        String expectedMessage = SortCommand.MESSAGE_SUCCESS + SortCommand.MESSAGE_END_DATE;
         model.sortCompanyListByName();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(model.getFilteredCompanyList(), expectedModel.getFilteredCompanyList());

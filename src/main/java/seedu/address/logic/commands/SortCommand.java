@@ -18,10 +18,10 @@ public class SortCommand extends Command {
             + ": Sorts the companies by the user's preference.\n"
             + "Parameters: PREF (must be a single char)\n"
             + "Example: " + COMMAND_WORD + " a";
-    public static final String MESSAGE_SUCCESS = "Sorted all companies alphabetically";
 
+    public static final String MESSAGE_SUCCESS = "Sorted all entries ";
+    private static String sortBy;
     public final SortType sortType;
-
     public SortCommand(SortType sortType) {
         this.sortType = sortType;
     }
@@ -35,16 +35,19 @@ public class SortCommand extends Command {
         switch (sortType) {
         case ALPHABETICAL_ASCENDING:
             model.sortCompanyListByName();
+            sortBy = "in alphabetical order";
             break;
         case STARTDATE_ASCENDING:
             model.sortCompanyListByStartDate();
+            sortBy = "in order of starting date";
             break;
         case ENDDATE_ASCENDING:
             model.sortCompanyListByEndDate();
+            sortBy = "in order of end date";
             break;
         default:
             throw new CommandException("Invalid sorting preference.");
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, sortType.name()));
+        return new CommandResult(String.format(MESSAGE_SUCCESS + sortBy, sortType.name()));
     }
 }

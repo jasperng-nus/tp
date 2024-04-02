@@ -7,6 +7,9 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.reminder.Days;
 import seedu.address.model.reminder.ReminderOnOff;
 
+/**
+ * Represents the settings for reminders about application deadlines.
+ */
 public class ReminderSettings implements Serializable {
     private static final boolean DEFAULT_REMINDER = false;
     private static final long DEFAULT_NUMOFDAYS = 0;
@@ -30,10 +33,20 @@ public class ReminderSettings implements Serializable {
         this.numOfDays = numOfDays.getNumOfDays();
     }
 
+    /**
+     * Returns the reminder setting.
+     *
+     * @return True if the reminder is turned on, false otherwise.
+     */
     public boolean getReminder() {
         return this.reminder;
     }
 
+    /**
+     * Returns the number of days left till application end date.
+     *
+     * @return The number of days left.
+     */
     public long getNumOfDays() {
         return this.numOfDays;
     }

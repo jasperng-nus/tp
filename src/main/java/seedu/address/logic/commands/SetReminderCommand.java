@@ -1,16 +1,19 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SETREMINDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMINDERDAYS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SETREMINDER;
 
 import seedu.address.commons.core.ReminderSettings;
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.reminder.Reminder;
 
+/**
+ * Represents a command for setting reminders to the application.
+ * Usage: setReminder -r true/false -days numOfDays
+ * Example: setReminder -r true -days 7
+ */
 public class SetReminderCommand extends Command {
     public static final String COMMAND_WORD = "setReminder";
 
@@ -22,9 +25,13 @@ public class SetReminderCommand extends Command {
             + PREFIX_SETREMINDER + " true "
             + PREFIX_REMINDERDAYS + " 7 ";
 
-    public static final String MESSGAE_SUCCESS = "Reminder turned on";
+    public static final String MESSGAE_SUCCESS = "Reminder settings changed";
     private final Reminder toUpdateReminder;
 
+    /**
+     * Creates a SetReminderCommand to update the reminder settings
+     * @param reminder The reminder settings to be updated.
+     */
     public SetReminderCommand(Reminder reminder) {
         requireNonNull(reminder);
         toUpdateReminder = reminder;

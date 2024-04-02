@@ -13,7 +13,6 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
-import seedu.address.model.reminder.Reminder;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -37,7 +36,7 @@ public class ModelManager implements Model {
         this.internBook = new InternBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredCompanies = new FilteredList<>(this.internBook.getCompanyList());
-        filteredReminder = new FilteredList<>(this.internBook.getReminderList(this.userPrefs.getReminderSettings()));
+        filteredReminder = new FilteredList<>(this.getReminderList());
     }
 
     public ModelManager() {
@@ -144,8 +143,12 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Company> getFilteredCompaniesRemindersList() {
-        assert filteredReminder != null: "Reminder Companies not retrieved";
-        return this.filteredCompanies;
+        assert filteredReminder != null : "Reminder Companies not retrieved";
+        return this.filteredReminder;
+    }
+
+    public ObservableList<Company> getReminderList() {
+        return this.internBook.getReminderList(this.userPrefs.getReminderSettings());
     }
 
     @Override

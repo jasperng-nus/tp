@@ -30,7 +30,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code reminderOnOff} is invalid
      */
-    public  static ReminderOnOff parseReminderOnOff(String reminderOnOff) throws ParseException {
+    public static ReminderOnOff parseReminderOnOff(String reminderOnOff) throws ParseException {
         requireNonNull(reminderOnOff);
         String trimmedReminderOnOff = reminderOnOff.trim();
         if (!ReminderOnOff.isValidSetReminder(trimmedReminderOnOff)) {

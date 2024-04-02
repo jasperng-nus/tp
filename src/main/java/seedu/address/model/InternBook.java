@@ -112,7 +112,7 @@ public class InternBook implements ReadOnlyInternBook {
 
     @Override
     public ObservableList<Company> getReminderList(ReminderSettings reminderSettings) {
-        return companies.asUnmodifiableObservableList();
+        return companies.asUnmodifiableReminderList(reminderSettings);
     }
 
     @Override

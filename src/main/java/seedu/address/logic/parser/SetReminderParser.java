@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SETREMINDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMINDERDAYS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SETREMINDER;
 
 import java.util.stream.Stream;
 
@@ -16,6 +16,13 @@ import seedu.address.model.reminder.ReminderOnOff;
  * Parses input arguments and creates a new SetReminder object
  */
 public class SetReminderParser implements Parser<SetReminderCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the SetReminderCommand
+     * and returns a SetReminderCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public SetReminderCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_SETREMINDER, PREFIX_REMINDERDAYS);

@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
-import seedu.address.model.reminder.Reminder;
 
 /**
  * The API of the Model component.

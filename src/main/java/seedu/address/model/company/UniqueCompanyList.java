@@ -114,12 +114,10 @@ public class UniqueCompanyList implements Iterable<Company> {
      */
     public ObservableList<Company> asUnmodifiableReminderList(ReminderSettings reminderSettings) {
         long numOfDays = reminderSettings.getNumOfDays();
-        return internalList.stream()
-                .filter(company -> company.toRemind(numOfDays))
-                .collect(Collectors.collectingAndThen(
-                        Collectors.toList(),
-                        FXCollections::observableArrayList
-                ));
+        List<Company> filteredList = internalList.stream()
+                .filter(company-> company.toRemind(numOfDays))
+                .collect(Collectors.toList());
+        return FXCollections.unmodifiableObservableList(FXCollections.observableArrayList(filteredList));
     }
 
     @Override

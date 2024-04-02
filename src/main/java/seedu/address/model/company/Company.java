@@ -2,7 +2,6 @@ package seedu.address.model.company;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Collections;
@@ -113,7 +112,12 @@ public class Company {
      * Returns true if company is not marked as applied and end date is numOfDays days away
      */
     public boolean toRemind(long numOfDays) {
-        Period period = Period.between(endDate.getDate(), LocalDate.now());
+        LocalDate currDate = LocalDate.now();
+        if (endDate.getDate().isBefore(currDate) || isMarked) {
+            return false;
+        }
+
+        Period period = Period.between(LocalDate.now(), endDate.getDate());
         int periodDays = period.getDays();
         return (long) periodDays <= numOfDays;
     }

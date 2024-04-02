@@ -1,7 +1,5 @@
 package seedu.address.model;
 
-import javax.naming.CompositeName;
-
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;

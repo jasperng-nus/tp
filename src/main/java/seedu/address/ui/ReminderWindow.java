@@ -1,15 +1,17 @@
 package seedu.address.ui;
 
-import java.awt.*;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
-import javafx.scene.control.Label;
 
+/**
+ * Represents a window for displaying reminders about application deadlines.
+ */
 public class ReminderWindow extends UiPart<Stage> {
     public static final String REMINDER_MESSAGE =
             "Reminder!!! These applications are closing soon! Apply now or else you'll regret!";
@@ -34,15 +36,6 @@ public class ReminderWindow extends UiPart<Stage> {
     public ReminderWindow(Stage root, Logic logic) {
         super(FXML, root);
         this.logic = logic;
-        reminderMessage.setText(REMINDER_MESSAGE);
-    }
-
-    void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredCompaniesRemindersList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
-
-//        resultDisplay = new ResultDisplay();
-//        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
     }
 
     /**
@@ -50,6 +43,15 @@ public class ReminderWindow extends UiPart<Stage> {
      */
     public ReminderWindow(Logic logic) {
         this(new Stage(), logic);
+    }
+
+    void fillInnerParts() {
+        personListPanel = new PersonListPanel(logic.getFilteredCompaniesRemindersList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        resultDisplay = new ResultDisplay();
+        resultDisplay.setFeedbackToUser(REMINDER_MESSAGE);
+        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
     }
 
     /**
@@ -72,8 +74,10 @@ public class ReminderWindow extends UiPart<Stage> {
      */
     public void show() {
         logger.fine("Showing reminder page about the applications.");
-        getRoot().show();
-        getRoot().centerOnScreen();
+        if (logic.getReminderStatus()) {
+            getRoot().show();
+            getRoot().centerOnScreen();
+        }
     }
 
     /**

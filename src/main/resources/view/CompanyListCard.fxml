@@ -17,7 +17,7 @@
   </stylesheets>
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10" prefWidth="150" />
       <!-- ColumnConstraints to push the CheckBox to the right -->
       <ColumnConstraints hgrow="ALWAYS" />
     </columnConstraints>

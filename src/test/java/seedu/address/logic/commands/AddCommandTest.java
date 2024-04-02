@@ -159,7 +159,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void sortCompanyList() {
+        public void sortCompanyListByName() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void sortCompanyListByStartDate() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void sortCompanyListByEndDate() {
             throw new AssertionError("This method should not be called.");
         }
 

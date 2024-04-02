@@ -82,7 +82,7 @@ public class InternBookParser {
             return new HelpCommand();
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommand();
+            return new SortCommandParser().parse(arguments);
 
         case SetReminderCommand.COMMAND_WORD:
             return new SetReminderParser().parse(arguments);

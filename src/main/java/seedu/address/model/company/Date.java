@@ -3,8 +3,8 @@ package seedu.address.model.company;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 /**
  * Represents a Company's application date in the intern book.
@@ -41,7 +41,7 @@ public class Date {
         try {
             LocalDate.parse(test);
             return true;
-        } catch (DateTimeException e) {
+        } catch (DateTimeParseException e) {
             return false;
         }
     }

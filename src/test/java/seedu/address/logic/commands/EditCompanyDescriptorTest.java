@@ -62,6 +62,8 @@ public class EditCompanyDescriptorTest {
         String expected = EditCommand.EditCompanyDescriptor.class.getCanonicalName() + "{name="
                 + editCompanyDescriptor.getName().orElse(null) + ", phone="
                 + editCompanyDescriptor.getPhone().orElse(null) + ", email="
+                + editCompanyDescriptor.getStartDate().orElse(null) + ", startDate="
+                + editCompanyDescriptor.getEndDate().orElse(null) + ", endDate="
                 + editCompanyDescriptor.getEmail().orElse(null) + ", tags="
                 + editCompanyDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editCompanyDescriptor.toString());

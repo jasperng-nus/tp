@@ -13,13 +13,13 @@ import seedu.address.commons.util.JsonUtil;
 public class JsonSerializableInternBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInternBookTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsAddressBook.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonAddressBook.json");
-    private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonAddressBook.json");
+    private static final Path TYPICAL_COMPANIES_FILE = TEST_DATA_FOLDER.resolve("typicalCompaniesInternBook.json");
+    private static final Path INVALID_COMPANY_FILE = TEST_DATA_FOLDER.resolve("invalidCompanyInternBook.json");
+    private static final Path DUPLICATE_COMPANIES_FILE = TEST_DATA_FOLDER.resolve("duplicateCompanyInternBook.json");
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableInternBook dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+    public void toModelType_invalidCompanyFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableInternBook dataFromFile = JsonUtil.readJsonFile(INVALID_COMPANY_FILE,
                 JsonSerializableInternBook.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }

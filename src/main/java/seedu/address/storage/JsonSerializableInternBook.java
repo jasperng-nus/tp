@@ -19,16 +19,16 @@ import seedu.address.model.company.Company;
 @JsonRootName(value = "addressbook")
 class JsonSerializableInternBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate company(s).";
+    public static final String MESSAGE_DUPLICATE_COMPANY = "Companies list contains duplicate company(s).";
 
-    private final List<JsonAdaptedCompany> persons = new ArrayList<>();
+    private final List<JsonAdaptedCompany> companies = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableInternBook(@JsonProperty("persons") List<JsonAdaptedCompany> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableInternBook(@JsonProperty("companies") List<JsonAdaptedCompany> companies) {
+        this.companies.addAll(companies);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableInternBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableInternBook(ReadOnlyInternBook source) {
-        persons.addAll(source.getCompanyList().stream().map(JsonAdaptedCompany::new).collect(Collectors.toList()));
+        companies.addAll(source.getCompanyList().stream().map(JsonAdaptedCompany::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,10 +47,10 @@ class JsonSerializableInternBook {
      */
     public InternBook toModelType() throws IllegalValueException {
         InternBook internBook = new InternBook();
-        for (JsonAdaptedCompany jsonAdaptedPerson : persons) {
-            Company company = jsonAdaptedPerson.toModelType();
+        for (JsonAdaptedCompany jsonAdaptedCompany : companies) {
+            Company company = jsonAdaptedCompany.toModelType();
             if (internBook.hasCompany(company)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_COMPANY);
             }
             internBook.addCompany(company);
         }

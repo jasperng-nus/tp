@@ -6,9 +6,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.exceptions.CompanyAlreadyMarkedException;
 import seedu.address.model.company.exceptions.CompanyAlreadyUnmarkedException;
 import seedu.address.model.company.exceptions.CompanyNotFoundException;
@@ -105,6 +107,19 @@ public class UniqueCompanyList implements Iterable<Company> {
      */
     public ObservableList<Company> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    /**
+     * Returns the reminder list as an unmodifiable {@code ObservabeList}
+     */
+    public ObservableList<Company> asUnmodifiableReminderList(ReminderSettings reminderSettings) {
+        long numOfDays = reminderSettings.getNumOfDays();
+        return internalList.stream()
+                .filter(company -> company.toRemind(numOfDays))
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        FXCollections::observableArrayList
+                ));
     }
 
     @Override

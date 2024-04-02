@@ -1,6 +1,9 @@
 package seedu.address.model;
 
+import javax.naming.CompositeName;
+
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
 
 /**
@@ -9,9 +12,14 @@ import seedu.address.model.company.Company;
 public interface ReadOnlyInternBook {
 
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the companies list.
+     * This list will not contain any duplicate companies.
      */
     ObservableList<Company> getCompanyList();
 
+    /**
+     * Returns an unmodifiable view of the companies list to remind users.
+     * This list will not contain any duplicate companies.
+     */
+    ObservableList<Company> getReminderList(ReminderSettings reminderSettings);
 }

@@ -31,8 +31,11 @@ public interface Logic {
      */
     ReadOnlyInternBook getAddressBook();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
+    /** Returns an unmodifiable view of the filtered list of companies */
     ObservableList<Company> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered list of companies for reminders */
+    ObservableList<Company> getFilteredCompaniesRemindersList();
 
     /**
      * Returns the user prefs' address book file path.

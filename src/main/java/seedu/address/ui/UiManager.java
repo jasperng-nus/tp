@@ -49,6 +49,7 @@ public class UiManager implements Ui {
 
             ReminderWindow reminderWindow = new ReminderWindow(logic);
             reminderWindow.show();
+            reminderWindow.fillInnerParts();
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);

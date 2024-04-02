@@ -24,6 +24,7 @@ public class ModelManager implements Model {
     private final InternBook internBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Company> filteredCompanies;
+    private final FilteredList<Company> filteredReminder;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +37,7 @@ public class ModelManager implements Model {
         this.internBook = new InternBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredCompanies = new FilteredList<>(this.internBook.getCompanyList());
+        filteredReminder = new FilteredList<>(this.internBook.getReminderList(this.userPrefs.getReminderSettings()));
     }
 
     public ModelManager() {
@@ -138,6 +140,12 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Company> getFilteredCompanyList() {
         return filteredCompanies;
+    }
+
+    @Override
+    public ObservableList<Company> getFilteredCompaniesRemindersList() {
+        assert filteredReminder != null: "Reminder Companies not retrieved";
+        return this.filteredCompanies;
     }
 
     @Override

@@ -2,6 +2,9 @@ package seedu.address.model.company;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -104,6 +107,15 @@ public class Company {
                 && endDate.equals(otherCompany.endDate)
                 && tags.equals(otherCompany.tags);
 
+    }
+
+    /**
+     * Returns true if company is not marked as applied and end date is numOfDays days away
+     */
+    public boolean toRemind(long numOfDays) {
+        Period period = Period.between(endDate.getDate(), LocalDate.now());
+        int periodDays = period.getDays();
+        return (long) periodDays <= numOfDays;
     }
 
     /**

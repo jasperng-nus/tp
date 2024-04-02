@@ -97,6 +97,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered company list */
     ObservableList<Company> getFilteredCompanyList();
 
+    /** Returns an unmodifiable view of the filtered list of companies for reminders */
+    ObservableList<Company> getFilteredCompaniesRemindersList();
+
     /**
      * Updates the filter of the filtered company list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

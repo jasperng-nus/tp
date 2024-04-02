@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.company.Company;
 import seedu.address.model.company.UniqueCompanyList;
@@ -106,6 +107,11 @@ public class InternBook implements ReadOnlyInternBook {
 
     @Override
     public ObservableList<Company> getCompanyList() {
+        return companies.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Company> getReminderList(ReminderSettings reminderSettings) {
         return companies.asUnmodifiableObservableList();
     }
 

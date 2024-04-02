@@ -4,14 +4,11 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
+import javafx.scene.control.Label;
 
 public class ReminderWindow extends UiPart<Stage> {
     public static final String REMINDER_MESSAGE =
@@ -20,8 +17,14 @@ public class ReminderWindow extends UiPart<Stage> {
     private static final Logger logger = LogsCenter.getLogger(ReminderWindow.class);
     private static final String FXML = "ReminderWindow.fxml";
     private Logic logic;
+    private PersonListPanel personListPanel;
+    private ResultDisplay resultDisplay;
     @FXML
     private Label reminderMessage;
+    @FXML
+    private StackPane personListPanelPlaceholder;
+    @FXML
+    private StackPane resultDisplayPlaceholder;
 
     /**
      * Creates a new ReminderWindow
@@ -31,10 +34,15 @@ public class ReminderWindow extends UiPart<Stage> {
     public ReminderWindow(Stage root, Logic logic) {
         super(FXML, root);
         this.logic = logic;
+        reminderMessage.setText(REMINDER_MESSAGE);
     }
 
     void fillInnerParts() {
+        personListPanel = new PersonListPanel(logic.getFilteredCompaniesRemindersList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+//        resultDisplay = new ResultDisplay();
+//        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
     }
 
     /**

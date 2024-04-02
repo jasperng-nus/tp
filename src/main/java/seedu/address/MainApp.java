@@ -171,7 +171,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         logger.info("Starting InternBook " + MainApp.VERSION);
         ui.start(primaryStage);
-    }
+     }
 
     @Override
     public void stop() {

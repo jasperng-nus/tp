@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalCompanies.ALICE;
-import static seedu.address.testutil.TypicalCompanies.HOON;
-import static seedu.address.testutil.TypicalCompanies.IDA;
+import static seedu.address.testutil.TypicalCompanies.AMAZON;
+import static seedu.address.testutil.TypicalCompanies.HONDA;
+import static seedu.address.testutil.TypicalCompanies.IBM;
 import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import seedu.address.model.InternBook;
 import seedu.address.model.ReadOnlyInternBook;
 
 public class JsonInternBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonInternBookStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -72,14 +72,14 @@ public class JsonInternBookStorageTest {
         assertEquals(original, new InternBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addCompany(HOON);
-        original.removeCompany(ALICE);
+        original.addCompany(HONDA);
+        original.removeCompany(AMAZON);
         jsonAddressBookStorage.saveAddressBook(original, filePath);
         readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
         assertEquals(original, new InternBook(readBack));
 
         // Save and read without specifying file path
-        original.addCompany(IDA);
+        original.addCompany(IBM);
         jsonAddressBookStorage.saveAddressBook(original); // file path not specified
         readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
         assertEquals(original, new InternBook(readBack));

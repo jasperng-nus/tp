@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COMPANY;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_COMPANY;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +27,8 @@ public class UnmarkCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Company companyToUnmark = model.getFilteredCompanyList().get(INDEX_FIRST_PERSON.getZeroBased());
-        UnmarkCommand unmarkCommand = new UnmarkCommand(INDEX_FIRST_PERSON);
+        Company companyToUnmark = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        UnmarkCommand unmarkCommand = new UnmarkCommand(INDEX_FIRST_COMPANY);
         // Mark the company first
         model.markCompany(companyToUnmark);
 
@@ -49,8 +49,8 @@ public class UnmarkCommandTest {
 
     @Test
     public void execute_alreadyUnmarked_throwsCommandException() {
-        Company companyToUnmark = model.getFilteredCompanyList().get(INDEX_FIRST_PERSON.getZeroBased());
-        UnmarkCommand unmarkCommand = new UnmarkCommand(INDEX_FIRST_PERSON);
+        Company companyToUnmark = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        UnmarkCommand unmarkCommand = new UnmarkCommand(INDEX_FIRST_COMPANY);
         model.unmarkCompany(companyToUnmark);
 
         assertCommandFailure(unmarkCommand, model, UnmarkCommand.MESSAGE_COMPANY_ALREADY_UNMARKED);
@@ -58,14 +58,14 @@ public class UnmarkCommandTest {
 
     @Test
     public void equals() {
-        UnmarkCommand unmarkFirstCommand = new UnmarkCommand(INDEX_FIRST_PERSON);
-        UnmarkCommand unmarkSecondCommand = new UnmarkCommand(INDEX_SECOND_PERSON);
+        UnmarkCommand unmarkFirstCommand = new UnmarkCommand(INDEX_FIRST_COMPANY);
+        UnmarkCommand unmarkSecondCommand = new UnmarkCommand(INDEX_SECOND_COMPANY);
 
         // same object -> returns true
         assertTrue(unmarkFirstCommand.equals(unmarkFirstCommand));
 
         // same values -> returns true
-        UnmarkCommand unmarkFirstCommandCopy = new UnmarkCommand(INDEX_FIRST_PERSON);
+        UnmarkCommand unmarkFirstCommandCopy = new UnmarkCommand(INDEX_FIRST_COMPANY);
         assertTrue(unmarkFirstCommand.equals(unmarkFirstCommandCopy));
 
         // different types -> returns false
@@ -78,7 +78,7 @@ public class UnmarkCommandTest {
         assertFalse(unmarkFirstCommand.equals(unmarkSecondCommand));
 
         // different index -> returns false
-        assertFalse(unmarkFirstCommand.equals(new UnmarkCommand(INDEX_SECOND_PERSON)));
+        assertFalse(unmarkFirstCommand.equals(new UnmarkCommand(INDEX_SECOND_COMPANY)));
     }
 
     @Test

@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.InternBook;
 import seedu.address.model.ReadOnlyInternBook;
-import seedu.address.model.company.*;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
+import seedu.address.model.company.Email;
+import seedu.address.model.company.Name;
+import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -17,15 +21,16 @@ public class SampleDataUtil {
         return new Company[] {
             new Company(new Name("Apple"), new Phone("87438807"), new Email("apple@example.com"), new Date(),
                 new Date(), getTagSet("software engineer", "frontend developer")),
-            new Company(new Name("Amazon"), new Phone("99272758"), new Email("amazon@example.com"), new Date("2024-03-01"),
-                new Date("2024-04-30"), getTagSet( "backend developer")),
+            new Company(new Name("Amazon"), new Phone("99272758"), new Email("amazon@example.com"),
+                new Date("2024-03-01"), new Date("2024-04-30"), getTagSet("backend developer")),
             new Company(new Name("DBS"), new Phone("91031282"), new Email("dbs@example.com"), new Date(), new Date(),
                 getTagSet("security engineer")),
             new Company(new Name("Google"), new Phone(), new Email("meta@example.com"), new Date(), new Date(),
                 getTagSet("software engineer")),
             new Company(new Name("Meta"), new Phone("92624417"), new Email("royb@example.com"), new Date(), new Date(),
                 getTagSet("frontend developer")),
-                new Company(new Name("OCBC"), new Phone(), new Email("ocbc@example.com"), new Date(), new Date(), getTagSet("security engineer"))
+            new Company(new Name("OCBC"), new Phone(), new Email("ocbc@example.com"), new Date(), new Date(),
+                getTagSet("security engineer"))
         };
     }
 

@@ -54,7 +54,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic, ReminderWindow reminderWindow) {
+    public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -67,7 +67,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        this.reminderWindow = reminderWindow;
+        reminderWindow = new ReminderWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -151,6 +151,8 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
+        reminderWindow.show();
+        reminderWindow.fillInnerParts();
     }
 
     /**

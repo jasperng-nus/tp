@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.InternBook;
 import seedu.address.model.ReadOnlyInternBook;
-import seedu.address.model.company.*;
+import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
+import seedu.address.model.company.Email;
+import seedu.address.model.company.Name;
+import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**

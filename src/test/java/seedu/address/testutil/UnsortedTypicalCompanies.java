@@ -1,13 +1,13 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ANALYST;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ENGINEER;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,58 +21,63 @@ import seedu.address.model.company.Company;
  */
 public class UnsortedTypicalCompanies {
 
-    public static final Company ALICE = new CompanyBuilder().withName("Alice Pauline")
-            .withEmail("alice@example.com")
-            .withPhone("94351253")
-            .withTags("friends").build();
+    public static final Company AMAZE = new CompanyBuilder().withName("Amaze")
+            .withEmail("amaze@example.com")
+            .withPhone("94323490")
+            .withTags("Software Engineer").build();
 
-    public static final Company ALICIA = new CompanyBuilder().withName("Alicia Pauline")
-            .withEmail("alice2@example.com")
+    public static final Company AMAZON = new CompanyBuilder().withName("Amazon")
+            .withEmail("amazon@example.com")
+            .withPhone("94351253")
+            .withTags("Web Developer").build();
+
+    public static final Company APPLE = new CompanyBuilder().withName("Apple")
+            .withEmail("apple@example.com")
             .withPhone("94351233")
-            .withTags("test").build();
-    public static final Company BENSON = new CompanyBuilder().withName("Benson Meier")
-            .withEmail("johnd@example.com").withPhone("98765432")
-            .withTags("owesMoney", "friends").build();
-    public static final Company CARL = new CompanyBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").build();
-    public static final Company DANIEL = new CompanyBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withTags("friends").build();
-    public static final Company ELLE = new CompanyBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").build();
-    public static final Company FIONA = new CompanyBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").build();
-    public static final Company GEORGE = new CompanyBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").build();
+            .withTags("Software Engineer").build();
+    public static final Company BYTEDANCE = new CompanyBuilder().withName("ByteDance")
+            .withEmail("bytedance@example.com").withPhone("98765432")
+            .withTags("AI Engineer", "UI Designer").build();
+    public static final Company CISCO = new CompanyBuilder().withName("Cisco").withPhone("95352563")
+            .withEmail("cisco@example.com").withTags("Network Engineer").build();
+    public static final Company DELOITTE = new CompanyBuilder().withName("Deloitte").withPhone("87652533")
+            .withEmail("deloitte@example.com").withTags("Accounting").build();
+    public static final Company EBAY = new CompanyBuilder().withName("eBay").withPhone("9482224")
+            .withEmail("ebay@example.com").withTags("UX Designer").build();
+    public static final Company FORD = new CompanyBuilder().withName("Ford").withPhone("9482427")
+            .withEmail("ford@example.com").withTags("Mechanical Engineer").build();
+    public static final Company GOOGLE = new CompanyBuilder().withName("Google").withPhone("9482442")
+            .withEmail("google@example.com").withTags("Data Analyst").build();
 
     // Manually added
-    public static final Company HOON = new CompanyBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").build();
-    public static final Company IDA = new CompanyBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").build();
+    public static final Company HONDA = new CompanyBuilder().withName("Honda").withPhone("8482424")
+            .withEmail("honda@example.com").withTags("Mechanical Engineer").build();
+    public static final Company IBM = new CompanyBuilder().withName("IBM").withPhone("8482131")
+            .withEmail("ibm@example.com").withTags("Electrical Engineer").build();
 
-    // Manually added - Person's details found in {@code CommandTestUtil}
-    public static final Company AMY = new CompanyBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withTags(VALID_TAG_FRIEND).build();
-    public static final Company BOB = new CompanyBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+    // Manually added - Company's details found in {@code CommandTestUtil}
+    public static final Company ADIDAS = new CompanyBuilder().withName(VALID_NAME_ADIDAS).withPhone(VALID_PHONE_ADIDAS)
+            .withEmail(VALID_EMAIL_ADIDAS).withTags(VALID_TAG_ANALYST).build();
+    public static final Company BMW = new CompanyBuilder().withName(VALID_NAME_BMW).withPhone(VALID_PHONE_BMW)
+            .withEmail(VALID_EMAIL_BMW).withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST)
             .build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
+    public static final String KEYWORD_MATCHING_ENGINEER = "Engineer"; // A keyword that matches ENGINEER
 
     private UnsortedTypicalCompanies() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code InternBook} with all the typical companies.
      */
     public static InternBook getUnsortedTypicalAddressBook() {
         InternBook ab = new InternBook();
-        for (Company company : getUnsortedTypicalPersons()) {
+        for (Company company : getUnsortedTypicalCompanies()) {
             ab.addCompany(company);
         }
         return ab;
     }
 
-    public static List<Company> getUnsortedTypicalPersons() {
-        return new ArrayList<>(Arrays.asList(CARL, FIONA, GEORGE, BENSON, DANIEL, ELLE, ALICE, ALICIA));
+    public static List<Company> getUnsortedTypicalCompanies() {
+        return new ArrayList<>(Arrays.asList(CISCO, FORD, GOOGLE, BYTEDANCE, AMAZE, DELOITTE, EBAY, AMAZON, APPLE));
     }
 }

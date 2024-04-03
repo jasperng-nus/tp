@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COMPANY;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_COMPANY;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +27,8 @@ class MarkCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Company companyToMark = model.getFilteredCompanyList().get(INDEX_FIRST_PERSON.getZeroBased());
-        MarkCommand markCommand = new MarkCommand(INDEX_FIRST_PERSON);
+        Company companyToMark = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        MarkCommand markCommand = new MarkCommand(INDEX_FIRST_COMPANY);
         // Unmark the company first
         model.unmarkCompany(companyToMark);
 
@@ -49,8 +49,8 @@ class MarkCommandTest {
 
     @Test
     public void execute_alreadyMarked_throwsCommandException() {
-        Company companyToMark = model.getFilteredCompanyList().get(INDEX_FIRST_PERSON.getZeroBased());
-        MarkCommand markCommand = new MarkCommand(INDEX_FIRST_PERSON);
+        Company companyToMark = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        MarkCommand markCommand = new MarkCommand(INDEX_FIRST_COMPANY);
         model.markCompany(companyToMark);
 
         assertCommandFailure(markCommand, model, MarkCommand.MESSAGE_COMPANY_ALREADY_MARKED);
@@ -58,14 +58,14 @@ class MarkCommandTest {
 
     @Test
     public void equals() {
-        MarkCommand markFirstCommand = new MarkCommand(INDEX_FIRST_PERSON);
-        MarkCommand markSecondCommand = new MarkCommand(INDEX_SECOND_PERSON);
+        MarkCommand markFirstCommand = new MarkCommand(INDEX_FIRST_COMPANY);
+        MarkCommand markSecondCommand = new MarkCommand(INDEX_SECOND_COMPANY);
 
         // same object -> returns true
         assertTrue(markFirstCommand.equals(markFirstCommand));
 
         // same values -> returns true
-        MarkCommand markFirstCommandCopy = new MarkCommand(INDEX_FIRST_PERSON);
+        MarkCommand markFirstCommandCopy = new MarkCommand(INDEX_FIRST_COMPANY);
         assertTrue(markFirstCommand.equals(markFirstCommandCopy));
 
         // different types -> returns false
@@ -78,7 +78,7 @@ class MarkCommandTest {
         assertFalse(markFirstCommand.equals(markSecondCommand));
 
         // different index -> returns false
-        assertFalse(markFirstCommand.equals(new MarkCommand(INDEX_SECOND_PERSON)));
+        assertFalse(markFirstCommand.equals(new MarkCommand(INDEX_SECOND_COMPANY)));
     }
 
     @Test

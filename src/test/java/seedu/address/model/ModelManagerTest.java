@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalCompanies.ALICE;
-import static seedu.address.testutil.TypicalCompanies.BENSON;
+import static seedu.address.testutil.TypicalCompanies.AMAZON;
+import static seedu.address.testutil.TypicalCompanies.BYTEDANCE;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -78,13 +78,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasCompany(ALICE));
+        assertFalse(modelManager.hasCompany(AMAZON));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.addCompany(ALICE);
-        assertTrue(modelManager.hasCompany(ALICE));
+        modelManager.addCompany(AMAZON);
+        assertTrue(modelManager.hasCompany(AMAZON));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        InternBook internBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        InternBook internBook = new AddressBookBuilder().withPerson(AMAZON).withPerson(BYTEDANCE).build();
         InternBook differentInternBook = new InternBook();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -116,7 +116,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentInternBook, userPrefs)));
 
         // different filteredList -> returns false
-        String keywords = ALICE.getName().fullName;
+        String keywords = AMAZON.getName().fullName;
         modelManager.updateFilteredCompanyList(new NameContainsKeywordsPredicate(keywords));
         assertFalse(modelManager.equals(new ModelManager(internBook, userPrefs)));
 

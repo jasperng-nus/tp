@@ -20,7 +20,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Jackson-friendly version of {@link Company}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedCompany {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
@@ -30,16 +30,18 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String startDate;
     private final String endDate;
+    private final boolean isMarked;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given company details.
+     * Constructs a {@code JsonAdaptedCompany} with the given company details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-                             @JsonProperty("email") String email,
-                             @JsonProperty("startDate") String startDate,
-                             @JsonProperty("endDate") String endDate,
-                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+    public JsonAdaptedCompany(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
+                              @JsonProperty("email") String email,
+                              @JsonProperty("startDate") String startDate,
+                              @JsonProperty("endDate") String endDate,
+                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                              @JsonProperty("isMarked") boolean isMarked) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -48,12 +50,13 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.isMarked = isMarked;
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Company} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Company source) {
+    public JsonAdaptedCompany(Company source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
@@ -62,17 +65,18 @@ class JsonAdaptedPerson {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        isMarked = source.isMarked();
     }
 
     /**
-     * Converts this Jackson-friendly adapted company object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted company object into the model's {@code Company} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted company.
      */
     public Company toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> companyTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
+            companyTags.add(tag.toModelType());
         }
 
         if (name == null) {
@@ -115,8 +119,14 @@ class JsonAdaptedPerson {
         }
         final Date modelEndDate = new Date(endDate);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Company(modelName, modelPhone, modelEmail, modelStartDate, modelEndDate, modelTags);
+        final Set<Tag> modelTags = new HashSet<>(companyTags);
+
+        Company modelCompany = new Company(modelName, modelPhone, modelEmail, modelStartDate, modelEndDate, modelTags);
+        if (isMarked) {
+            modelCompany.mark();
+        }
+
+        return modelCompany;
     }
 
 }

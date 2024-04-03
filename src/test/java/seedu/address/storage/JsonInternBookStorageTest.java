@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalCompanies.ALICE;
-import static seedu.address.testutil.TypicalCompanies.HOON;
-import static seedu.address.testutil.TypicalCompanies.IDA;
+import static seedu.address.testutil.TypicalCompanies.AMAZON;
+import static seedu.address.testutil.TypicalCompanies.HONDA;
+import static seedu.address.testutil.TypicalCompanies.IBM;
 import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
 
 import java.io.IOException;
@@ -20,17 +20,17 @@ import seedu.address.model.InternBook;
 import seedu.address.model.ReadOnlyInternBook;
 
 public class JsonInternBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonInternBookStorageTest");
 
     @TempDir
     public Path testFolder;
 
     @Test
-    public void readAddressBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> readAddressBook(null));
+    public void readInternBook_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> readInternBook(null));
     }
 
-    private java.util.Optional<ReadOnlyInternBook> readAddressBook(String filePath) throws Exception {
+    private java.util.Optional<ReadOnlyInternBook> readInternBook(String filePath) throws Exception {
         return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -42,26 +42,26 @@ public class JsonInternBookStorageTest {
 
     @Test
     public void read_missingFile_emptyResult() throws Exception {
-        assertFalse(readAddressBook("NonExistentFile.json").isPresent());
+        assertFalse(readInternBook("NonExistentFile.json").isPresent());
     }
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataLoadingException.class, () -> readAddressBook("notJsonFormatAddressBook.json"));
+        assertThrows(DataLoadingException.class, () -> readInternBook("notJsonFormatInternBook.json"));
     }
 
     @Test
-    public void readAddressBook_invalidPersonAddressBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readAddressBook("invalidPersonAddressBook.json"));
+    public void readInternBook_invalidCompanyInternBook_throwDataLoadingException() {
+        assertThrows(DataLoadingException.class, () -> readInternBook("invalidCompanyInternBook.json"));
     }
 
     @Test
-    public void readAddressBook_invalidAndValidPersonAddressBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
+    public void readInternBook_invalidAndValidCompanyInternBook_throwDataLoadingException() {
+        assertThrows(DataLoadingException.class, () -> readInternBook("invalidAndValidCompanyInternBook.json"));
     }
 
     @Test
-    public void readAndSaveAddressBook_allInOrder_success() throws Exception {
+    public void readAndSaveInternBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         InternBook original = getTypicalAddressBook();
         JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
@@ -72,14 +72,14 @@ public class JsonInternBookStorageTest {
         assertEquals(original, new InternBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addCompany(HOON);
-        original.removeCompany(ALICE);
+        original.addCompany(HONDA);
+        original.removeCompany(AMAZON);
         jsonAddressBookStorage.saveAddressBook(original, filePath);
         readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
         assertEquals(original, new InternBook(readBack));
 
         // Save and read without specifying file path
-        original.addCompany(IDA);
+        original.addCompany(IBM);
         jsonAddressBookStorage.saveAddressBook(original); // file path not specified
         readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
         assertEquals(original, new InternBook(readBack));
@@ -87,14 +87,14 @@ public class JsonInternBookStorageTest {
     }
 
     @Test
-    public void saveAddressBook_nullAddressBook_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveAddressBook(null, "SomeFile.json"));
+    public void saveInternBook_nullInternBook_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveInternBook(null, "SomeFile.json"));
     }
 
     /**
      * Saves {@code addressBook} at the specified {@code filePath}.
      */
-    private void saveAddressBook(ReadOnlyInternBook addressBook, String filePath) {
+    private void saveInternBook(ReadOnlyInternBook addressBook, String filePath) {
         try {
             new JsonAddressBookStorage(Paths.get(filePath))
                     .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
@@ -104,7 +104,7 @@ public class JsonInternBookStorageTest {
     }
 
     @Test
-    public void saveAddressBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveAddressBook(new InternBook(), null));
+    public void saveInternBook_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveInternBook(new InternBook(), null));
     }
 }

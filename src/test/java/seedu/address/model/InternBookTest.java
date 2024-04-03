@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalCompanies.ALICE;
+import static seedu.address.testutil.TypicalCompanies.AMAZON;
 import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -44,8 +44,8 @@ public class InternBookTest {
     @Test
     public void resetData_withDuplicateCompanies_throwsDuplicateCompanyException() {
         // Two companies with the same identity fields and data fields
-        Company editedAlice = new CompanyBuilder(ALICE).build();
-        List<Company> newCompanies = Arrays.asList(ALICE, editedAlice);
+        Company editedAlice = new CompanyBuilder(AMAZON).build();
+        List<Company> newCompanies = Arrays.asList(AMAZON, editedAlice);
         InternBookStub newData = new InternBookStub(newCompanies);
 
         assertThrows(DuplicateCompanyException.class, () -> internBook.resetData(newData));
@@ -58,19 +58,19 @@ public class InternBookTest {
 
     @Test
     public void hasCompany_companyNotInAddressBook_returnsFalse() {
-        assertFalse(internBook.hasCompany(ALICE));
+        assertFalse(internBook.hasCompany(AMAZON));
     }
 
     @Test
     public void hasCompany_companyInAddressBook_returnsTrue() {
-        internBook.addCompany(ALICE);
-        assertTrue(internBook.hasCompany(ALICE));
+        internBook.addCompany(AMAZON);
+        assertTrue(internBook.hasCompany(AMAZON));
     }
 
     @Test
     public void hasCompany_companyWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        internBook.addCompany(ALICE);
-        Company editedAlice = new CompanyBuilder(ALICE).build();
+        internBook.addCompany(AMAZON);
+        Company editedAlice = new CompanyBuilder(AMAZON).build();
         assertTrue(internBook.hasCompany(editedAlice));
     }
 

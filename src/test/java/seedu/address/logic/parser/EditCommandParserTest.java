@@ -186,14 +186,14 @@ public class EditCommandParserTest {
     }
 
     @Test
-    public void parse_resetTags_success() {
+    public void parse_resetTags_failure() {
         Index targetIndex = INDEX_THIRD_COMPANY;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder().withTags().build();
 
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        String expectedOutput = Tag.MESSAGE_CONSTRAINTS;
 
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, expectedOutput);
     }
 }

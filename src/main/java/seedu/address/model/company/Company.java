@@ -33,21 +33,7 @@ public class Company {
     private final BooleanProperty checkboxIsMarked = new SimpleBooleanProperty();
 
     /**
-     * Every field must be present and not null. This constructor is to be deprecated soon.
-     */
-    public Company(Name name, Phone phone, Email email, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.tags.addAll(tags);
-        this.startDate = new Date("2024-01-01");
-        this.endDate = new Date("2024-01-02");
-        this.isMarked = false;
-    }
-
-    /**
-     * This constructor is used for integration with date. Remove this comment and old constructor after completion.
+     * Every field must be present and not null.
      */
     public Company(Name name, Phone phone, Email email, Date startDate, Date endDate, Set<Tag> tags) {
         requireAllNonNull(name, phone, startDate, endDate, email, tags);

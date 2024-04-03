@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_STARTDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -63,6 +64,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         } else {
             endDate = new Date();
         }
+
+        if (startDate.isDatePresent() && endDate.isDatePresent() && endDate.compareTo(startDate) < 0) {
+            throw new ParseException(MESSAGE_INVALID_STARTDATE);
+        }
+
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 

@@ -80,7 +80,7 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/help.png)
 
 Format: `help`
 
@@ -89,15 +89,15 @@ Format: `help`
 
 Adds a company to the address book.
 
-Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER]`
+Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 START_DATE] [-d2 END_DATE]`
 
 <box type="tip" seamless>
 
-**Tip:** A company can have a phone number (optional) and multiple tags.
+**Tip:** A company can have a phone number (optional), start date (optional), end date (optional) and multiple tags.
 </box>
 
 Examples:
-* `add -n DBS -t Software Engineer -e dbs@example.com`
+* `add -n DBS -t Software Engineer -e dbs@example.com -d1 2024-04-04 -d2 2024-05-05`
 * `add -n Tiktok -t Data Analyst -e tiktok@example.com -p 61234567 -t AI Engineer`
 
 ### Listing all companies : `list`
@@ -110,7 +110,7 @@ Format: `list`
 
 Edits an existing company in the address book.
 
-Format: `edit INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-t TAG]…​`
+Format: `edit INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-t TAG] [-d1 START_DATE] [-d2 END_DATE}…​`
 
 * Edits the company at the specified `INDEX`. The index refers to the index number shown in the displayed company list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -125,21 +125,21 @@ Examples:
 
 ### Locating companies by name: `find`
 
-Finds companies whose names contain any of the given keywords.
+Finds companies whose names or tags contain the given keyword.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* The search is case-insensitive. e.g `Google` will match `google`
+* The order of the keywords matters. e.g. `Software Engineer` will not match `Engineer Software`
+* Only the name and tags are searched.
+* Only words beginning with the keyword will be matched e.g. `ware` will not match `software`
+* Companies matching all keywords will be returned (i.e. `AND` search).
+  e.g. `Google` will only return `Google` or `google`.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find Google` returns `google` and `Google`
+* `find software` returns `Software Company` and companies with tags matching `software` <br>
+  ![result for 'find software'](images/findSoftware.png)
 
 ### Deleting a company : `delete`
 
@@ -152,12 +152,12 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd company in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st company in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd company in the intern book.
+* `find Google` followed by `delete 1` deletes the 1st company in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the intern book.
 
 Format: `clear`
 
@@ -169,18 +169,56 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+InternBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+InternBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes its format invalid, InternBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
+
+### Marking a company : `mark`
+
+Marks the specified company as applied.
+
+Format: `mark INDEX`
+
+* Marks the company at the specified `INDEX` as applied.
+* The index refers to the index number shown in the displayed company list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+### Marking a company : `unmark`
+
+Marks the specified company as not applied.
+
+Format: `unmark INDEX`
+
+* Marks the company at the specified `INDEX` as not applied.
+* The index refers to the index number shown in the displayed company list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+### Sorting the list : `sort`
+
+Sorts the list in specific order.
+
+Format: `sort PREF`
+
+* Sorts the company with the given `PREF`.
+* `PREF` refers to the preference the user can choose from.
+* There is currently 3 preference:
+    * a - sorts list in ascending alphabetical order of company name
+    * s - sorts list in ascending order of application start date
+    * e - sorts list in ascending order of application end date
+
+Exaples:
+* `sort a`
+* `sort s`
+* `sort e`
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -203,12 +241,16 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+| Action       | Format, Examples                                                                                                                                      |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**      | `add -n NAME [-p PHONE_NUMBER] -e EMAIL [-d1 START_DATE] [-d2 END_DATE] -t TAG…​` <br> e.g., `add -n Meta -e meta@example.com  -t Software Developer` |
+| **Clear**    | `clear`                                                                                                                                               |
+| **Sort**     | `sort PREF`<br> e.g., `sort a`                                                                                                                        |
+| **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                   |
+| **Edit**     | `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-d1 START_DATE] [-d2 END_DATE] [-t TAG]…​`<br> e.g.,`edit 2 -n DBS -p 91234567`                   |
+| **Find**     | `find KEYWORD `<br> e.g., `find Google`                                                                                                               |
+| **Reminder** | `setReminder BOOLEAN DAYS` <br> e.g., `setReminder 7`                                                                                                 |
+| **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                       |
+| **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                    |
+| **List**     | `list`                                                                                                                                                |
+| **Help**     | `help`                                                                                                                                                |

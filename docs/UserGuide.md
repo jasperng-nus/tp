@@ -125,9 +125,9 @@ Examples:
 
 ### Locating companies by name: `find`
 
-Finds companies whose names or tags contain the given keywords.
+Finds companies whose names or tags contain the given keyword.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD`
 
 * The search is case-insensitive. e.g `Google` will match `google`
 * The order of the keywords matters. e.g. `Software Engineer` will not match `Engineer Software`
@@ -248,7 +248,7 @@ _Details coming soon ..._
 | **Sort**     | `sort PREF`<br> e.g., `sort a`                                                                                                                        |
 | **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                   |
 | **Edit**     | `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-d1 START_DATE] [-d2 END_DATE] [-t TAG]…​`<br> e.g.,`edit 2 -n DBS -p 91234567`                   |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Google`                                                                                                |
+| **Find**     | `find KEYWORD `<br> e.g., `find Google`                                                                                                               |
 | **Reminder** | `setReminder BOOLEAN DAYS` <br> e.g., `setReminder 7`                                                                                                 |
 | **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                       |
 | **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                    |

@@ -89,15 +89,15 @@ Format: `help`
 
 Adds a company to the address book.
 
-Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER]`
+Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 START_DATE] [-d2 END_DATE]`
 
 <box type="tip" seamless>
 
-**Tip:** A company can have a phone number (optional) and multiple tags.
+**Tip:** A company can have a phone number (optional), start date (optional), end date (optional) and multiple tags.
 </box>
 
 Examples:
-* `add -n DBS -t Software Engineer -e dbs@example.com`
+* `add -n DBS -t Software Engineer -e dbs@example.com -d1 2024-04-04 -d2 2024-05-05`
 * `add -n Tiktok -t Data Analyst -e tiktok@example.com -p 61234567 -t AI Engineer`
 
 ### Listing all companies : `list`
@@ -110,7 +110,7 @@ Format: `list`
 
 Edits an existing company in the address book.
 
-Format: `edit INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-t TAG]…​`
+Format: `edit INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-t TAG] [-d1 START_DATE] [-d2 END_DATE}…​`
 
 * Edits the company at the specified `INDEX`. The index refers to the index number shown in the displayed company list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -132,8 +132,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `Google` will match `google`
 * The order of the keywords matters. e.g. `Software Engineer` will not match `Engineer Software`
 * Only the name and tags are searched.
-* Only full words will be matched e.g. `Develop` will not match `Developer`
-* Persons matching all keywords will be returned (i.e. `AND` search).
+* Only words beginning with the keyword will be matched e.g. `ware` will not match `software`
+* Companies matching all keywords will be returned (i.e. `AND` search).
   e.g. `Google` will only return `Google` or `google`.
 
 Examples:
@@ -241,16 +241,16 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action       | Format, Examples                                                                                                                                                      |
-|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**    | `clear`                                                                                                                                                               |
-| **Sort**     | `sort PREF`<br> e.g., `sort a`                                                                                                                                        |
-| **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**     | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **Reminder** | `setReminder BOOLEAN DAYS` <br> e.g., `setReminder true 7`                                                                                                            |
-| **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                                       |
-| **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                                    |
-| **List**     | `list`                                                                                                                                                                |
-| **Help**     | `help`                                                                                                                                                                |
+| Action       | Format, Examples                                                                                                                                      |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**      | `add -n NAME [-p PHONE_NUMBER] -e EMAIL [-d1 START_DATE] [-d2 END_DATE] -t TAG…​` <br> e.g., `add -n Meta -e meta@example.com  -t Software Developer` |
+| **Clear**    | `clear`                                                                                                                                               |
+| **Sort**     | `sort PREF`<br> e.g., `sort a`                                                                                                                        |
+| **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                   |
+| **Edit**     | `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-d1 START_DATE] [-d2 END_DATE] [-t TAG]…​`<br> e.g.,`edit 2 -n DBS -p 91234567`                   |
+| **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Google`                                                                                                |
+| **Reminder** | `setReminder BOOLEAN DAYS` <br> e.g., `setReminder 7`                                                                                                 |
+| **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                       |
+| **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                    |
+| **List**     | `list`                                                                                                                                                |
+| **Help**     | `help`                                                                                                                                                |

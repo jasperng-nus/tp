@@ -374,7 +374,7 @@ be able to accomplish most of the tasks faster using commands than using the mou
 7. Should ensure the integrity of the data in the local storage files, with appropriate error handling to prevent
 data corruption.
 8. A user should be able to export and import their data easily.
-9. Should guide users towards the correct action with clear and informative error messages when the user 
+9. Should guide users towards the correct action with clear and informative error messages when the user
 enters an invalid input.
 
 ### Glossary

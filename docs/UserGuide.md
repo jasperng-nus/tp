@@ -215,10 +215,26 @@ Format: `sort PREF`
     * s - sorts list in ascending order of application start date
     * e - sorts list in ascending order of application end date
 
-Exaples:
+Examples:
 * `sort a`
 * `sort s`
 * `sort e`
+
+### Setting reminders : `setReminder`
+
+Set the number of days until the end date of an application and receive reminders about approaching deadlines. 
+A reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
+date, and you have yet to apply, will show up.
+
+
+Format: `setReminder -r NUMOFDAYS`
+* Save your preference into `preferences.json` file 
+
+**Tip:** You can switch off reminders by typing `setReminder -r off`.
+* The off is case-insensitive. e.g `setReminder -r OFF` works too.
+
+Examples:
+* `setReminder -r 7`
 
 ### Archiving data files `[coming in v2.0]`
 

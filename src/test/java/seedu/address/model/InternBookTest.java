@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
 import seedu.address.model.company.exceptions.DuplicateCompanyException;
 import seedu.address.testutil.CompanyBuilder;
@@ -97,6 +98,11 @@ public class InternBookTest {
 
         @Override
         public ObservableList<Company> getCompanyList() {
+            return companies;
+        }
+
+        @Override
+        public ObservableList<Company> getReminderList(ReminderSettings reminderSettings) {
             return companies;
         }
     }

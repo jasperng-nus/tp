@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.InternBook;
@@ -104,7 +105,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public ReminderSettings getReminderSettings() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setGuiSettings(GuiSettings guiSettings) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setReminderSettings(ReminderSettings reminderSettings) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean getReminderStatus() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -150,6 +166,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Company> getFilteredCompanyList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Company> getFilteredCompaniesRemindersList() {
             throw new AssertionError("This method should not be called.");
         }
 

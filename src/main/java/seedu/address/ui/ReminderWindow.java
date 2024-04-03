@@ -65,6 +65,11 @@ public class ReminderWindow extends UiPart<Stage> {
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
     }
 
+    void showReminder() {
+        this.show();
+        this.fillInnerParts();
+    }
+
     /**
      * Shows the reminder window.
      * @throws IllegalStateException

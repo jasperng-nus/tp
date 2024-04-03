@@ -68,7 +68,7 @@ public class ModelManager implements Model {
 
     @Override
     public boolean getReminderStatus() {
-        return userPrefs.getReminderSettings().getReminder();
+        return userPrefs.getReminderSettings().getReminderOn();
     }
 
     @Override

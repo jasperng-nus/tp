@@ -151,8 +151,7 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
-        reminderWindow.show();
-        reminderWindow.fillInnerParts();
+        reminderWindow.showReminder();
     }
 
     /**

@@ -10,7 +10,7 @@ Welcome to InternBook!
 
 InternBook is your go-to fast, reliable and customizable **desktop app for tracking internship details**
 
-It is optimized for a Command Line Interface (CLI), but you can still use the advantages of a Graphical User Interface_ (GUI).
+It is optimized for a _Command Line Interface_ (CLI), but you can still use the advantages of a _Graphical User Interface_ (GUI).
 
 
 <!-- * Table of Contents -->

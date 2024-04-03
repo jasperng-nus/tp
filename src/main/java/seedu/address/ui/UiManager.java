@@ -40,11 +40,11 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logic);
+            ReminderWindow reminderWindow = new ReminderWindow(logic);
+            mainWindow = new MainWindow(primaryStage, logic, reminderWindow);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
 
-            ReminderWindow reminderWindow = new ReminderWindow(logic);
             reminderWindow.show();
             reminderWindow.fillInnerParts();
         } catch (Throwable e) {

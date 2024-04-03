@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.reminder.Reminder;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -54,7 +55,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    public MainWindow(Stage primaryStage, Logic logic, ReminderWindow reminderWindow) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -67,6 +68,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        this.reminderWindow = reminderWindow;
     }
 
     public Stage getPrimaryStage() {
@@ -160,6 +162,9 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        if (reminderWindow != null && reminderWindow.isShowing()) {
+            reminderWindow.hide();
+        }
         helpWindow.hide();
         primaryStage.hide();
     }

@@ -16,7 +16,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts the companies by the user's preference.\n"
-            + "Parameters: PREF (must be a single char)\n"
+            + "Parameters: PREF (must be a single char in [a, s, e])\n"
             + "Example: " + COMMAND_WORD + " a";
 
     public static final String MESSAGE_ALPHABETICAL = "in alphabetical order";

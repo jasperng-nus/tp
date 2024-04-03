@@ -19,18 +19,18 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Company[] getSampleCompanies() {
         return new Company[] {
-            new Company(new Name("Amazon"), new Phone("87438807"), new Email("hr@amazon.com"),
-                    new Date("2024-04-04"), new Date("2024-07-24"), getTagSet("Software Engineer")),
-            new Company(new Name("ByteDance"), new Phone("85647321"), new Email("hr@barclays.com"),
-                    new Date("2024-03-07"), new Date("2024-07-26"), getTagSet("Software Engineer")),
-            new Company(new Name("Capcom"), new Phone("98717234"), new Email("hr@capcom.com"),
-                    new Date("2024-05-17"), new Date("2024-08-17"), getTagSet("Game Developer")),
-            new Company(new Name("Dyson"), new Phone("95423456"), new Email("hr@dyson.com"),
-                    new Date("2024-03-01"), new Date("2024-06-27"), getTagSet("Data Scientist")),
-            new Company(new Name("Netflix"), new Phone("92784160"), new Email("hr@netflix.com"),
-                    new Date("2024-06-13"), new Date("2024-09-29"), getTagSet("Machine Learning Engineer")),
-            new Company(new Name("Jane Street"), new Phone("98097645"), new Email("hr@janestreet.com"),
-                    new Date("2024-02-01"), new Date("2024-05-13"), getTagSet("Quantitative Researcher")),
+            new Company(new Name("Apple"), new Phone("87438807"), new Email("apple@example.com"), new Date(),
+                new Date(), getTagSet("software engineer", "frontend developer")),
+            new Company(new Name("Amazon"), new Phone("99272758"), new Email("amazon@example.com"),
+                new Date("2024-03-01"), new Date("2024-04-30"), getTagSet("backend developer")),
+            new Company(new Name("DBS"), new Phone("91031282"), new Email("dbs@example.com"), new Date(), new Date(),
+                getTagSet("security engineer")),
+            new Company(new Name("Google"), new Phone(), new Email("meta@example.com"), new Date(), new Date(),
+                getTagSet("software engineer")),
+            new Company(new Name("Meta"), new Phone("92624417"), new Email("royb@example.com"), new Date(), new Date(),
+                getTagSet("frontend developer")),
+            new Company(new Name("OCBC"), new Phone(), new Email("ocbc@example.com"), new Date(), new Date(),
+                getTagSet("security engineer"))
         };
     }
 

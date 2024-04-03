@@ -5,7 +5,7 @@
 
 ### Project: InternBook
 
-InternBook is a desktop address book application used for managing internship companies and contacts. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+InternBook is a desktop intern book application used for managing internship companies and contacts. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 1) Developed the Getting Started section of the user guide in v1.1

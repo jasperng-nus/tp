@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMINDERDAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SETREMINDER;
 
 import seedu.address.commons.core.ReminderSettings;
@@ -12,20 +11,18 @@ import seedu.address.model.reminder.Reminder;
 /**
  * Represents a command for setting reminders to the application.
  * Usage: setReminder -r true/false -days numOfDays
- * Example: setReminder -r true -days 7
+ * Example: setReminder -r 7
  */
 public class SetReminderCommand extends Command {
     public static final String COMMAND_WORD = "setReminder";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets reminders to the applications"
-            + "Parameters: "
-            + PREFIX_SETREMINDER + " true or false "
-            + PREFIX_REMINDERDAYS + " number of days from the end date of internship applications "
+            + "\nParameters: "
+            + PREFIX_SETREMINDER + " off or number of days from the end date of internship application "
             + "\nExample: " + COMMAND_WORD + " "
-            + PREFIX_SETREMINDER + " true "
-            + PREFIX_REMINDERDAYS + " 7 ";
+            + PREFIX_SETREMINDER + " 10 ";
 
-    public static final String MESSGAE_SUCCESS = "Reminder settings changed";
+    public static final String MESSAGE_SUCCESS = "Reminder settings changed";
     private final Reminder toUpdateReminder;
 
     /**
@@ -46,6 +43,6 @@ public class SetReminderCommand extends Command {
 
         model.setReminderSettings(new ReminderSettings(toUpdateReminder.getReminderOnOff(),
                 toUpdateReminder.getDays()));
-        return new CommandResult(String.format(MESSGAE_SUCCESS));
+        return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
 }

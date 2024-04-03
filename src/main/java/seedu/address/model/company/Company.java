@@ -113,7 +113,7 @@ public class Company {
      */
     public boolean toRemind(long numOfDays) {
         LocalDate currDate = LocalDate.now();
-        if (endDate.getDate().isBefore(currDate) || isMarked) {
+        if (endDate.getDate().isBefore(currDate) || isMarked || !endDate.isDatePresent()) {
             return false;
         }
 

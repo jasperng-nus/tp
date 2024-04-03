@@ -1,7 +1,16 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+<<<<<<< HEAD
 import static seedu.address.logic.parser.CliSyntax.*;
+=======
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+>>>>>>> master
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -18,6 +27,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.company.Company;
+import seedu.address.model.company.Date;
 import seedu.address.model.company.Email;
 import seedu.address.model.company.Name;
 import seedu.address.model.company.Phone;
@@ -37,14 +47,14 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + " NAME] "
             + "[" + PREFIX_PHONE + " PHONE] "
             + "[" + PREFIX_EMAIL + " EMAIL] "
-            + "[" + PREFIX_TAG + " TAG]"
-            + "[" + PREFIX_STARTDATE + " STARTDATE]"
-            + "[" + PREFIX_ENDDATE + " ENDDATE]...\n"
+            + "[" + PREFIX_STARTDATE + " STARTDATE] "
+            + "[" + PREFIX_ENDDATE + " ENDDATE] "
+            + "[" + PREFIX_TAG + " TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + " 91234567 "
             + PREFIX_EMAIL + " johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_COMPANY_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_COMPANY_SUCCESS = "Edited Company: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_COMPANY = "This company already exists in the address book.";
 
@@ -94,9 +104,11 @@ public class EditCommand extends Command {
         Name updatedName = editCompanyDescriptor.getName().orElse(companyToEdit.getName());
         Phone updatedPhone = editCompanyDescriptor.getPhone().orElse(companyToEdit.getPhone());
         Email updatedEmail = editCompanyDescriptor.getEmail().orElse(companyToEdit.getEmail());
+        Date updatedStartDate = editCompanyDescriptor.getStartDate().orElse(companyToEdit.getStartDate());
+        Date updatedEndDate = editCompanyDescriptor.getEndDate().orElse(companyToEdit.getEndDate());
         Set<Tag> updatedTags = editCompanyDescriptor.getTags().orElse(companyToEdit.getTags());
 
-        return new Company(updatedName, updatedPhone, updatedEmail, updatedTags);
+        return new Company(updatedName, updatedPhone, updatedEmail, updatedStartDate, updatedEndDate, updatedTags);
     }
 
     @Override
@@ -131,6 +143,8 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
+        private Date startDate;
+        private Date endDate;
 
         private Set<Tag> tags;
 
@@ -144,6 +158,8 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
+            setStartDate(toCopy.startDate);
+            setEndDate(toCopy.endDate);
             setTags(toCopy.tags);
         }
 
@@ -151,7 +167,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, startDate, endDate, tags);
         }
 
         public void setName(Name name) {
@@ -178,9 +194,20 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
+        public void setStartDate(Date startDate) {
+            this.startDate = startDate;
+        }
 
+        public Optional<Date> getStartDate() {
+            return Optional.ofNullable(startDate);
+        }
+        public void setEndDate(Date endDate) {
+            this.endDate = endDate;
+        }
 
-
+        public Optional<Date> getEndDate() {
+            return Optional.ofNullable(endDate);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -214,6 +241,8 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditCompanyDescriptor.name)
                     && Objects.equals(phone, otherEditCompanyDescriptor.phone)
                     && Objects.equals(email, otherEditCompanyDescriptor.email)
+                    && Objects.equals(startDate, otherEditCompanyDescriptor.startDate)
+                    && Objects.equals(endDate, otherEditCompanyDescriptor.endDate)
                     && Objects.equals(tags, otherEditCompanyDescriptor.tags);
         }
         @Override
@@ -222,6 +251,8 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
+                    .add("startDate", startDate)
+                    .add("endDate", endDate)
                     .add("tags", tags)
                     .toString();
         }

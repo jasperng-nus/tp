@@ -226,6 +226,7 @@ Set the number of days until the end date of an application and receive reminder
 A reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
 date, and you have yet to apply, will show up.
 
+![reminder window](images/reminderWindow.png)
 
 Format: `setReminder -r NUMOFDAYS`
 * Save your preference into `preferences.json` file 
@@ -247,6 +248,11 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
+**Q**: How do I check if I am on JDK 11?<br>
+**A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
+Type in `java -version` and you will see the java version.
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -265,7 +271,7 @@ _Details coming soon ..._
 | **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                   |
 | **Edit**     | `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-d1 START_DATE] [-d2 END_DATE] [-t TAG]…​`<br> e.g.,`edit 2 -n DBS -p 91234567`                   |
 | **Find**     | `find KEYWORD `<br> e.g., `find Google`                                                                                                               |
-| **Reminder** | `setReminder BOOLEAN DAYS` <br> e.g., `setReminder 7`                                                                                                 |
+| **Reminder** | `setReminder -r NUMOFDAYS` <br> e.g., `setReminder -r 7`                                                                                              |
 | **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                       |
 | **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                    |
 | **List**     | `list`                                                                                                                                                |

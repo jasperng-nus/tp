@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
 
 /**
@@ -33,6 +34,21 @@ public interface Model {
      * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns the user prefs' Reminder settings
+     */
+    ReminderSettings getReminderSettings();
+
+    /**
+     * Sets the user prefs' Reminder settings
+     */
+    void setReminderSettings(ReminderSettings reminderSettings);
+
+    /**
+     * Returns the user prefs' reminder status
+     */
+    boolean getReminderStatus();
 
     /**
      * Returns the user prefs' address book file path.
@@ -79,6 +95,9 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered company list */
     ObservableList<Company> getFilteredCompanyList();
+
+    /** Returns an unmodifiable view of the filtered list of companies for reminders */
+    ObservableList<Company> getFilteredCompaniesRemindersList();
 
     /**
      * Updates the filter of the filtered company list to filter by the given {@code predicate}.

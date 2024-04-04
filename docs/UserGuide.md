@@ -10,7 +10,7 @@ Welcome to InternBook!
 
 InternBook is your go-to fast, reliable and customizable **desktop app for tracking internship details**
 
-It is optimized for a _Command Line Interface_ (CLI), but you can still use the advantages of a _Graphical User Interface_ (GUI). 
+It is optimized for a _Command Line Interface_ (CLI), but you can still use the advantages of a _Graphical User Interface_ (GUI).
 
 
 <!-- * Table of Contents -->
@@ -29,7 +29,7 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internbook.jar` command to run the application.
 > [!TIP]
 > If you are struggling to figure out the path to `cd` into, you can use the File Explorer in your OS to copy the file path and directly `cd` to that.<br><br>
-   
+
   A GUI similar to the one displayed below should appear in a few seconds. Note how the app already contains some sample data.<br><br>
    ![Ui](images/Ui.png)<br><br>
 

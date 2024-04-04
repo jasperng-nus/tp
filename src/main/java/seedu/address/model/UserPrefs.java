@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.ReminderSettings;
 
 /**
  * Represents User's preferences.
@@ -15,6 +16,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
+    private ReminderSettings reminderSettings = new ReminderSettings();
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -36,7 +38,9 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setReminderSettings(newUserPrefs.getReminderSettings());
     }
+
 
     public GuiSettings getGuiSettings() {
         return guiSettings;
@@ -45,6 +49,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         this.guiSettings = guiSettings;
+    }
+
+    public ReminderSettings getReminderSettings() {
+        return reminderSettings;
+    }
+
+    public void setReminderSettings(ReminderSettings reminderSettings) {
+        requireNonNull(reminderSettings);
+        this.reminderSettings = reminderSettings;
     }
 
     public Path getAddressBookFilePath() {
@@ -81,6 +94,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
+        sb.append("Reminder Settings : " + reminderSettings);
         sb.append("\nLocal data file location : " + addressBookFilePath);
         return sb.toString();
     }

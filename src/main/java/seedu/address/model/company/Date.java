@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  */
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should be in the format YYYY-MM-DD";
+            "Date should be in the format YYYY-MM-DD, and must be valid.";
     private static final LocalDate DEFAULT_DATE = LocalDate.parse("0000-01-01");
     public final LocalDate date;
 
@@ -44,6 +44,16 @@ public class Date {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Compares this date with another date.
+     * @return 0 if dates are equal.
+     *     Positive value if this date is later than otherDate.
+     *     Negative value if this date is earlier than otherDate.
+     */
+    public int compareTo(Date otherDate) {
+        return this.date.compareTo(otherDate.date);
     }
 
     @Override

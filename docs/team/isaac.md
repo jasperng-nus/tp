@@ -1,6 +1,6 @@
 ---
   layout: default.md
-  title: "Felix's Project Portfolio Page"
+  title: "Isaac's Project Portfolio Page"
 ---
 
 ### Project: InternBook

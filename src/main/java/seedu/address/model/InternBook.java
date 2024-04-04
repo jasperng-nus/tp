@@ -112,6 +112,7 @@ public class InternBook implements ReadOnlyInternBook {
 
     @Override
     public ObservableList<Company> getReminderList(ReminderSettings reminderSettings) {
+        companies.sortCompanyListByEndDate();
         return companies.asUnmodifiableReminderList(reminderSettings);
     }
 

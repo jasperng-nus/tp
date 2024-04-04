@@ -14,7 +14,7 @@ import seedu.address.model.reminder.Reminder;
  * Example: setReminder -r 7
  */
 public class SetReminderCommand extends Command {
-    public static final String COMMAND_WORD = "setReminder";
+    public static final String COMMAND_WORD = "reminder";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets reminders to the applications"
             + "\nParameters: "

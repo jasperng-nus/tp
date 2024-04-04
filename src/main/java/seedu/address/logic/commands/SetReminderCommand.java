@@ -10,8 +10,8 @@ import seedu.address.model.reminder.Reminder;
 
 /**
  * Represents a command for setting reminders to the application.
- * Usage: setReminder -r numOfDays/off
- * Example: setReminder -r 7
+ * Usage: reminder -r numOfDays/off
+ * Example: reminder -r 7
  */
 public class SetReminderCommand extends Command {
     public static final String COMMAND_WORD = "reminder";

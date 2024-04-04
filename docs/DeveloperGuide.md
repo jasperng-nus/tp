@@ -252,7 +252,7 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the company being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
+
 
 ### \[Proposed\] Data archiving
 
@@ -270,7 +270,7 @@ Given below is an example usage scenario and how the data archiving mechanism be
 Step 1. The user launches the application for the first time. The `ArchiveAddressBookStorage` will be initialized with the initial intern book state.
 
 
-Step 2. The user executes `Archive JSON` command to archive the active InternBook by calling the `Storage#StoreJSON` method.
+Step 2. The user executes `Archive JSON` command to archive the active InternBook by calling the `Storage#StoreJSON()` method.
 
 
 

@@ -20,14 +20,14 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 ## Getting Started!
 
-> [IMPORTANT]
+> **IMPORTANT**
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
 1. Download the latest `internbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
 
 2. Copy the file to the folder you want to use as the _home folder_ for your Internbook.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internbook.jar` command to run the application.
-> [TIP]
+> **TIP**
 > If you are struggling to figure out the path to `cd` into, you can use the File Explorer in your OS to copy the file path and directly `cd` to that.<br><br>
 
 
@@ -144,11 +144,13 @@ Finds companies whose names or tags begin with the given keyword.
 Format: `find KEYWORD`
 
 * The search is case-insensitive. e.g `Google` will match `google`
-* The order of the keywords matters. e.g. `Software Engineer` will not match `Engineer Software`
+* The order of the keyword matters. e.g. `Software Engineer` will not match `Engineer Software`
 * Only the name and tags are searched.
+* If there is a space in the keyword, it searches for a substring match with the whole word
+e.g. `Software Engineer` will return `Software Engineering` but not `Software Developer` or `Staff Engineer`.
 * Only words beginning with the keyword will be matched e.g. `ware` will not match `software`
-* Companies matching all keywords will be returned (i.e. `AND` search).
-  e.g. `Google` will only return `Google` or `google`.
+* Only Companies or its words matching the entire keyword will be returned.
+  e.g. `Test` will return `Test Engineer` or `QA Tester`, but not `QATester` .
 
 Examples:
 * `find Google` returns `google` and `Google`

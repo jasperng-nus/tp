@@ -112,7 +112,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `InternBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `InternBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -451,13 +451,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Should be able to hold up to 1000 companies without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
 be able to accomplish most of the tasks faster using commands than using the mouse.
-4. The commands should be simple, concise, consistent with common CLI conventions and must be short (<5 characters).
-5. The code should be well-documented and structured in a way that makes it easy to maintain and upgrade.
-6. Should be able to store data locally on the user's machine using properly formatted text files or CSV.
-7. Should ensure the integrity of the data in the local storage files, with appropriate error handling to prevent
+4. The code should be well-documented and structured in a way that makes it easy to maintain and upgrade.
+5. Should be able to store data locally on the user's machine using properly formatted text files or CSV.
+6. Should ensure the integrity of the data in the local storage files, with appropriate error handling to prevent 
 data corruption.
-8. A user should be able to export and import their data easily.
-9. Should guide users towards the correct action with clear and informative error messages when the user
+7. A user should be able to export and import their data easily.
+8. Should guide users towards the correct action with clear and informative error messages when the user 
 enters an invalid input.
 
 ### Glossary

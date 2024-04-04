@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.model.company.Company;
 
 /**
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final InternBook internBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Company> filteredCompanies;
+    private final FilteredList<Company> filteredReminder;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +36,7 @@ public class ModelManager implements Model {
         this.internBook = new InternBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredCompanies = new FilteredList<>(this.internBook.getCompanyList());
+        filteredReminder = new FilteredList<>(this.getReminderList());
     }
 
     public ModelManager() {
@@ -56,6 +59,22 @@ public class ModelManager implements Model {
     @Override
     public GuiSettings getGuiSettings() {
         return userPrefs.getGuiSettings();
+    }
+
+    @Override
+    public ReminderSettings getReminderSettings() {
+        return userPrefs.getReminderSettings();
+    }
+
+    @Override
+    public boolean getReminderStatus() {
+        return userPrefs.getReminderSettings().getReminderOn();
+    }
+
+    @Override
+    public void setReminderSettings(ReminderSettings reminderSettings) {
+        requireNonNull(reminderSettings);
+        userPrefs.setReminderSettings(reminderSettings);
     }
 
     @Override
@@ -120,6 +139,16 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Company> getFilteredCompanyList() {
         return filteredCompanies;
+    }
+
+    @Override
+    public ObservableList<Company> getFilteredCompaniesRemindersList() {
+        assert filteredReminder != null : "Reminder Companies not retrieved";
+        return this.filteredReminder;
+    }
+
+    public ObservableList<Company> getReminderList() {
+        return this.internBook.getReminderList(this.userPrefs.getReminderSettings());
     }
 
     @Override

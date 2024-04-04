@@ -342,7 +342,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The given index is invalid.
 
     * 3a1. InternBook shows an error message.
-  
+
       Use case resumes at step 2.
 
 
@@ -447,9 +447,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1. Should work on any mainstream OS as long as it has Java 11 (it might not work on older or newer versions). 
+1. Should work on any mainstream OS as long as it has Java 11 (it might not work on older or newer versions).
 2. Should be able to hold up to 1000 companies without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
 be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The code should be well-documented and structured in a way that makes it easy to maintain and upgrade.
 5. Should be able to store data locally on the user's machine using properly formatted text files or CSV.
@@ -464,9 +464,9 @@ enters an invalid input.
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Previous Session**: The session that the user previously used the application, and exited the application
 successfully without any errors.
-* **Local Storage**: The storage of data on the local filesystem of the user's computer, as opposed to an online 
+* **Local Storage**: The storage of data on the local filesystem of the user's computer, as opposed to an online
 or networked database.
-* **CSV (Comma-Separated Values)**: A file format used for storing tabular data, where each line of the file is 
+* **CSV (Comma-Separated Values)**: A file format used for storing tabular data, where each line of the file is
 a data record, and each record consists of one or more fields separated by commas.
 * **Text File**: A standard text file, often with a .txt extension, that contains unformatted generic text content.
 

@@ -53,5 +53,4 @@ public class Messages {
         company.getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }

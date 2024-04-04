@@ -89,7 +89,6 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialData = new InternBook();
         }
-
         return new ModelManager(initialData, userPrefs);
     }
 
@@ -170,7 +169,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting InternBook " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 

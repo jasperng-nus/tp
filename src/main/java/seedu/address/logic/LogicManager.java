@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -72,6 +73,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Company> getFilteredCompaniesRemindersList() {
+        return model.getFilteredCompaniesRemindersList();
+    }
+
+    @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();
     }
@@ -84,5 +90,20 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ReminderSettings getReminderSettings() {
+        return model.getReminderSettings();
+    }
+
+    @Override
+    public void setReminderSettings(ReminderSettings reminderSettings) {
+        model.setReminderSettings(reminderSettings);
+    }
+
+    @Override
+    public boolean getReminderStatus() {
+        return model.getReminderStatus();
     }
 }

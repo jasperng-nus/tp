@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.ReminderSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -30,8 +31,11 @@ public interface Logic {
      */
     ReadOnlyInternBook getAddressBook();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
+    /** Returns an unmodifiable view of the filtered list of companies */
     ObservableList<Company> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered list of companies for reminders */
+    ObservableList<Company> getFilteredCompaniesRemindersList();
 
     /**
      * Returns the user prefs' address book file path.
@@ -47,4 +51,20 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns the user prefs' Reminder settings
+     */
+    ReminderSettings getReminderSettings();
+
+    /**
+     * Set the user prefs' Reminder settings.
+     */
+    void setReminderSettings(ReminderSettings reminderSettings);
+
+    /**
+     * Returns the user prefs' reminder status
+     * @return true for reminder switched on and false for reminder switched off.
+     */
+    boolean getReminderStatus();
 }

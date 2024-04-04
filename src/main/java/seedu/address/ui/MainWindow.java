@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ReminderWindow reminderWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -66,6 +67,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        reminderWindow = new ReminderWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -149,6 +151,7 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
+        reminderWindow.showReminder();
     }
 
     /**
@@ -159,6 +162,9 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        if (reminderWindow != null && reminderWindow.isShowing()) {
+            reminderWindow.hide();
+        }
         helpWindow.hide();
         primaryStage.hide();
     }

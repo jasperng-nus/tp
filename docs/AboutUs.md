@@ -44,7 +44,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/jasperng-nus.png" width="200px">
 
-[[github](https://github.com/jasperng-nus)] 
+[[github](https://github.com/jasperng-nus)]
 [[portfolio](team/jasper.md)]
 
 - Role: Developer

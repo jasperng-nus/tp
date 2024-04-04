@@ -47,7 +47,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/jasper.md)]
 
 - Role: Developer
-- Responsibilities: Dev Ops + Threading
+- Responsibilities: Dev Ops
 
 ### Felix Wang
 

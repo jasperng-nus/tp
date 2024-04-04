@@ -246,6 +246,7 @@ date, and you have yet to apply, will show up.
 
 Format: `setReminder -r NUMOFDAYS`
 * Save your preference into `preferences.json` file 
+* The applications are sorted according to ascending end dates.
 
 **Tip:** You can switch off reminders by typing `setReminder -r off`.
 * The off is case-insensitive. e.g `setReminder -r OFF` works too.

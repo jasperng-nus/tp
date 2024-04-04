@@ -4,14 +4,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Tag in the address book.
+ * Represents a Tag in the intern book.
  * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
  */
 public class Tag {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric and "
-                                                        + "contain only single space";
-    public static final String VALIDATION_REGEX = "\\b\\p{Alnum}+(?: \\p{Alnum}+)*\\b";
+    public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric and '/' characters only. "
+                                                        + "And it can contain spaces between words.";
+    public static final String VALIDATION_REGEX = "\\b\\p{Alnum}+(?:[/ ]*\\p{Alnum}+)*\\b";
 
     private final String tagName;
 

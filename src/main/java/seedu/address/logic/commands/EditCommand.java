@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_DATERANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -30,7 +31,7 @@ import seedu.address.model.company.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing company in the address book.
+ * Edits the details of an existing company in the intern book.
  */
 public class EditCommand extends Command {
 
@@ -52,7 +53,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_COMPANY_SUCCESS = "Edited Company: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_COMPANY = "This company already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_COMPANY = "This company already exists in intern book.";
 
     private final Index index;
     private final EditCompanyDescriptor editCompanyDescriptor;
@@ -91,10 +92,12 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * Creates and returns a {@code Company} with the details of {@code companyToEdit}
      * edited with {@code editCompanyDescriptor}.
+     * @throws CommandException Occurs when the new {@code startDate} is later than the {@code endDate}
      */
-    private static Company createEditedCompany(Company companyToEdit, EditCompanyDescriptor editCompanyDescriptor) {
+    private static Company createEditedCompany(
+            Company companyToEdit, EditCompanyDescriptor editCompanyDescriptor) throws CommandException {
         assert companyToEdit != null;
 
         Name updatedName = editCompanyDescriptor.getName().orElse(companyToEdit.getName());
@@ -103,6 +106,12 @@ public class EditCommand extends Command {
         Date updatedStartDate = editCompanyDescriptor.getStartDate().orElse(companyToEdit.getStartDate());
         Date updatedEndDate = editCompanyDescriptor.getEndDate().orElse(companyToEdit.getEndDate());
         Set<Tag> updatedTags = editCompanyDescriptor.getTags().orElse(companyToEdit.getTags());
+
+        if (updatedStartDate.isDatePresent()
+                && updatedEndDate.isDatePresent()
+                && updatedEndDate.compareTo(updatedStartDate) < 0) {
+            throw new CommandException(MESSAGE_INVALID_DATERANGE);
+        }
 
         return new Company(updatedName, updatedPhone, updatedEmail, updatedStartDate, updatedEndDate, updatedTags);
     }

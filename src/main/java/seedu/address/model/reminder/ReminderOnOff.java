@@ -38,6 +38,7 @@ public class ReminderOnOff {
      * @return True if the string is "true" or "false", case-insensitively
      */
     public static boolean isValidSetReminder(String test) {
+        assert test != null;
         String caseInsensitive = test.toLowerCase();
         return caseInsensitive.equals("true") || caseInsensitive.equals("false");
     }

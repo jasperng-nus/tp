@@ -50,6 +50,7 @@ public class ReminderWindow extends UiPart<Stage> {
     }
 
     void fillInnerParts() {
+        assert logic != null;
         ObservableList<Company> filteredList = logic.getFilteredCompaniesRemindersList();
         personListPanel = new PersonListPanel(filteredList);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());

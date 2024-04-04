@@ -242,7 +242,7 @@ Set the number of days until the end date of an application and receive reminder
 A reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
 date, and you have yet to apply, will show up.
 
-![reminder window](images/reminderWindow.png)
+![reminder window](images/reminderWindowSorted.png)
 
 Format: `reminder -r NUMOFDAYS`
 * Save your preference into `preferences.json` file 

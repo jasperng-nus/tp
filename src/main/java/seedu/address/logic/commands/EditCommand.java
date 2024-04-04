@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_STARTDATE;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_DATERANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -110,7 +110,7 @@ public class EditCommand extends Command {
         if (updatedStartDate.isDatePresent()
                 && updatedEndDate.isDatePresent()
                 && updatedEndDate.compareTo(updatedStartDate) < 0) {
-            throw new CommandException(MESSAGE_INVALID_STARTDATE);
+            throw new CommandException(MESSAGE_INVALID_DATERANGE);
         }
 
         return new Company(updatedName, updatedPhone, updatedEmail, updatedStartDate, updatedEndDate, updatedTags);

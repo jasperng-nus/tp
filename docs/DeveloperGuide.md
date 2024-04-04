@@ -1,7 +1,7 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
 ---
 
 # InternBook Developer Guide
@@ -241,19 +241,34 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire intern book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the company being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the company being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
 ### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+#### Proposed Implementation
+
+The proposed data archiving mechanism is facilitated by `ArchiveAddressBookStorage`. It implements `AddressBookStorage` with an option to store as `JSON` or `CSV`
+* `ArchiveAddressBookStorage#StoreJSON()` — Saves the current intern book in `JSON` format.
+* `ArchiveAddressBookStorage#StoreCSV()` — Saves the current intern book in `CSV` format.
+
+
+These operations are exposed in the `Storage` interface as `Storage#StoreJSON()` and `Storage#StoreCSV()`.
+
+Given below is an example usage scenario and how the data archiving mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `ArchiveAddressBookStorage` will be initialized with the initial intern book state.
+
+
+Step 2. The user executes `Archive JSON` command to archive the active InternBook by calling the `Storage#StoreJSON` method.
+
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -337,7 +352,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 2a. The list is empty.
 
-    Use case ends
+  Use case ends
 
 * 3a. The given index is invalid.
 
@@ -450,24 +465,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. Should work on any mainstream OS as long as it has Java 11 (it might not work on older or newer versions).
 2. Should be able to hold up to 1000 companies without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
-be able to accomplish most of the tasks faster using commands than using the mouse.
+   be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The code should be well-documented and structured in a way that makes it easy to maintain and upgrade.
 5. Should be able to store data locally on the user's machine using properly formatted text files or CSV.
-6. Should ensure the integrity of the data in the local storage files, with appropriate error handling to prevent 
-data corruption.
+6. Should ensure the integrity of the data in the local storage files, with appropriate error handling to prevent
+   data corruption.
 7. A user should be able to export and import their data easily.
-8. Should guide users towards the correct action with clear and informative error messages when the user 
-enters an invalid input.
+8. Should guide users towards the correct action with clear and informative error messages when the user
+   enters an invalid input.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Previous Session**: The session that the user previously used the application, and exited the application
-successfully without any errors.
+  successfully without any errors.
 * **Local Storage**: The storage of data on the local filesystem of the user's computer, as opposed to an online
-or networked database.
+  or networked database.
 * **CSV (Comma-Separated Values)**: A file format used for storing tabular data, where each line of the file is
-a data record, and each record consists of one or more fields separated by commas.
+  a data record, and each record consists of one or more fields separated by commas.
 * **Text File**: A standard text file, often with a .txt extension, that contains unformatted generic text content.
 
 
@@ -488,15 +503,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -505,16 +520,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a company while all companies are being shown
 
-   1. Prerequisites: List all companies using the `list` command. Multiple companies in the list.
+    1. Prerequisites: List all companies using the `list` command. Multiple companies in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No company is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No company is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -522,6 +537,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_

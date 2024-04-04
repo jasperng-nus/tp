@@ -20,15 +20,18 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 ## Getting Started!
 
-> [!IMPORTANT]
+> [IMPORTANT]
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
 1. Download the latest `internbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
 
 2. Copy the file to the folder you want to use as the _home folder_ for your Internbook.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internbook.jar` command to run the application.
-> [!TIP]
+> [TIP]
 > If you are struggling to figure out the path to `cd` into, you can use the File Explorer in your OS to copy the file path and directly `cd` to that.<br><br>
+
+
+> Alternatively, you can simply navigate to the file location the File Explorer and double-click on the application to run.
 
   A GUI similar to the one displayed below should appear in a few seconds. Note how the app already contains some sample data.<br><br>
    ![Ui](images/Ui.png)<br><br>
@@ -58,27 +61,40 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -n COMPANY`, `COMPANY` is a parameter which can be used as `add -n DBS`.
+* Words in `UPPER_CASE` are the inputs to be supplied by the user.<br>
+  e.g. in `add -n COMPANY`, `COMPANY` is the input which can be used as `add -n DBS`.
 
-* Items in square brackets are optional.<br>
+* Fields in square brackets are optional.<br>
   e.g `-n COMPANY [-p PHONE_NUMBER]` can be used as `-n DBS -p 61234567` or as `-n DBS`.
 
-* Items with `…`​ after them can be used multiple times.<br>
+* Field with `…`​ after them can be used multiple times.<br>
   e.g. `-t TAG…​` can be used as `-t Software Engineer`, `-t Software Engineer -t Data Analyst` etc.
 
-* Parameters can be in any order.<br>
+* Fields can be in any order.<br>
   e.g. if the command specifies `-n COMPANY -t Software Engineer`, `-t Software Engineer -n COMPANY` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Extraneous parameters for commands that do not take in inputs (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
+**Note about company fields:**
+
+An entry can contain the following fields:
+
+| Field                      | Optional/Compulsory | Flag (Prefix for Add and Edit) |
+|----------------------------|---------------------|---------------------------------|
+| Company Name               | Compulsory          | -n                              |
+| Email                      | Compulsory          | -e                              |
+| Tag (Can be used as roles) | Compulsory          | -t                              |
+| Phone                      | Optional            | -p                              |
+| Start Date                 | Optional            | -d1                             | 
+| End Date                   | Optional            | -d2                             |
+
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/help.png)
 
@@ -110,22 +126,20 @@ Format: `list`
 
 Edits an existing company in the address book.
 
-Format: `edit INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-t TAG] [-d1 START_DATE] [-d2 END_DATE}…​`
+Format: `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-t TAG…]​ [-d1 START_DATE] [-d2 END_DATE]`
 
 * Edits the company at the specified `INDEX`. The index refers to the index number shown in the displayed company list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Only the fields provided will be updated i.e fields not provided will retain their original value.
 * When editing tags, the existing tags of the company will be removed i.e adding of tags is not cumulative.
-* You can remove all the company’s tags by typing `-t` without
-    specifying any tags after it.
 
 Examples:
-*  `edit 1 -p 91234567 -e dbs_hr@example.com` Edits the phone number and email address of the 1st company to be `91234567` and `dbs_hr@example.com` respectively.
+*  `edit 1 -p 91234567 -e dbs_hr@example.com` Edits the phone number and email address of the 1st company in the currently displayed list to be `91234567` and `dbs_hr@example.com` respectively.
 *  `edit 2 -n Meta -t` Edits the name of the 2nd company to be `Meta` and clears all existing tags.
 
 ### Locating companies by name: `find`
 
-Finds companies whose names or tags contain the given keyword.
+Finds companies whose names or tags begin with the given keyword.
 
 Format: `find KEYWORD`
 
@@ -148,7 +162,7 @@ Deletes the specified company from the address book.
 Format: `delete INDEX`
 
 * Deletes the company at the specified `INDEX`.
-* The index refers to the index number shown in the displayed company list.
+* The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
@@ -189,7 +203,7 @@ Marks the specified company as applied.
 Format: `mark INDEX`
 
 * Marks the company at the specified `INDEX` as applied.
-* The index refers to the index number shown in the displayed company list.
+* The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 ### Marking a company : `unmark`
@@ -199,7 +213,7 @@ Marks the specified company as not applied.
 Format: `unmark INDEX`
 
 * Marks the company at the specified `INDEX` as not applied.
-* The index refers to the index number shown in the displayed company list.
+* The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 ### Sorting the list : `sort`

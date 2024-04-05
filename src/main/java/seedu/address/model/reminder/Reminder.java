@@ -29,6 +29,7 @@ public class Reminder {
      * @return The number of days.
      */
     public Days getDays() {
+        assert days != null;
         return this.days;
     }
 
@@ -38,6 +39,7 @@ public class Reminder {
      * @return The reminder status
      */
     public ReminderOnOff getReminderOnOff() {
+        assert reminderOnOff != null;
         return reminderOnOff;
     }
 }

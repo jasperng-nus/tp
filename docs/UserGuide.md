@@ -22,7 +22,7 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 > **IMPORTANT**
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
-1. Download the latest `internbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `internbook.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-2/tp/releases).
 
 2. Copy the file to the folder you want to use as the _home folder_ for your Internbook.
 
@@ -135,7 +135,7 @@ Format: `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-t TAG…]​ [-d1 S
 
 Examples:
 *  `edit 1 -p 91234567 -e dbs_hr@example.com` Edits the phone number and email address of the 1st company in the currently displayed list to be `91234567` and `dbs_hr@example.com` respectively.
-*  `edit 2 -n Meta -t` Edits the name of the 2nd company to be `Meta` and clears all existing tags.
+*  `edit 2 -n Meta -t Engineer` Edits the name of the 2nd company to be `Meta` and change the tags to `Engineer` only.
 
 ### Locating companies by name: `find`
 
@@ -236,22 +236,23 @@ Examples:
 * `sort s`
 * `sort e`
 
-### Setting reminders : `setReminder`
+### Setting reminders : `reminder`
 
 Set the number of days until the end date of an application and receive reminders about approaching deadlines. 
 A reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
 date, and you have yet to apply, will show up.
 
-![reminder window](images/reminderWindow.png)
+![reminder window](images/reminderWindowSorted.png)
 
-Format: `setReminder -r NUMOFDAYS`
+Format: `reminder -r NUMOFDAYS`
 * Save your preference into `preferences.json` file 
+* The applications are sorted according to ascending end dates.
 
-**Tip:** You can switch off reminders by typing `setReminder -r off`.
-* The off is case-insensitive. e.g `setReminder -r OFF` works too.
+**Tip:** You can switch off reminders by typing `reminder -r off`.
+* The off is case-insensitive. e.g `reminder -r OFF` works too.
 
 Examples:
-* `setReminder -r 7`
+* `reminder -r 7`
 
 ### Archiving data files `[coming in v2.0]`
 
@@ -287,7 +288,7 @@ Type in `java -version` and you will see the java version.
 | **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                   |
 | **Edit**     | `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-d1 START_DATE] [-d2 END_DATE] [-t TAG]…​`<br> e.g.,`edit 2 -n DBS -p 91234567`                   |
 | **Find**     | `find KEYWORD `<br> e.g., `find Google`                                                                                                               |
-| **Reminder** | `setReminder -r NUMOFDAYS` <br> e.g., `setReminder -r 7`                                                                                              |
+| **Reminder** | `reminder -r NUMOFDAYS` <br> e.g., `reminder -r 7`                                                                                                    |
 | **Mark**     | `mark INDEX`<br> e.g., `mark 1`                                                                                                                       |
 | **Unmark**   | `unmark INDEX`<br> e.g, `unmark 3`                                                                                                                    |
 | **List**     | `list`                                                                                                                                                |

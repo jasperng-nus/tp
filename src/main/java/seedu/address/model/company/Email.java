@@ -19,10 +19,9 @@ public class Email {
             + "separated by periods.\n"
             + "The domain name must:\n"
             + "    - end with a domain label at least 2 characters long\n"
-            + "    - have a dot (.) character separating the domain label and the top level domain name\n"
+            + "    - have at least 2 domain labels separated by a dot (.)\n"
             + "    - have each domain label start and end with alphanumeric characters\n"
-            + "    - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.\n"
-            + "    - have the top level domain name be at least 2 characters";
+            + "    - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.";
     // alphanumeric and special characters
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
     private static final String LOCAL_PART_REGEX = "^" + ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"

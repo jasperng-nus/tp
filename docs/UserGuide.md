@@ -105,7 +105,7 @@ Format: `help`
 
 Adds a company to the address book.
 
-Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 START_DATE] [-d2 END_DATE]`
+Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 STARTDATE] [-d2 ENDDATE]`
 
 <box type="tip" seamless>
 

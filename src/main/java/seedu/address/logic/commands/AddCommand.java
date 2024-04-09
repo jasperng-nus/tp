@@ -31,7 +31,7 @@ public class AddCommand extends Command {
             + "[" + PREFIX_ENDDATE + " ENDDATE]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + " NUS "
-            + PREFIX_TAG + " SoftwareEngineer "
+            + PREFIX_TAG + " Software Engineer "
             + PREFIX_EMAIL + " NUS@nus.edu.com "
             + PREFIX_PHONE + " 91234567 "
             + PREFIX_STARTDATE + " 2024-07-07 "

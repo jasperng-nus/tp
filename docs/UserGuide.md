@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# InternBook User Guide
+# :tada: InternBook User Guide :books:
 
 ## Welcome to InternBook!
 Hey there, future interns! Since you are here, we summed that you are also a student, like us, who is starting your internship search. 
@@ -42,8 +42,8 @@ This user guide introduces you the features of InternBook and serves as a guide 
 So, whether you are just starting your internship search or you are a seasoned pro, InternBook is here to help you land 
 that dream internship. Let's turn those aspirations into achievements together!
 
-Happy interning,
-The InternBook Team 
+Happy interning, <br>
+The InternBook Team :rocket:
 
 
 <!-- * Table of Contents -->

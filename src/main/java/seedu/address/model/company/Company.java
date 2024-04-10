@@ -3,7 +3,7 @@ package seedu.address.model.company;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -103,9 +103,8 @@ public class Company {
             return false;
         }
 
-        Period period = Period.between(LocalDate.now(), endDate.getDate());
-        int periodDays = period.getDays();
-        return (long) periodDays <= numOfDays;
+        long noOfdays = currDate.until(endDate.getDate(), ChronoUnit.DAYS);
+        return noOfdays <= numOfDays;
     }
 
     /**

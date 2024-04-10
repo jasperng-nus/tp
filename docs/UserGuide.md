@@ -245,14 +245,16 @@ date, and you have yet to apply, will show up.
 ![reminder window](images/reminderWindowSorted.png)
 
 Format: `reminder -r NUMOFDAYS`
-* Save your preference into `preferences.json` file 
+* Save your preference into `preferences.json` file.
 * The applications are sorted according to ascending end dates.
+* The `NUMOFDAYS` must be a positive integer.
 
 **Tip:** You can switch off reminders by typing `reminder -r off`.
 * The off is case-insensitive. e.g `reminder -r OFF` works too.
 
 Examples:
 * `reminder -r 7`
+* `reminder -r off`
 
 ### Archiving data files `[coming in v2.0]`
 

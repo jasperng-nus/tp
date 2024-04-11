@@ -4,17 +4,79 @@
   pageNav: 3
 ---
 
-# InternBook User Guide
+# :tada: InternBook User Guide :books:
 
-Welcome to InternBook!
+## Welcome to InternBook!
+Hey there, future interns! Since you are here, we asummed that you are also a student, like us, who is starting your internship search. 
+Welcome to InternBook, your go-to companion in the exciting journey of applying for internships!
 
-InternBook is your go-to fast, reliable and customizable **desktop app for tracking internship details**
+### Who Are We?
+We are a dynamic team of five students who have been in your shoes, feeling the struggle of juggling multiple internship
+applications while trying to keep track of every detail. We get it - those Excel spreadsheets might seem like a good idea 
+at first, but let's face it, they quickly become a cluttered mess, making it harder to find what you need and leading to 
+inconsistencies in your data. That's why we decided to roll up our sleeves and create InternBook!
 
-It is optimized for a _Command Line Interface_ (CLI), but you can still use the advantages of a _Graphical User Interface_ (GUI).
+### What is InternBook?
+InternBook isn't just another app - it's your personal assistant for managing internship applications effortlessly. With 
+InternBook, you can record crucial details like company names, application deadlines, contact emails, and the roles you
+are applying for, all in one organised place. It is optimised for a _Command line Interface_ (CLI), but you can use the
+advantages of a _Graphical User Interface_ (GUI). No more frantic searches through endless spreadsheets or sticky notes!
+
+### Why Choose InternBook?
+- **Simplicity:** Designed for students, whether you have a technical background or not. InternBook is easy to use and follow, 
+ensuring a smooth experience for everyone. Say goodbye to complicated Excel templates. InternBook offers a clean and 
+intuitive designed with your needs in mind.
+- **Organisation:** Keep your internship applications neat and tidy. No more digging through clutter - everything you 
+need is right at your fingertips.
+- **Consistency:** Say hello to reliable data. With InternBook, there is error checking for inputs to ensure that the 
+information is accurate, eliminating the headache of dealing with inconsistencies.
+
+### What Can You Do with InternBook?
+- **Record Applications:** Easily add new internship applications with all the important details with easy commands.
+- **Track Progress:** Keep track of the status of each application, from not applied to applied.
+- **Set Reminders:** Never miss a deadline again! Set reminders, and InternBook will make sure you stay on top of your game.
+
+### Purpose of this User Guide
+This user guide introduces you the features of InternBook and serves as a guide to how to use InternBook.
+
+So, whether you are just starting your internship search or you are a seasoned pro, InternBook is here to help you land 
+that dream internship. Let's turn those aspirations into achievements together!
+
+Happy interning, <br>
+The InternBook Team :rocket:
 
 
 <!-- * Table of Contents -->
 <page-nav-print />
+
+--------------------------------------------------------------------------------------------------------------------
+## User-centric statement of product information
+**Product: InternBook**
+
+**Product Description:**
+InternBook is a user-friendly application designed to streamline the internship application process for students. It serves
+as a comprehensive tool to organise, track, and manage internship applications effectively. Whether you are a tech-savvy
+student or new to the internship search, InternBook simplifies the process, ensuring a smooth and efficient experience 
+for all users.
+
+**Overview of Main Features:**
+
+- **Application Recording:** Easily input and store details of internship applications, including company names, 
+application deadlines, contact emails, and roles.
+- **Progress Tracking:** Keep track of the status of each application, from not applied to applied, providing clarity
+and organisation throughout the application process.
+- **Reminder Functionality:** Set reminders for upcoming application deadlines, ensuring timely submissions and proactive
+management of internship opportunities.
+- **Sorting Options:**
+    - **Alphabetical**: Arrange applications alphabetically by company name for easy reference and quick navigation.
+    - **Start Date**: Sort applications based on the start date of the internship application, allowing users to prioritise 
+    applications based on upcoming opportunities.
+    - **End Date**: Sort applications according to the end date of the internship application, facilitating planning and 
+    scheduling by highlighting approaching deadlines.
+- **User-Friendly Interface:** With a clean and intuitive design, InternBook offers ease of navigation and accessibility,
+prioritising user experience and satisfaction.
+- **Adaptability:** Suitable for students with or without technical backgrounds, InternBook caters to a diverse user base,
+providing a seamless experience for all.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -52,7 +114,16 @@ It is optimized for a _Command Line Interface_ (CLI), but you can still use the 
 
 5. Refer to the [Features](#features) below for details of each command.
 
-
+--------------------------------------------------------------------------------------------------------------------
+## How to use the guide
+- The guide introduces the features of our application and shows you example of the different commands in action. It also
+provides the field constraints, including permitted values and compulsory or optional parameters.
+- After the features section, we have a frequently asked questions (FAQ) section, so if you have any doubts, you might
+want to refer to the FAQ to see whether your questions can be answered.
+- After the FAQ section, we have an issue tracker which may contain bugs that we, the developers, are working on. 
+Please be patient with us while we fix the bugs!
+- The last section consists of the command summary where a summary for every command is listed in a table for better and 
+easier reference.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -239,7 +310,7 @@ Examples:
 ### Setting reminders : `reminder`
 
 Set the number of days until the end date of an application and receive reminders about approaching deadlines. 
-A reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
+A separate reminder window will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
 date, and you have yet to apply, will show up.
 
 ![reminder window](images/reminderWindowSorted.png)

@@ -278,11 +278,14 @@ Format: `mark INDEX`
 * Marks the company at the specified `INDEX` as applied.
 * The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Error messages will be displayed when:
+  * The company at the specified `INDEX` is already marked.
+  * The index is out of bounds.
 
   Examples:
-* `list` followed by `mark 2` marks the 2nd company in the intern book.
+* `mark 2` marks the 2nd company in the listed intern book if it is unmarked.
 * `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command.
-
+  ![result for 'mark 1'](images/mark1.png)
 
 ### Marking a company : `unmark`
 
@@ -293,11 +296,14 @@ Format: `unmark INDEX`
 * Marks the company at the specified `INDEX` as not applied.
 * The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Error messages will be displayed when:
+  * The company at the specified `INDEX` must not already be unmarked.
+  * The index **must not be out of bounds**. 
 
 Examples:
-* `list` followed by `unmark 2` unmarks the 2nd company in the intern book if already marked.
+* `unmark 2` unmarks the 2nd company in the listed intern book if already marked.
 * `find Google` followed by `unmark 1` unmarks the 1st company in the results of the `find` command, if already marked.
-
+  ![result for 'unmark 1'](images/unmark1.png)
 
 ### Sorting the list : `sort`
 

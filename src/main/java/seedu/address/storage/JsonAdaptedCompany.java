@@ -93,7 +93,7 @@ class JsonAdaptedCompany {
 
         Phone modelPhone;
 
-        if (!(phone == null)) {
+        if (phone != null) {
             modelPhone = new Phone(phone);
         } else {
             modelPhone = Phone.getDefaultPhone();

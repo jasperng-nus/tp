@@ -7,8 +7,8 @@
 # :tada: InternBook User Guide :books:
 
 ## Welcome to InternBook!
-Hey there, future interns! Since you are here, we summed that you are also a student, like us, who is starting your internship search. 
-Welcome to InternBook, your go-to companion in the exciting journey of applying for internships. 
+Hey there, future interns! Since you are here, we asummed that you are also a student, like us, who is starting your internship search. 
+Welcome to InternBook, your go-to companion in the exciting journey of applying for internships!
 
 ### Who Are We?
 We are a dynamic team of five students who have been in your shoes, feeling the struggle of juggling multiple internship
@@ -28,7 +28,7 @@ ensuring a smooth experience for everyone. Say goodbye to complicated Excel temp
 intuitive designed with your needs in mind.
 - **Organisation:** Keep your internship applications neat and tidy. No more digging through clutter - everything you 
 need is right at your fingertips.
-- **Consistency:** Say hello to reliable data. With InternBook, there are error checking for inputs to ensure that the 
+- **Consistency:** Say hello to reliable data. With InternBook, there is error checking for inputs to ensure that the 
 information is accurate, eliminating the headache of dealing with inconsistencies.
 
 ### What Can You Do with InternBook?
@@ -74,7 +74,7 @@ management of internship opportunities.
     - **End Date**: Sort applications according to the end date of the internship application, facilitating planning and 
     scheduling by highlighting approaching deadlines.
 - **User-Friendly Interface:** With a clean and intuitive design, InternBook offers ease of navigation and accessibility,
-prioritising ser experience and satisfaction.
+prioritising user experience and satisfaction.
 - **Adaptability:** Suitable for students with or without technical backgrounds, InternBook caters to a diverse user base,
 providing a seamless experience for all.
 
@@ -116,13 +116,13 @@ providing a seamless experience for all.
 
 --------------------------------------------------------------------------------------------------------------------
 ## How to use the guide
-- The guide introduces the features of our application and shows you an example on the different commands. Stating which
-are the compulsory fields, in a particular format and constraints to it.
-- After the features section, it consists of the frequency asked questions (FAQ), so if you have any doubts, you might
+- The guide introduces the features of our application and shows you example of the different commands in action. It also
+provides the field constraints, including permitted values and compulsory or optional parameters.
+- After the features section, we have a frequently asked questions (FAQ) section, so if you have any doubts, you might
 want to refer to the FAQ to see whether your questions can be answered.
-- After the FAQ section, it consists of known issues, which may contain bugs that we, the developers, are working on. 
+- After the FAQ section, we have an issue tracker which may contain bugs that we, the developers, are working on. 
 Please be patient with us while we fix the bugs!
-- The last section consist of the command summary where a summary for the commands are listed in a table for better and 
+- The last section consists of the command summary where a summary for every command is listed in a table for better and 
 easier reference.
 --------------------------------------------------------------------------------------------------------------------
 

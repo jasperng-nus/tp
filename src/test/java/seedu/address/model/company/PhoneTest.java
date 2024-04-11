@@ -1,7 +1,7 @@
 package seedu.address.model.company;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -11,8 +11,8 @@ public class PhoneTest {
 
     @Test
     public void constructor_emptyPhoneNumber() {
-        Phone emptyPhone = new Phone();
-        assertEquals(emptyPhone.value, Phone.DEFAULT_NUMBER);
+        Phone emptyPhone = Phone.getDefaultPhone();
+        assertNull(emptyPhone.value);
     }
 
     @Test
@@ -28,9 +28,6 @@ public class PhoneTest {
 
     @Test
     public void isValidPhone() {
-        // null phone number
-        assertThrows(NullPointerException.class, () -> Phone.isValidPhone(null));
-
         // invalid phone numbers
         assertFalse(Phone.isValidPhone("")); // empty string
         assertFalse(Phone.isValidPhone(" ")); // spaces only

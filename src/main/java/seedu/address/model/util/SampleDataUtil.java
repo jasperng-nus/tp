@@ -25,12 +25,12 @@ public class SampleDataUtil {
                 new Date("2024-03-01"), new Date("2024-04-30"), getTagSet("backend developer")),
             new Company(new Name("DBS"), new Phone("91031282"), new Email("dbs@example.com"), new Date(), new Date(),
                 getTagSet("security engineer")),
-            new Company(new Name("Google"), new Phone(), new Email("meta@example.com"), new Date(), new Date(),
-                getTagSet("software engineer")),
-            new Company(new Name("Meta"), new Phone("92624417"), new Email("royb@example.com"), new Date(), new Date(),
-                getTagSet("frontend developer")),
-            new Company(new Name("OCBC"), new Phone(), new Email("ocbc@example.com"), new Date(), new Date(),
-                getTagSet("security engineer"))
+            new Company(new Name("Google"), Phone.getDefaultPhone(), new Email("meta@example.com"),
+                    new Date(), new Date(), getTagSet("software engineer")),
+            new Company(new Name("Meta"), new Phone("92624417"), new Email("royb@example.com"),
+                    new Date(), new Date(), getTagSet("frontend developer")),
+            new Company(new Name("OCBC"), Phone.getDefaultPhone(), new Email("ocbc@example.com"),
+                    new Date(), new Date(), getTagSet("security engineer"))
         };
     }
 

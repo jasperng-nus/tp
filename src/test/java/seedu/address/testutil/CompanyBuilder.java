@@ -18,9 +18,9 @@ import seedu.address.model.util.SampleDataUtil;
 public class CompanyBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_PHONENUMBER = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_TAG = "SoftwareEngineer";
+    public static final String DEFAULT_TAG = "Software Engineer";
     public static final String DEFAULT_STARTDATE = "2024-07-07";
     public static final String DEFAULT_ENDDATE = "2024-08-08";
 
@@ -36,7 +36,7 @@ public class CompanyBuilder {
      */
     public CompanyBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        phone = new Phone(DEFAULT_PHONENUMBER);
         email = new Email(DEFAULT_EMAIL);
         startDate = new Date(DEFAULT_STARTDATE);
         endDate = new Date(DEFAULT_ENDDATE);
@@ -85,7 +85,7 @@ public class CompanyBuilder {
      * to DEFAULT_NUMBER
      */
     public CompanyBuilder withPhone() {
-        this.phone = new Phone();
+        this.phone = Phone.getDefaultPhone();
         return this;
     }
 

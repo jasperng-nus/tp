@@ -68,11 +68,7 @@ public class CompanyCard extends UiPart<Region> {
     }
 
     public void setPhone() {
-        if (!company.getPhone().isPhonePresent()) {
-            phone.setText("No phone number");
-        } else {
-            phone.setText(company.getPhone().value);
-        }
+        phone.setText(company.getPhone().toString());
     }
 
     public void setPeriod() {

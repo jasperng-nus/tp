@@ -49,7 +49,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         } else {
-            phone = new Phone();
+            phone = Phone.getDefaultPhone();
         }
 
         Date startDate;

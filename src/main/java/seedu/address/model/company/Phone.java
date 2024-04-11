@@ -13,7 +13,8 @@ public class Phone {
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should only contain numbers, and it should be at least 3 digits long";
     public static final String VALIDATION_REGEX = "\\d{3,}";
-    public static final String DEFAULT_NUMBER = "000";
+    private static final Phone DEFAULT_PHONE = new Phone();
+
     public final String value;
 
     /**
@@ -31,7 +32,14 @@ public class Phone {
      * Constructs a {@code Phone}.
      */
     public Phone() {
-        value = DEFAULT_NUMBER;
+        value = null;
+    }
+
+    /**
+     * Returns the phone singleton which represents an empty phone.
+     */
+    public static Phone getDefaultPhone() {
+        return DEFAULT_PHONE;
     }
 
     /**
@@ -43,6 +51,9 @@ public class Phone {
 
     @Override
     public String toString() {
+        if (this == DEFAULT_PHONE) {
+            return "No phone number";
+        }
         return value;
     }
 
@@ -67,6 +78,6 @@ public class Phone {
     }
 
     public boolean isPhonePresent() {
-        return !value.equals(DEFAULT_NUMBER);
+        return !(this == DEFAULT_PHONE);
     }
 }

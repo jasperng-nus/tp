@@ -284,7 +284,7 @@ Format: `mark INDEX`
 
   Examples:
 * `mark 2` marks the 2nd company in the listed intern book if it is unmarked.
-* `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command.
+* `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command, if it is unmarked.
   ![result for 'mark 1'](images/mark1.png)
 
 ### Marking a company : `unmark`
@@ -301,8 +301,8 @@ Format: `unmark INDEX`
   * The index **must not be out of bounds**. 
 
 Examples:
-* `unmark 2` unmarks the 2nd company in the listed intern book if already marked.
-* `find Google` followed by `unmark 1` unmarks the 1st company in the results of the `find` command, if already marked.
+* `unmark 2` unmarks the 2nd company in the listed intern book if it is marked.
+* `find Google` followed by `unmark 1` unmarks the 1st company in the results of the `find` command, if it is marked.
   ![result for 'unmark 1'](images/unmark1.png)
 
 ### Sorting the list : `sort`

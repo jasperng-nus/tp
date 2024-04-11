@@ -279,6 +279,11 @@ Format: `mark INDEX`
 * The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
+  Examples:
+* `list` followed by `mark 2` marks the 2nd company in the intern book.
+* `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command.
+
+
 ### Marking a company : `unmark`
 
 Marks the specified company as not applied.
@@ -288,6 +293,11 @@ Format: `unmark INDEX`
 * Marks the company at the specified `INDEX` as not applied.
 * The index refers to the index number shown in the currently displayed company list.
 * The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `unmark 2` unmarks the 2nd company in the intern book if already marked.
+* `find Google` followed by `unmark 1` unmarks the 1st company in the results of the `find` command, if already marked.
+
 
 ### Sorting the list : `sort`
 

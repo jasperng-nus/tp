@@ -154,14 +154,14 @@ easier reference.
 
 An entry can contain the following fields:
 
-| Field                      | Optional/Compulsory | Flag (Prefix for Add and Edit) |
-|----------------------------|---------------------|---------------------------------|
-| Company Name               | Compulsory          | -n                              |
-| Email                      | Compulsory          | -e                              |
-| Tag (Can be used as roles) | Compulsory          | -t                              |
-| Phone                      | Optional            | -p                              |
-| Start Date                 | Optional            | -d1                             | 
-| End Date                   | Optional            | -d2                             |
+| Field                      | Optional/Compulsory | Flag |
+|----------------------------|---------------------|------|
+| Company Name               | Compulsory          | -n   |
+| Email                      | Compulsory          | -e   |
+| Tag (Can be used as roles) | Compulsory          | -t   |
+| Phone                      | Optional            | -p   |
+| Start Date                 | Optional            | -d1  | 
+| End Date                   | Optional            | -d2  |
 
 ### Viewing help : `help`
 
@@ -178,10 +178,14 @@ Adds a company to the InternBook.
 
 Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 STARTDATE] [-d2 ENDDATE]`
 
-<box type="tip" seamless>
-
-**Tip:** A company can have a phone number (optional), start date (optional), end date (optional) and multiple tags.
-</box>
+| Field                      | Optional/Compulsory | Flag | Remarks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|----------------------------|---------------------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| Company Name               | Compulsory          | -n   | Names should only have alphanumeric characters and spaces                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Email                      | Compulsory          | -e   | Emails should be of the format local-part@domain and adhere to the following constraints:<br/>1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters.<br/>2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.<br/>The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have at least 2 domain labels separated by a dot (.)<br/>- have each domain label start and end with alphanumeric characters<br/>- have each domain label consist of alphanumeric characters, separated only by hyphens, if any. |
+| Tag (Can be used as roles) | Compulsory          | -t   | Multiple tags are allowed<br/>Tags should only have alphanumeric characters and "/"<br/>Tags should not start or end with "/"<br/>Tags are case insensitive and the first alphabet of each word will be capitalised                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Phone                      | Optional            | -p   | Phone numbers should be 3 or more digits                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Start Date                 | Optional            | -d1  | Dates should be in the form YYYY-MM-DD<br/>Start date must be earlier than end date                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| End Date                   | Optional            | -d2  | Dates should be in the form YYYY-MM-DD<br/>End date must be later than start date                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 Examples:
 * `add -n DBS -t Software Engineer -e dbs@example.com -d1 2024-04-04 -d2 2024-05-05`
@@ -204,6 +208,14 @@ Format: `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-t TAG…]​ [-d1 S
 * Only the fields provided will be updated i.e fields not provided will retain their original value.
 * When editing tags, the existing tags of the company will be removed i.e adding of tags is not cumulative.
 
+| Field                      | Optional/Compulsory | Flag  | Remarks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|----------------------------|---------------------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| Company Name               | Optional            | -n    | Names should only have alphanumeric characters and spaces                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Email                      | Optional            | -e    | Emails should be of the format local-part@domain and adhere to the following constraints:<br/>1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters.<br/>2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.<br/>The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have at least 2 domain labels separated by a dot (.)<br/>- have each domain label start and end with alphanumeric characters<br/>- have each domain label consist of alphanumeric characters, separated only by hyphens, if any. |
+| Tag (Can be used as roles) | Optional            | -t    | Multiple tags are allowed<br/>Tags should only have alphanumeric characters and "/"<br/>Tags should not start or end with "/"b                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Phone                      | Optional            | -p    | Phone numbers should be 3 or more digits                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Start Date                 | Optional            | -d1   | Dates should be in the form YYYY-MM-DD<br/>Start date must be earlier than end date                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| End Date                   | Optional            | -d2   | Dates should be in the form YYYY-MM-DD<br/>End date must be later than start date                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 Examples:
 *  `edit 1 -p 91234567 -e dbs_hr@example.com` Edits the phone number and email address of the 1st company in the currently displayed list to be `91234567` and `dbs_hr@example.com` respectively.
 *  `edit 2 -n Meta -t Engineer` Edits the name of the 2nd company to be `Meta` and change the tags to `Engineer` only.
@@ -241,33 +253,6 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd company in the intern book.
 * `find Google` followed by `delete 1` deletes the 1st company in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the intern book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-InternBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-InternBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, InternBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the InternBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
 
 ### Marking a company : `mark`
 
@@ -314,9 +299,13 @@ Format: `sort PREF`
 * Sorts the company with the given `PREF`.
 * `PREF` refers to the preference the user can choose from.
 * There is currently 3 preference:
-    * a - sorts list in ascending alphabetical order of company name
-    * s - sorts list in ascending order of application start date
-    * e - sorts list in ascending order of application end date
+    * a - sorts list in ascending alphanumerical order of company name followed by ascending end date(if present)
+    * s - sorts list in ascending order of application start date followed by ascending alphanumerical order
+    * e - sorts list in ascending order of application end date followed by ascending alphanumerical order
+
+| Field           | Optional/Compulsory | Remarks                                                          |
+|-----------------|---------------------|------------------------------------------------------------------|
+| Sort Preference | Compulsory          | Choose between "a", "s" or "e" to choose sorting preference<br/> |
 
 Examples:
 * `sort a`
@@ -336,12 +325,42 @@ Format: `reminder -r NUMOFDAYS`
 * The applications are sorted according to ascending end dates.
 * The `NUMOFDAYS` must be a positive integer.
 
-**Tip:** You can switch off reminders by typing `reminder -r off`.
+| Field           | Optional/Compulsory | Flag | Remarks                                                                        |
+|-----------------|---------------------|------|--------------------------------------------------------------------------------|
+| Reminder Period | Compulsory          | -r   | Reminder period should be a positive integer or "off" to turn off the reminder |
+
 * The off is case-insensitive. e.g `reminder -r OFF` works too.
 
 Examples:
 * `reminder -r 7`
 * `reminder -r off`
+
+### Clearing all entries : `clear`
+
+Clears all entries from the intern book.
+
+Format: `clear`
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
+### Saving the data
+
+InternBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+InternBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<box type="warning" seamless>
+
+**Caution:**
+If your changes to the data file makes its format invalid, InternBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the InternBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</box>
 
 ### Archiving data files `[coming in v2.0]`
 

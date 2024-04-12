@@ -147,21 +147,11 @@ easier reference.
 * Extraneous parameters for commands that do not take in inputs (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+* Dates will only show in the GUI if both start date and end date are present.<br>
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
-**Note about company fields:**
-
-An entry can contain the following fields:
-
-| Field                      | Optional/Compulsory | Flag |
-|----------------------------|---------------------|------|
-| Company Name               | Compulsory          | -n   |
-| Email                      | Compulsory          | -e   |
-| Tag (Can be used as roles) | Compulsory          | -t   |
-| Phone                      | Optional            | -p   |
-| Start Date                 | Optional            | -d1  | 
-| End Date                   | Optional            | -d2  |
 
 ### Viewing help : `help`
 
@@ -397,6 +387,7 @@ Type in `java -version` and you will see the java version.
 </div>
 
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
+4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags. 
 
 --------------------------------------------------------------------------------------------------------------------
 

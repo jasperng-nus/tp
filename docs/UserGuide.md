@@ -191,6 +191,10 @@ Examples:
 * `add -n DBS -t Software Engineer -e dbs@example.com -d1 2024-04-04 -d2 2024-05-05`
 * `add -n Tiktok -t Data Analyst -e tiktok@example.com -p 61234567 -t AI Engineer`
 
+Remark:
+* We allow the adding of duplicate companies with different start dates and end dates.
+* This is fully intended and not a bug as this can allow users to keep track of different application windows of the same role in the same company.
+
 ### Listing all companies : `list`
 
 Shows a list of all companies in the InternBook.
@@ -311,6 +315,7 @@ Examples:
 * `sort a`
 * `sort s`
 * `sort e`
+![sort example](images/sort.png)
 
 ### Setting reminders : `reminder`
 
@@ -377,12 +382,21 @@ _Details coming soon ..._
 **A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
 Type in `java -version` and you will see the java version.
 
+**Q**: Why am I able to add start and end dates which has already passed.
+**A**: To allow users to be able to keep track of previous openings, such that they can keep a lookout for future openings.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+2. **Only when both start and end dates are present, will the date be shown in the GUI**. If only one of the dates is present, the sorts will take them into account while sorting, leading to misleading errors such as the one below.
+
+<div style="text-align:center;">
+    <img src="images/datesorterror.png" alt="datesorterror" width="400" height="200">
+</div>
+
+3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
 
 --------------------------------------------------------------------------------------------------------------------
 

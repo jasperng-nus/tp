@@ -199,7 +199,7 @@ Edits an existing company in the InternBook.
 
 Format: `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-t TAG…]​ [-d1 START_DATE] [-d2 END_DATE]`
 
-* Edits the company at the specified `INDEX`. The index refers to the index number shown in the displayed company list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the company at the specified `INDEX`. The index refers to the index number shown in the displayed intern book. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Only the fields provided will be updated i.e fields not provided will retain their original value.
 * When editing tags, the existing tags of the company will be removed i.e adding of tags is not cumulative.
@@ -235,7 +235,7 @@ Deletes the specified company from the InternBook.
 Format: `delete INDEX`
 
 * Deletes the company at the specified `INDEX`.
-* The index refers to the index number shown in the currently displayed company list.
+* The index refers to the index number shown in the currently displayed intern book.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
@@ -276,8 +276,16 @@ Marks the specified company as applied.
 Format: `mark INDEX`
 
 * Marks the company at the specified `INDEX` as applied.
-* The index refers to the index number shown in the currently displayed company list.
+* The index refers to the index number shown in the currently displayed intern book.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Error messages will be displayed when:
+  * The company at the specified `INDEX` is already marked.
+  * The index **is out of bounds**.
+
+  Examples:
+* `mark 2` marks the 2nd company in the listed intern book if it is unmarked.
+* `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command, if it is unmarked.
+  ![result for 'mark 1'](images/mark1.png)
 
 ### Marking a company : `unmark`
 
@@ -286,8 +294,16 @@ Marks the specified company as not applied.
 Format: `unmark INDEX`
 
 * Marks the company at the specified `INDEX` as not applied.
-* The index refers to the index number shown in the currently displayed company list.
+* The index refers to the index number shown in the currently displayed intern book.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Error messages will be displayed when:
+  * The company at the specified `INDEX`  is already unmarked.
+  * The index **is out of bounds**. 
+
+Examples:
+* `unmark 2` unmarks the 2nd company in the listed intern book if it is marked.
+* `find Google` followed by `unmark 1` unmarks the 1st company in the results of the `find` command, if it is marked.
+  ![result for 'unmark 1'](images/unmark1.png)
 
 ### Sorting the list : `sort`
 

@@ -55,7 +55,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/xilef121.png" width="200px">
 
 [[github](http://github.com/xilef121)]
-[[portfolio](team/felix.md)]
+[[portfolio](team/xilef121)]
 
 - Role: Developer
 - Responsibilities: UI

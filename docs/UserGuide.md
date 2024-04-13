@@ -230,7 +230,7 @@ Format: `find KEYWORD`
 * The order of the keyword matters. e.g. `Software Engineer` will not match `Engineer Software`
 * Only the name and tags are searched.
 * The result screen will display all the **tags and names** that match the keyword.
-e.g. `Software` will return a Company `Software XYZ` as well as tag `Software Engineer`.
+e.g. `Software` will return a Company with name `Software XYZ` as well as a Company with tag `Software Engineer`.
 * If there is a space in the keyword, it searches for a substring match with the whole word
 e.g. `Software Engineer` will return `Software Engineering` but not `Software Developer` or `Staff Engineer`.
 * Only Companies or its words **beginning with** the keyword will be returned.

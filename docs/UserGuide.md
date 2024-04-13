@@ -214,6 +214,12 @@ Examples:
 *  `edit 1 -p 91234567 -e dbs_hr@example.com` Edits the phone number and email address of the 1st company in the currently displayed list to be `91234567` and `dbs_hr@example.com` respectively.
 *  `edit 2 -n Meta -t Engineer` Edits the name of the 2nd company to be `Meta` and change the tags to `Engineer` only.
 
+**Before:**
+![result for 'pre-editing'](images/pre_edit.png)
+
+**After:**
+![result for 'post-editing'](images/post_edit.png)
+
 ### Locating companies by name: `find`
 
 Finds companies whose names or tags begin with the given keyword.
@@ -223,11 +229,12 @@ Format: `find KEYWORD`
 * The search is case-insensitive. e.g `Google` will match `google`
 * The order of the keyword matters. e.g. `Software Engineer` will not match `Engineer Software`
 * Only the name and tags are searched.
+* The result screen will display all the **tags and names** that match the keyword.
+e.g. `Software` will return a Company with name `Software XYZ` as well as a Company with tag `Software Engineer`.
 * If there is a space in the keyword, it searches for a substring match with the whole word
 e.g. `Software Engineer` will return `Software Engineering` but not `Software Developer` or `Staff Engineer`.
-* Only words beginning with the keyword will be matched e.g. `ware` will not match `software`
-* Only Companies or its words matching the entire keyword will be returned.
-  e.g. `Test` will return `Test Engineer` or `QA Tester`, but not `QATester` .
+* Only Companies or its words **beginning with** the keyword will be returned.
+  e.g. `Test` will return `Test Engineer` or `QA Tester`, but not `QATester`.
 
 Examples:
 * `find Google` returns `google` and `Google`
@@ -365,10 +372,10 @@ _Details coming soon ..._
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another Computer?
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InternBook home folder.
 
-**Q**: How do I check if I am on JDK 11?<br>
+**Q**: How do I check if I am on JDK 11?
 **A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
 Type in `java -version` and you will see the java version.
 

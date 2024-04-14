@@ -378,9 +378,9 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 * Archiving Data Files
   * We grasp the importance of preserving information post-internship applications, especially notes taken during or after
   the process. However, as the main window could become cluttered with numerous applications that you have applied, causing 
-  overwhelm, we've opted to introduce an archiving feature. This allows you to store applicationis away,
+  overwhelm, we've opted to introduce an archiving feature. This allows you to store applications away,
   displaying them only when necessary.
-* Adding Application with Only Start or End dates
+* Adding Application with only Start or End dates
   * While it's typically advised to monitor both start and end dates, we've taken your feedback into account. We've heard
   from some of you that you prioritise the application end date. Currently, we only display dates when both start and end 
   dates are available. In the near future, we'll adjust this to show dates for the application whenever either one is 
@@ -409,17 +409,17 @@ it will not show in the GUI. You can [edit](#editing-a-company--edit) them accor
 be stored if there are distinctions in their name, phone number, email address, start date, end date, or tags. However,
 if only the start date or end date is available, those dates won't be displayed, potentially leading to confusion.
 
-**Q**: Can different companies be tagged to the same email address?
+**Q**: Can different companies be tagged to the same email address?<br>
 **A**: Yes, it's possible. We permit multiple company names to share the same email address. For instance, consider 
 inputs like OCBC Tech or OCBC Finance. We offer users the flexibility to customise company names, including departmental 
 distinctions, even if they share an email address.
 
-**Q**: Why is it possible to add applications with dates that have already passed?
+**Q**: Why is it possible to add applications with dates that have already passed?<br>
 **A**: Users are permitted to add applications with past dates because we're in the process of developing new 
 [features](#future-advancements). These features will enable users to take notes about specific companies, which they can
 refer back to when considering future applications.
 
-**Q**: When is a company classified as a duplicate?
+**Q**: When is a company classified as a duplicate?<br>
 **A**: A company is identified as a duplicate when you attempt to add a record with identical name, phone number, email 
 address, tags, start date, and end date as an existing entry. If all these fields match, the system flags it as a duplicate,
 preventing the addition of such an application.

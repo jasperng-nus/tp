@@ -1,8 +1,11 @@
 package seedu.address.model.tag;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
 
 public class TagTest {
 
@@ -26,11 +29,31 @@ public class TagTest {
     @Test
     public void capitaliseTest() {
         Tag tag = new Tag("software engineer");
-        assert(tag.capitalise().equals("Software Engineer"));
+        assertTrue(tag.capitalise().equals("Software Engineer"));
 
         tag = new Tag("softWare EnginEEr");
-        assert(tag.capitalise().equals("Software Engineer"));
+        assertTrue(tag.capitalise().equals("Software Engineer"));
 
+    }
+
+    @Test
+    public void equals() {
+        Tag tag = new Tag("Valid Tag");
+
+        // same values -> returns true
+        assertTrue(tag.equals(new Tag("Valid Tag")));
+
+        // same object -> returns true
+        assertTrue(tag.equals(tag));
+
+        // null -> returns false
+        assertFalse(tag.equals(null));
+
+        // different types -> returns false
+        assertFalse(tag.equals(5.0f));
+
+        // different values -> returns false
+        assertFalse(tag.equals(new Tag("Other Valid Tag")));
     }
 
 }

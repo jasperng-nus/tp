@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalCompanies.AMAZON;
-import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalCompanies.getTypicalInternBook;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -37,7 +37,7 @@ public class InternBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        InternBook newData = getTypicalAddressBook();
+        InternBook newData = getTypicalInternBook();
         internBook.resetData(newData);
         assertEquals(newData, internBook);
     }

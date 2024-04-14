@@ -22,7 +22,7 @@ import seedu.address.model.InternBook;
 import seedu.address.model.company.Company;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Company} objects to be used in tests.
  */
 public class TypicalCompanies {
 
@@ -77,9 +77,9 @@ public class TypicalCompanies {
     private TypicalCompanies() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical companies.
+     * Returns an {@code InternBook} with all the typical companies.
      */
-    public static InternBook getTypicalAddressBook() {
+    public static InternBook getTypicalInternBook() {
         InternBook ab = new InternBook();
         for (Company company : getTypicalCompanies()) {
             ab.addCompany(company);

@@ -41,7 +41,7 @@ public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalInternBook(), new UserPrefs());
     @Test
-    public void createEditedCompany_validNewParameters_successful() throws Exception {
+    public void execute_validEditedCompany_successful() throws Exception {
 
         Company johnson = new CompanyBuilder()
                 .withName("JJ")
@@ -87,7 +87,7 @@ public class EditCommandTest {
     public void execute_invalidCompanyIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_COMPANY);
         Index outOfBoundIndex = INDEX_SECOND_COMPANY;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of internbook list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getCompanyList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,

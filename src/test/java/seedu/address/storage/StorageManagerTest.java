@@ -57,6 +57,7 @@ public class StorageManagerTest {
         InternBook original = getTypicalInternBook();
         storageManager.saveInternBook(original);
         ReadOnlyInternBook retrieved = storageManager.readInternBook().get();
+
         assertEquals(original, new InternBook(retrieved));
     }
 

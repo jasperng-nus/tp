@@ -64,6 +64,7 @@ public class JsonInternBookStorageTest {
     public void readAndSaveInternBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         InternBook original = getTypicalInternBook();
+
         JsonInternBookStorage jsonAddressBookStorage = new JsonInternBookStorage(filePath);
 
         // Save in new file and read back

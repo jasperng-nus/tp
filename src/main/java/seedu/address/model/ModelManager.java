@@ -84,25 +84,25 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getInternBookFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternBookFilePath(Path internBookFilePath) {
+        requireNonNull(internBookFilePath);
+        userPrefs.setAddressBookFilePath(internBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyInternBook addressBook) {
-        this.internBook.resetData(addressBook);
+    public void setInternBook(ReadOnlyInternBook internBook) {
+        this.internBook.resetData(internBook);
     }
 
     @Override
-    public ReadOnlyInternBook getAddressBook() {
+    public ReadOnlyInternBook getInternBook() {
         return internBook;
     }
 

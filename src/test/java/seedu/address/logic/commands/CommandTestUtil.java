@@ -37,6 +37,10 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_CITI = "citibank@example.com";
     public static final String VALID_TAG_ENGINEER = "Engineer";
     public static final String VALID_TAG_ANALYST = "Analyst";
+    public static final String VALID_START_DATE = "2024-01-01"; // YYYY-MM-DD
+    public static final String VALID_END_DATE = "2024-06-01"; // YYYY-MM-DD
+    public static final String LATER_START_DATE = "2024-03-03"; // YYYY-MM-DD
+    public static final String EARLIER_END_DATE = "2024-02-02"; // YYYY-MM-DD
 
     public static final String NAME_DESC_ADIDAS = " " + PREFIX_NAME + VALID_NAME_ADIDAS;
     public static final String NAME_DESC_BMW = " " + PREFIX_NAME + VALID_NAME_BMW;
@@ -48,6 +52,9 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BMW = " " + PREFIX_EMAIL + VALID_EMAIL_BMW;
     public static final String EMAIL_DESC_CITI = " " + PREFIX_EMAIL + VALID_EMAIL_CITI;
 
+    public static final String END_DATE_DESC = " " + PREFIX_ENDDATE + VALID_END_DATE;
+    public static final String START_DATE_DESC = " " + PREFIX_STARTDATE + VALID_START_DATE;
+
     public static final String TAG_DESC_ANALYST = " " + PREFIX_TAG + VALID_TAG_ANALYST;
     public static final String TAG_DESC_ENGINEER = " " + PREFIX_TAG + VALID_TAG_ENGINEER;
 
@@ -57,6 +64,8 @@ public class CommandTestUtil {
 
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "engineer*"; // '*' not allowed in tags
 
+    public static final String EARLIER_END_DATE_DESC = " " + PREFIX_ENDDATE + EARLIER_END_DATE;
+    public static final String LATER_START_DATE_DESC = " " + PREFIX_STARTDATE + LATER_START_DATE;
     public static final String INVALID_STARTDATE_DESC = " " + PREFIX_STARTDATE + "2024-13-21"; //month cannot be past 12
     public static final String INVALID_ENDDATE_DESC = " " + PREFIX_ENDDATE + "2024-11-21@"; //@ not allowed in dates
 
@@ -72,7 +81,9 @@ public class CommandTestUtil {
                 .withTags(VALID_TAG_ANALYST).build();
         DESC_BMW = new EditCompanyDescriptorBuilder().withName(VALID_NAME_BMW)
                 .withPhone(VALID_PHONE_BMW).withEmail(VALID_EMAIL_BMW)
-                .withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST).build();
+                .withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST)
+                .withStartDate(VALID_START_DATE).withEndDate(VALID_END_DATE)
+                .build();
     }
 
     /**
@@ -81,7 +92,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -96,7 +107,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }

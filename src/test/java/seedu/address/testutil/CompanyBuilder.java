@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Company objects.
  */
 public class CompanyBuilder {
 
@@ -44,7 +44,7 @@ public class CompanyBuilder {
     }
 
     /**
-     * Initializes the CompanyBuilder with the data of {@code personToCopy}.
+     * Initializes the CompanyBuilder with the data of {@code companyToCopy}.
      */
     public CompanyBuilder(Company companyToCopy) {
         name = companyToCopy.getName();
@@ -56,7 +56,7 @@ public class CompanyBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code Person} that we are building.
+     * Sets the {@code Name} of the {@code Company} that we are building.
      */
     public CompanyBuilder withName(String name) {
         this.name = new Name(name);
@@ -64,7 +64,7 @@ public class CompanyBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Company} that we are building.
      */
     public CompanyBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
@@ -73,7 +73,7 @@ public class CompanyBuilder {
 
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code Phone} of the {@code Company} that we are building.
      */
     public CompanyBuilder withPhone(String phone) {
         this.phone = new Phone(phone);
@@ -81,7 +81,7 @@ public class CompanyBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building
+     * Sets the {@code Phone} of the {@code Company} that we are building
      * to DEFAULT_NUMBER
      */
     public CompanyBuilder withPhone() {
@@ -90,10 +90,44 @@ public class CompanyBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Email} of the {@code Company} that we are building.
      */
     public CompanyBuilder withEmail(String email) {
         this.email = new Email(email);
+        return this;
+    }
+
+    /**
+     * Sets the {@code startDate} of the {@code} that we are building.
+     */
+    public CompanyBuilder withStartDate(String date) {
+        this.startDate = new Date(date);
+        return this;
+    }
+
+    /**
+     * Sets the {@code startDate} of the {@code Company} that we are building
+     * to DEFAULT_DATE
+     */
+    public CompanyBuilder withStartDate() {
+        this.startDate = new Date();
+        return this;
+    }
+
+    /**
+     * Sets the {@code endDate} of the {@code} that we are building.
+     */
+    public CompanyBuilder withEndDate(String date) {
+        this.endDate = new Date(date);
+        return this;
+    }
+
+    /**
+     * Sets the {@code endDate} of the {@code Company} that we are building
+     * to DEFAULT_DATE
+     */
+    public CompanyBuilder withEndDate() {
+        this.endDate = new Date();
         return this;
     }
 

@@ -1,14 +1,40 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.EARLIER_END_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_CITI;
+import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.LATER_START_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_CITI;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ADIDAS;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_CITI;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_ANALYST;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_ENGINEER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ANALYST;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ENGINEER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalCompanies.*;
+import static seedu.address.testutil.TypicalCompanies.BMW;
+import static seedu.address.testutil.TypicalCompanies.CITI;
 
 import org.junit.jupiter.api.Test;
 

@@ -106,19 +106,19 @@ public class CompanyBuilder {
     }
 
     /**
-     * Sets the {@code endDate} of the {@code} that we are building.
-     */
-    public CompanyBuilder withEndDate(String date) {
-        this.endDate = new Date(date);
-        return this;
-    }
-
-    /**
      * Sets the {@code startDate} of the {@code Company} that we are building
      * to DEFAULT_DATE
      */
     public CompanyBuilder withStartDate() {
         this.startDate = new Date();
+        return this;
+    }
+
+    /**
+     * Sets the {@code endDate} of the {@code} that we are building.
+     */
+    public CompanyBuilder withEndDate(String date) {
+        this.endDate = new Date(date);
         return this;
     }
 

@@ -370,7 +370,7 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Future Advancements
+## Future Enhancements
 * Remarks 
   * We acknowledge the need for jotting down notes, such as the questions asked during interviews or specific requirements
   like seeking penultimate students. Therefore, we aim to introduce a feature enabling you to document notes for each 
@@ -385,6 +385,9 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
   from some of you that you prioritise the application end date. Currently, we only display dates when both start and end 
   dates are available. In the near future, we'll adjust this to show dates for the application whenever either one is 
   provided.
+* Alerting Users to Potential Duplicates
+  * In cases where a company's name, phone number, or email address matches existing entries in our system, we prompt the
+  user to confirm whether they wish to create a new record or append to an existing one.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -396,9 +399,6 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 **Q**: How do I check if I am on JDK 11? <br>
 **A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
 Type in `java -version` and you will see the java version.
-
-**Q**: Why am I able to add start and end dates which has already passed. <br>
-**A**: To allow users to be able to keep track of previous openings, such that they can keep a lookout for future openings.
 
 **Q**: Why are my dates missing in the GUI?<br>
 **A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,

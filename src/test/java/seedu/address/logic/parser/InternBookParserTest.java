@@ -56,7 +56,7 @@ public class InternBookParserTest {
         Company company = new CompanyBuilder().build();
         EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder(company).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_COMPANY.getOneBased() + " " + CompanyUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_COMPANY.getOneBased() + " " + CompanyUtil.getEditCompanyDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_COMPANY, descriptor), command);
     }
 

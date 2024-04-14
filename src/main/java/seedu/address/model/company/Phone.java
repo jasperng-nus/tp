@@ -72,6 +72,12 @@ public class Phone {
         }
 
         Phone otherPhone = (Phone) other;
+        if (value == null) {
+            if (otherPhone.value == null) {
+                return true;
+            }
+            return false;
+        }
         return value.equals(otherPhone.value);
     }
 

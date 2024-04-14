@@ -66,6 +66,8 @@ public class CommandTestUtil {
 
     public static final String EARLIER_END_DATE_DESC = " " + PREFIX_ENDDATE + EARLIER_END_DATE;
     public static final String LATER_START_DATE_DESC = " " + PREFIX_STARTDATE + LATER_START_DATE;
+    public static final String INVALID_STARTDATE_DESC = " " + PREFIX_STARTDATE + "2024-13-21"; //month cannot be past 12
+    public static final String INVALID_ENDDATE_DESC = " " + PREFIX_ENDDATE + "2024-11-21@"; //@ not allowed in dates
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -90,7 +92,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -105,7 +107,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }

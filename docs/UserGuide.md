@@ -185,7 +185,7 @@ Remark:
 * We allow the adding of duplicate companies with different start dates and end dates.
 * This is fully intended and not a bug as this can allow users to keep track of different application windows of the same role in the same company.
 * Check out our [FAQ](#faq) to understand how we distinguish duplicate entries.
-* Start date can be added without the end date, vice versa. However, when both dates are not entered, the record will
+* Start date can be added without the end date, and vice versa. However, when both dates are not entered, the record will
 not show the dates. As shown below.
 ![record_without_both_dates](images/application_without_both_dates.png)
 

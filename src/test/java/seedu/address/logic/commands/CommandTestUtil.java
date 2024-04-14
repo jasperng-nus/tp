@@ -3,8 +3,10 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -35,8 +37,6 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_CITI = "citibank@example.com";
     public static final String VALID_TAG_ENGINEER = "Engineer";
     public static final String VALID_TAG_ANALYST = "Analyst";
-    public static final String VALID_START_DATE = "2024-01-01"; // YYYY-MM-DD
-    public static final String VALID_END_DATE = "2024-06-01"; // YYYY-MM-DD
 
     public static final String NAME_DESC_ADIDAS = " " + PREFIX_NAME + VALID_NAME_ADIDAS;
     public static final String NAME_DESC_BMW = " " + PREFIX_NAME + VALID_NAME_BMW;
@@ -56,6 +56,9 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "dbs!yahoo"; // missing '@' symbol
 
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "engineer*"; // '*' not allowed in tags
+
+    public static final String INVALID_STARTDATE_DESC = " " + PREFIX_STARTDATE + "2024-13-21"; //month cannot be past 12
+    public static final String INVALID_ENDDATE_DESC = " " + PREFIX_ENDDATE + "2024-11-21@"; //@ not allowed in dates
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

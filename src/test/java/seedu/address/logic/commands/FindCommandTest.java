@@ -8,7 +8,7 @@ import static seedu.address.logic.Messages.MESSAGE_COMPANIES_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCompanies.AMAZE;
 import static seedu.address.testutil.TypicalCompanies.AMAZON;
-import static seedu.address.testutil.TypicalCompanies.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalCompanies.getTypicalInternBook;
 
 import java.util.Arrays;
 
@@ -23,8 +23,8 @@ import seedu.address.model.company.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalInternBook(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalInternBook(), new UserPrefs());
 
     @Test
     public void equals() {

@@ -75,7 +75,7 @@ public class TypicalCompanies {
     /**
      * Returns an {@code AddressBook} with all the typical companies.
      */
-    public static InternBook getTypicalAddressBook() {
+    public static InternBook getTypicalInternBook() {
         InternBook ab = new InternBook();
         for (Company company : getTypicalCompanies()) {
             ab.addCompany(company);

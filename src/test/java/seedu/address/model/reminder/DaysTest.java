@@ -20,21 +20,17 @@ class DaysTest {
         Days emptyDays = new Days();
         assertEquals(d.getNumOfDays(), 26);
         assertEquals(emptyDays.getNumOfDays(), 0);
-
     }
-
     @Test
     void test_isValidDays() {
-        assertTrue(isValidDays("2")); //one digit is allowed
-        assertTrue(isValidDays("26")); //two digits allowed
+        assertTrue(isValidDays("2")); // one digit is allowed
+        assertTrue(isValidDays("26")); // two digits allowed
         assertTrue(isValidDays("0")); // zero is allowed since it is a single digit
 
-        assertFalse(isValidDays("-1")); //negative number of days not allowed
-        assertFalse(isValidDays("3.5")); //floating points not allowed.
-        assertFalse(isValidDays("Test")); //Strings are not valid
-
+        assertFalse(isValidDays("-1")); // negative number of days not allowed
+        assertFalse(isValidDays("3.5")); // floating points not allowed
+        assertFalse(isValidDays("Test")); // Strings are not valid
     }
-
     @Test
     void testToString() {
         Days d = new Days("26");

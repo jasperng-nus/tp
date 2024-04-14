@@ -11,36 +11,36 @@ import seedu.address.model.ReadOnlyInternBook;
 /**
  * Represents a storage for {@link InternBook}.
  */
-public interface AddressBookStorage {
+public interface InternBookStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getInternBookFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyInternBook}.
+     * Returns InternBook data as a {@link ReadOnlyInternBook}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    Optional<ReadOnlyInternBook> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyInternBook> readInternBook() throws DataLoadingException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getInternBookFilePath()
      */
-    Optional<ReadOnlyInternBook> readAddressBook(Path filePath) throws DataLoadingException;
+    Optional<ReadOnlyInternBook> readInternBook(Path filePath) throws DataLoadingException;
 
     /**
      * Saves the given {@link ReadOnlyInternBook} to the storage.
-     * @param addressBook cannot be null.
+     * @param internBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyInternBook addressBook) throws IOException;
+    void saveInternBook(ReadOnlyInternBook internBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyInternBook)
+     * @see #saveInternBook(ReadOnlyInternBook)
      */
-    void saveAddressBook(ReadOnlyInternBook addressBook, Path filePath) throws IOException;
+    void saveInternBook(ReadOnlyInternBook addressBook, Path filePath) throws IOException;
 
 }

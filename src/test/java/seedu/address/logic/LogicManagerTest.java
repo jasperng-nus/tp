@@ -27,7 +27,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInternBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.company.Company;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonInternBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.CompanyBuilder;
@@ -44,8 +44,8 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonInternBookStorage addressBookStorage =
+                new JsonInternBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
@@ -136,10 +136,10 @@ public class LogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(prefPath) {
+        // Inject LogicManager with an InternBookStorage that throws the IOException e when saving
+        JsonInternBookStorage addressBookStorage = new JsonInternBookStorage(prefPath) {
             @Override
-            public void saveAddressBook(ReadOnlyInternBook addressBook, Path filePath)
+            public void saveInternBook(ReadOnlyInternBook addressBook, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -151,7 +151,7 @@ public class LogicManagerTest {
 
         logic = new LogicManager(model, storage);
 
-        // Triggers the saveAddressBook method by executing an add command
+        // Triggers the saveInternBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_ADIDAS + PHONE_DESC_ADIDAS
                 + EMAIL_DESC_ADIDAS;
         Company expectedCompany = new CompanyBuilder(ADIDAS).withTags().build();

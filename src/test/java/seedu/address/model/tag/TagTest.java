@@ -6,6 +6,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+
 public class TagTest {
 
     @Test
@@ -37,13 +38,22 @@ public class TagTest {
 
     @Test
     public void equals() {
-        Tag legalTag = new Tag("Software Engineer");
-        assertTrue(legalTag.equals(legalTag));
+        Tag tag = new Tag("Valid Tag");
 
-        Tag nullTag = null;
-        assertFalse(legalTag.equals(nullTag));
+        // same values -> returns true
+        assertTrue(tag.equals(new Tag("Valid Tag")));
 
+        // same object -> returns true
+        assertTrue(tag.equals(tag));
 
+        // null -> returns false
+        assertFalse(tag.equals(null));
+
+        // different types -> returns false
+        assertFalse(tag.equals(5.0f));
+
+        // different values -> returns false
+        assertFalse(tag.equals(new Tag("Other Valid Tag")));
     }
 
 }

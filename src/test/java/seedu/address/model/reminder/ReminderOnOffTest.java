@@ -46,6 +46,10 @@ class ReminderOnOffTest {
         // valid set reminder
         assertTrue(ReminderOnOff.isValidSetReminder("true")); // true
         assertTrue(ReminderOnOff.isValidSetReminder("false")); // false
+        assertTrue(ReminderOnOff.isValidSetReminder("TRUE")); // case-insensitive
+        assertTrue(ReminderOnOff.isValidSetReminder("FALSE")); // case-insensitive
+        assertTrue(ReminderOnOff.isValidSetReminder("tRuE")); // case-insensitive
+        assertTrue(ReminderOnOff.isValidSetReminder("fAlSe")); // case-insensitive
     }
 
     @Test

@@ -184,6 +184,10 @@ Examples:
 Remark:
 * We allow the adding of duplicate companies with different start dates and end dates.
 * This is fully intended and not a bug as this can allow users to keep track of different application windows of the same role in the same company.
+* Check out our [FAQ](#faq) to understand how we distinguish duplicate entries.
+* Start date can be added without the end date, and vice versa. However, when either dates are not entered, the record will
+not show the dates. As shown below.
+![record_without_both_dates](images/application_without_both_dates.png)
 
 ### Listing all companies : `list`
 
@@ -364,23 +368,61 @@ If your changes to the data file makes its format invalid, InternBook will disca
 Furthermore, certain edits can cause the InternBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+--------------------------------------------------------------------------------------------------------------------
 
-_Details coming soon ..._
+## Future Enhancements
+* Remarks 
+  * We acknowledge the need for jotting down notes, such as the questions asked during interviews or specific requirements
+  like seeking penultimate students. Therefore, we aim to introduce a feature enabling you to document notes for each 
+  company individually.
+* Archiving Data Files
+  * We grasp the importance of preserving information post-internship applications, especially notes taken during or after
+  the process. However, as the main window could become cluttered with numerous applications that you have applied, causing 
+  overwhelm, we've opted to introduce an archiving feature. This allows you to store applications away,
+  displaying them only when necessary.
+* Adding Application with only Start or End dates
+  * While it's typically advised to monitor both start and end dates, we've taken your feedback into account. We've heard
+  from some of you that you prioritise the application end date. Currently, we only display dates when both start and end 
+  dates are available. In the near future, we'll adjust this to show dates for the application whenever either one is 
+  provided.
+* Alerting Users to Potential Duplicates
+  * In cases where a company's name, phone number, or email address matches existing entries in our system, we prompt the
+  user to confirm whether they wish to create a new record or append to an existing one.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?
+**Q**: How do I transfer my data to another Computer? <br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InternBook home folder.
 
-**Q**: How do I check if I am on JDK 11?
+**Q**: How do I check if I am on JDK 11? <br>
 **A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
 Type in `java -version` and you will see the java version.
 
-**Q**: Why am I able to add start and end dates which has already passed.
-**A**: To allow users to be able to keep track of previous openings, such that they can keep a lookout for future openings.
+**Q**: Why are my dates missing in the GUI?<br>
+**A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,
+it will not show in the GUI. You can [edit](#editing-a-company--edit) them accordingly. 
+
+**Q**: What causes the occurrence of multiple records for companies sharing the same name, email, phone, and tag?<br>
+**A**: We apologise for the confusion. Please refer to [known issues](#known-issues). Different application records may 
+be stored if there are distinctions in their name, phone number, email address, start date, end date, or tags. However,
+if only the start date or end date is available, those dates won't be displayed, potentially leading to confusion.
+
+**Q**: Can different companies be tagged to the same email address?<br>
+**A**: Yes, it's possible. We permit multiple company names to share the same email address. For instance, consider 
+inputs like OCBC Tech or OCBC Finance. We offer users the flexibility to customise company names, including departmental 
+distinctions, even if they share an email address.
+
+**Q**: Why is it possible to add applications with dates that have already passed?<br>
+**A**: Users are permitted to add applications with past dates because we're in the process of developing new 
+[features](#future-advancements). These features will enable users to take notes about specific companies, which they can
+refer back to when considering future applications.
+
+**Q**: When is a company classified as a duplicate?<br>
+**A**: A company is identified as a duplicate when you attempt to add a record with identical name, phone number, email 
+address, tags, start date, and end date as an existing entry. If all these fields match, the system flags it as a duplicate,
+preventing the addition of such an application.
 
 --------------------------------------------------------------------------------------------------------------------
 

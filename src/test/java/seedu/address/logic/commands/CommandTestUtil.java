@@ -3,8 +3,10 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -37,6 +39,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_ANALYST = "Analyst";
     public static final String VALID_START_DATE = "2024-01-01"; // YYYY-MM-DD
     public static final String VALID_END_DATE = "2024-06-01"; // YYYY-MM-DD
+    public static final String LATER_START_DATE = "2024-03-03"; // YYYY-MM-DD
+    public static final String EARLIER_END_DATE = "2024-02-02"; // YYYY-MM-DD
 
     public static final String NAME_DESC_ADIDAS = " " + PREFIX_NAME + VALID_NAME_ADIDAS;
     public static final String NAME_DESC_BMW = " " + PREFIX_NAME + VALID_NAME_BMW;
@@ -48,6 +52,9 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BMW = " " + PREFIX_EMAIL + VALID_EMAIL_BMW;
     public static final String EMAIL_DESC_CITI = " " + PREFIX_EMAIL + VALID_EMAIL_CITI;
 
+    public static final String END_DATE_DESC = " " + PREFIX_ENDDATE + VALID_END_DATE;
+    public static final String START_DATE_DESC = " " + PREFIX_STARTDATE + VALID_START_DATE;
+
     public static final String TAG_DESC_ANALYST = " " + PREFIX_TAG + VALID_TAG_ANALYST;
     public static final String TAG_DESC_ENGINEER = " " + PREFIX_TAG + VALID_TAG_ENGINEER;
 
@@ -56,6 +63,9 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "dbs!yahoo"; // missing '@' symbol
 
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "engineer*"; // '*' not allowed in tags
+
+    public static final String EARLIER_END_DATE_DESC = " " + PREFIX_ENDDATE + EARLIER_END_DATE;
+    public static final String LATER_START_DATE_DESC = " " + PREFIX_STARTDATE + LATER_START_DATE;
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -69,7 +79,9 @@ public class CommandTestUtil {
                 .withTags(VALID_TAG_ANALYST).build();
         DESC_BMW = new EditCompanyDescriptorBuilder().withName(VALID_NAME_BMW)
                 .withPhone(VALID_PHONE_BMW).withEmail(VALID_EMAIL_BMW)
-                .withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST).build();
+                .withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST)
+                .withStartDate(VALID_START_DATE).withEndDate(VALID_END_DATE)
+                .build();
     }
 
     /**

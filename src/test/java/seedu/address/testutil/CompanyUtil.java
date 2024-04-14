@@ -21,13 +21,13 @@ public class CompanyUtil {
      * Returns an add command string for adding the {@code company}.
      */
     public static String getAddCommand(Company company) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(company);
+        return AddCommand.COMMAND_WORD + " " + getCompanyDetails(company);
     }
 
     /**
      * Returns the part of command string for the given {@code company}'s details.
      */
-    public static String getPersonDetails(Company company) {
+    public static String getCompanyDetails(Company company) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + company.getName().fullName + " ");
         sb.append(PREFIX_PHONE + company.getPhone().value + " ");
@@ -41,7 +41,7 @@ public class CompanyUtil {
     /**
      * Returns the part of command string for the given {@code EditCompanyDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditCommand.EditCompanyDescriptor descriptor) {
+    public static String getEditCompanyDescriptorDetails(EditCommand.EditCompanyDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));

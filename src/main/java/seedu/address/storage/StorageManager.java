@@ -17,14 +17,14 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
+    private InternBookStorage internBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code InternBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
-        this.addressBookStorage = addressBookStorage;
+    public StorageManager(InternBookStorage internBookStorage, UserPrefsStorage userPrefsStorage) {
+        this.internBookStorage = internBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -49,30 +49,30 @@ public class StorageManager implements Storage {
     // ================ AddressBook methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getInternBookFilePath() {
+        return internBookStorage.getInternBookFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyInternBook> readAddressBook() throws DataLoadingException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyInternBook> readInternBook() throws DataLoadingException {
+        return readInternBook(internBookStorage.getInternBookFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyInternBook> readAddressBook(Path filePath) throws DataLoadingException {
+    public Optional<ReadOnlyInternBook> readInternBook(Path filePath) throws DataLoadingException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return internBookStorage.readInternBook(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyInternBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveInternBook(ReadOnlyInternBook internBook) throws IOException {
+        saveInternBook(internBook, internBookStorage.getInternBookFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyInternBook addressBook, Path filePath) throws IOException {
+    public void saveInternBook(ReadOnlyInternBook addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        internBookStorage.saveInternBook(addressBook, filePath);
     }
 
 }

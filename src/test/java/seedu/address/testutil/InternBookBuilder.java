@@ -6,24 +6,24 @@ import seedu.address.model.company.Company;
 /**
  * A utility class to help with building Addressbook objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code AddressBook ab = new InternBookBuilder().withPerson("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class InternBookBuilder {
 
-    private InternBook internBook;
+    private final InternBook internBook;
 
-    public AddressBookBuilder() {
+    public InternBookBuilder() {
         internBook = new InternBook();
     }
 
-    public AddressBookBuilder(InternBook internBook) {
+    public InternBookBuilder(InternBook internBook) {
         this.internBook = internBook;
     }
 
     /**
      * Adds a new {@code Person} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withPerson(Company company) {
+    public InternBookBuilder withPerson(Company company) {
         internBook.addCompany(company);
         return this;
     }

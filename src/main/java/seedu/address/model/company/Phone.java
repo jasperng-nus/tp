@@ -87,6 +87,6 @@ public class Phone {
     }
 
     public boolean isPhonePresent() {
-        return !(this == DEFAULT_PHONE);
+        return !(this.equals(DEFAULT_PHONE));
     }
 }

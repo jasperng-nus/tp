@@ -35,7 +35,7 @@ public class UnmarkCommandTest {
         String expectedMessage = String.format(UnmarkCommand.MESSAGE_UNMARK_COMPANY_SUCCESS,
                 Messages.format(companyToUnmark));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
         assertCommandSuccess(unmarkCommand, model, expectedMessage, expectedModel);
     }
 

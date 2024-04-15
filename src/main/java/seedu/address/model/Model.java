@@ -53,35 +53,35 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getInternBookFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setInternBookFilePath(Path InternBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces intern book data with the data in {@code InternBook}.
      */
-    void setAddressBook(ReadOnlyInternBook addressBook);
+    void setInternBook(ReadOnlyInternBook InternBook);
 
     /** Returns the AddressBook */
-    ReadOnlyInternBook getAddressBook();
+    ReadOnlyInternBook getInternBook();
 
     /**
-     * Returns true if a company with the same identity as {@code company} exists in the address book.
+     * Returns true if a company with the same identity as {@code company} exists in the intern book.
      */
     boolean hasCompany(Company company);
 
     /**
      * Deletes the given company.
-     * The company must exist in the address book.
+     * The company must exist in the intern book.
      */
     void deleteCompany(Company target);
 
     /**
      * Adds the given company.
-     * {@code company} must not already exist in the address book.
+     * {@code company} must not already exist in the intern book.
      */
     void addCompany(Company company);
 

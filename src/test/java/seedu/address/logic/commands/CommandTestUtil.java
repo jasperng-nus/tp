@@ -121,18 +121,18 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        InternBook expectedInternBook = new InternBook(actualModel.getAddressBook());
+        InternBook expectedInternBook = new InternBook(actualModel.getInternBook());
         List<Company> expectedFilteredList = new ArrayList<>(actualModel.getFilteredCompanyList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedInternBook, actualModel.getAddressBook());
+        assertEquals(expectedInternBook, actualModel.getInternBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredCompanyList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the company at the given {@code targetIndex} in the
-     * {@code model}'s address book.
+     * {@code model}'s intern book.
      */
-    public static void showPersonAtIndex(Model model, Index targetIndex) {
+    public static void showCompanyAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyList().size());
 
         Company company = model.getFilteredCompanyList().get(targetIndex.getZeroBased());

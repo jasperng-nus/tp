@@ -294,13 +294,13 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Company editedCompany = new CompanyBuilder().build();
-        EditCommand.EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder(editedCompany).build();
+        EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder(editedCompany).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY, descriptor);
 
         String expectedMessage = String.format(
                 EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
 
-        Model expectedModel = new ModelManager(new InternBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
         expectedModel.setCompany(model.getFilteredCompanyList().get(0), editedCompany);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -322,7 +322,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(
                 EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
 
-        Model expectedModel = new ModelManager(new InternBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
         expectedModel.setCompany(lastCompany, editedCompany);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -336,7 +336,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(
                 EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
 
-        Model expectedModel = new ModelManager(new InternBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -353,7 +353,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(
                 EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
 
-        Model expectedModel = new ModelManager(new InternBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
         expectedModel.setCompany(model.getFilteredCompanyList().get(0), editedCompany);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -373,7 +373,7 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_COMPANY);
 
         // edit company in filtered list into a duplicate in address book
-        Company companyInList = model.getAddressBook().getCompanyList().get(INDEX_SECOND_COMPANY.getZeroBased());
+        Company companyInList = model.getInternBook().getCompanyList().get(INDEX_SECOND_COMPANY.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY,
                 new EditCompanyDescriptorBuilder(companyInList).build());
 

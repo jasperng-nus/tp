@@ -51,45 +51,45 @@ public interface Model {
     boolean getReminderStatus();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' intern book file path.
      */
-    Path getAddressBookFilePath();
+    Path getInternBookFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' intern book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setInternBookFilePath(Path internBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces intern book data with the data in {@code internBook}.
      */
-    void setAddressBook(ReadOnlyInternBook addressBook);
+    void setInternBook(ReadOnlyInternBook internBook);
 
-    /** Returns the AddressBook */
-    ReadOnlyInternBook getAddressBook();
+    /** Returns the InternBook */
+    ReadOnlyInternBook getInternBook();
 
     /**
-     * Returns true if a company with the same identity as {@code company} exists in the address book.
+     * Returns true if a company with the same identity as {@code company} exists in the intern book.
      */
     boolean hasCompany(Company company);
 
     /**
      * Deletes the given company.
-     * The company must exist in the address book.
+     * The company must exist in the intern book.
      */
     void deleteCompany(Company target);
 
     /**
      * Adds the given company.
-     * {@code company} must not already exist in the address book.
+     * {@code company} must not already exist in the intern book.
      */
     void addCompany(Company company);
 
     /**
      * Replaces the given company {@code target} with {@code editedCompany}.
-     * {@code target} must exist in the address book.
+     * {@code target} must exist in the intern book.
      * The company identity of {@code editedCompany} must not be the same as another existing company
-     * in the address book.
+     * in the intern book.
      */
     void setCompany(Company target, Company editedCompany);
 

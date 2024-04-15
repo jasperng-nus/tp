@@ -35,7 +35,7 @@ class MarkCommandTest {
         String expectedMessage = String.format(MarkCommand.MESSAGE_MARK_COMPANY_SUCCESS,
                 Messages.format(companyToMark));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
         assertCommandSuccess(markCommand, model, expectedMessage, expectedModel);
     }
 

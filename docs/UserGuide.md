@@ -12,7 +12,7 @@ Welcome to InternBook, your go-to companion in the exciting journey of applying 
 We are a dynamic team of five students who have been in your shoes, feeling the struggle of juggling multiple internship
 applications while trying to keep track of every detail. We get it - those Excel spreadsheets might seem like a good idea
 at first, but let's face it, they quickly become a cluttered mess, making it harder to find what you need and leading to
-inconsistencies in your data. That's why we decided to roll up our sleeves and create InternBook!
+inconsistencies in your data. That's why we decided to roll up our sleeves and create InternBook! 
 
 ### What is InternBook? 
 InternBook isn't just another app - it's your personal assistant for managing internship applications effortlessly. With

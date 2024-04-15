@@ -96,7 +96,7 @@ The InternBook Team :rocket:
   * [List](#listing-all-companies--list)
   * [Adding Company](#adding-a-company-add)
   * [Editing Company](#editing-a-company--edit)
-  * [Locating Company](#locating-companies-and-tags-by-keywords-find-mag)
+  * [Locating Company and Tags](#locating-companies-and-tags-by-keywords-find-mag)
   * [Deleting Company](#deleting-a-company--delete)
   * [Marking Company](#marking-a-company--mark-heavy_check_mark)
   * [Unmarking Company](#unmarking-a-company--unmark)

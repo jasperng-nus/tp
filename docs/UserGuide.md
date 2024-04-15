@@ -12,9 +12,9 @@ Welcome to InternBook, your go-to companion in the exciting journey of applying 
 We are a dynamic team of five students who have been in your shoes, feeling the struggle of juggling multiple internship
 applications while trying to keep track of every detail. We get it - those Excel spreadsheets might seem like a good idea
 at first, but let's face it, they quickly become a cluttered mess, making it harder to find what you need and leading to
-inconsistencies in your data. That's why we decided to roll up our sleeves and create InternBook! 
+inconsistencies in your data. That's why we decided to roll up our sleeves and create InternBook!
 
-### What is InternBook? 
+### What is InternBook?
 InternBook isn't just another app - it's your personal assistant for managing internship applications effortlessly. With
 InternBook, you can record crucial details like company names, application deadlines, contact emails, and the roles you
 are applying for, all in one organised place. It is optimised for a _Command line Interface_ (CLI), but you can use the
@@ -35,16 +35,16 @@ advantages of a _Graphical User Interface_ (GUI). No more frantic searches throu
 - **Set Reminders:** Never miss a deadline again! Set reminders, and InternBook will make sure you stay on top of your game.
 
 ### Purpose of this User Guide
-This user guide is tailored to introduce you to the core functionalities of InternBook, providing comprehensive examples 
+This user guide is tailored to introduce you to the core functionalities of InternBook, providing comprehensive examples
 to kickstart your journey.
 
 ### How to use this user guide
-Our user guide begins by providing guidance on [getting started](#getting-started). You can easily navigate effortlessly through our [features section](#features) for a detailed overview of all 
-available functionalities. Alternatively, utilise our convenient [Table of Contents](#table-of-contents) to quickly 
+Our user guide begins by providing guidance on [getting started](#getting-started). You can easily navigate effortlessly through our [features section](#features) for a detailed overview of all
+available functionalities. Alternatively, utilise our convenient [Table of Contents](#table-of-contents) to quickly
 access specific sections of interest. It provides the field constraints, including permitted values and compulsory
 or optional parameters.
 
-We have also included details about our [future enhancements](#future-enhancements-hammer), giving you a glimpse of what 
+We have also included details about our [future enhancements](#future-enhancements-hammer), giving you a glimpse of what
 features to anticipate.
 
 Don't forget to check out our [frequently asked questions](#faq-questionquestionquestion) section, where you'll find answers to common queries.
@@ -119,8 +119,8 @@ The InternBook Team :rocket:
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
 > Not sure if you have Java `11` downloaded, here's how to [check](#faq-questionquestionquestion).
 1. Download the latest `internBook.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-2/tp/releases).
-2. Copy the file to the folder you want to use as the _home folder_ for your InternBook. 
->:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder. 
+2. Copy the file to the folder you want to use as the _home folder_ for your InternBook.
+>:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder.
 > Check our [FAQ](#faq-questionquestionquestion) to see how to open it in your terminal.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internBook.jar` command to run the application.
@@ -197,7 +197,7 @@ Adds a company to the InternBook.
 Format: `add -n COMPANY -e EMAIL -t TAG…​ [-p PHONE_NUMBER] [-d1 START_DATE] [-d2 END_DATE]`
 
 | Field                      | Optional/Compulsory | Flag | Remarks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|----------------------------|---------------------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+|----------------------------|---------------------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Company Name               | Compulsory          | -n   | Names should only have alphanumeric characters and spaces                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Email                      | Compulsory          | -e   | Emails should be of the format local-part@domain and adhere to the following constraints:<br/>1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. The local-part may not have consecutive special characters.<br/>2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.<br/>The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have at least 2 domain labels separated by a dot (.)<br/>- have each domain label start and end with alphanumeric characters<br/>- have each domain label consist of alphanumeric characters, separated only by hyphens, if any. |
 | Tag (Can be used as roles) | Compulsory          | -t   | Multiple tags are allowed<br/>Tags should only have alphanumeric characters and "/"<br/>Tags should not start or end with "/"<br/>Tags are case insensitive and the first alphabet of each word will be capitalised                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -242,7 +242,7 @@ Here are the steps to add a company with examples of error messages and how to d
 6. Input: `add -n TikTok -p 91234567 -e tiktok@example.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect tag format.
    ![tag error message](images/tag_error_msg.png)
-   * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise 
+   * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise
    for the confusing error message and have reported it under [known issues](#known-issues-construction).
 7. Success: Company added successfully. <br>
    ![Successfully added](images/add_successful.png)
@@ -260,7 +260,7 @@ Format: `edit INDEX [-n NAME] [-p PHONE_NUMBER] [-e EMAIL] [-t TAG…]​ [-d1 S
 * When editing tags, the existing tags of the company will be removed i.e adding of tags is not cumulative.
 
 | Field                      | Optional/Compulsory | Flag | Remarks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|----------------------------|---------------------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+|----------------------------|---------------------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Company Name               | Optional            | -n   | Names should only have alphanumeric characters and spaces                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Email                      | Optional            | -e   | Emails should be of the format local-part@domain and adhere to the following constraints:<br/>1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. The local-part may not have consecutive special characters.<br/>2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.<br/>The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have at least 2 domain labels separated by a dot (.)<br/>- have each domain label start and end with alphanumeric characters<br/>- have each domain label consist of alphanumeric characters, separated only by hyphens, if any. |
 | Tag (Can be used as roles) | Optional            | -t   | Multiple tags are allowed<br/>Tags should only have alphanumeric characters and "/"<br/>Tags should not start or end with "/"b                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -299,7 +299,7 @@ Here are the steps to edit the fields of a company:
       ![result for 'post-editing'](images/post_edit_dates.png)
 
 >:bulb: **TIP**:
-> When editing the dates of an application, it is recommended to edit both start and end dates. 
+> When editing the dates of an application, it is recommended to edit both start and end dates.
 > If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq-questionquestionquestion).
 
 ### Locating companies and tags by keywords: `find` :mag:
@@ -340,7 +340,7 @@ Examples:
 * `delete 2` deletes the 2nd company in the intern book.
 * `find Google` followed by `delete 1` deletes the 1st company in the results of the `find` command.
 
->:bulb:**TIP**: 
+>:bulb:**TIP**:
 > If you know what company you want to delete, you should search for it by using `find COMPANY`, followed by `delete INDEX`
 > instead of going through all entries to look for the company.
 
@@ -364,7 +364,7 @@ Examples:
 ![result for 'mark 1'](images/mark1.png)
 
 > :bulb: **TIP**:
-> After applying to a company, you should `find COMPANY` then `mark INDEX` instead of going through all entries to look 
+> After applying to a company, you should `find COMPANY` then `mark INDEX` instead of going through all entries to look
 > for the company.
 
 ### Unmarking a company : `unmark`
@@ -378,7 +378,7 @@ Format: `unmark INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 * Error messages will be displayed when:
   * The company at the specified `INDEX`  is already unmarked.
-  * The index **is out of bounds**. 
+  * The index **is out of bounds**.
 
 Examples:
 * `unmark 2` unmarks the 2nd company in the listed intern book if it is marked.
@@ -411,14 +411,14 @@ Examples:
 ![sort example](images/sort.png)
 
 :information_source: Remarks:
-- After sorting by start date or end date, if you notice that there are companies without dates displayed interspersed 
+- After sorting by start date or end date, if you notice that there are companies without dates displayed interspersed
 between companies with their dates displayed, please refer to our [FAQ](#faq-questionquestionquestion).
 - After adding an application or editing the dates of an application, the sort command has to be run again,
 for it to be sorted.
 
 ### Setting reminders : `reminder`
 
-Set the number of days until the end date of an application and receive reminders about approaching deadlines. 
+Set the number of days until the end date of an application and receive reminders about approaching deadlines.
 A separate reminder window as shown below, will pop up the next time you launch the app. Companies, whose end date is `NUMOFDAYS` away from current
 date, and have yet to be marked as applied, will show up.
 
@@ -448,7 +448,7 @@ Steps to set a reminder:
 ![No reminder example](images/no_reminder_tasks.png)
 
 >:bulb:**TIP**:
-> To switch off reminder, simply key `reminder -r off`. 
+> To switch off reminder, simply key `reminder -r off`.
 
 ### Clearing all entries : `clear`
 
@@ -482,17 +482,17 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 ## Future Enhancements :hammer:
 * Notes :notebook_with_decorative_cover:
   * We acknowledge the need for jotting down notes, such as the questions asked during interviews or specific requirements
-  like seeking penultimate students. Therefore, we aim to introduce a feature enabling you to document notes for each 
+  like seeking penultimate students. Therefore, we aim to introduce a feature enabling you to document notes for each
   company individually.
 * Archiving Data Files :floppy_disk:
   * We grasp the importance of preserving information post-internship applications, especially notes taken during or after
-  the process. However, as the main window could become cluttered with numerous applications that you have applied, 
+  the process. However, as the main window could become cluttered with numerous applications that you have applied,
   making it overwhelming, we've opted to introduce an archiving feature. This allows you to store applications away,
   displaying them only when necessary.
 * Adding Application with only Start or End dates :heavy_plus_sign:
   * While it's typically advised to monitor both start and end dates, we've taken your feedback into account. We've heard
-  from some of you that you prioritise the application end date. Currently, we only display dates when both start and end 
-  dates are available. In the near future, we'll adjust this to show dates for the application whenever either one is 
+  from some of you that you prioritise the application end date. Currently, we only display dates when both start and end
+  dates are available. In the near future, we'll adjust this to show dates for the application whenever either one is
   provided.
 * Alerting Users to Potential Duplicates :heavy_exclamation_mark:
   * In cases where a company's name, phone number, or email address matches existing entries in our system, we prompt the
@@ -523,40 +523,40 @@ For **Mac** users:
 2. Navigate to the parent folder of the target folder but do not double-click into it (the folder you want to open a terminal window into)
 3. Right-Click on the folder and hover over Services (At the bottom), Click New Terminal at Folder.
 ![mac terminal](images/mac_open_terminal.jpg)
-   
+
    * If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
     ![mac settings](images/mac_settings.jpg)
-   
-5. Now try again, 
+
+5. Now try again,
    * A Terminal at the folder location will pop up.
 
 **Q**: Why are my dates missing in the GUI?<br>
 **A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,
-it will not show in the GUI. You can [edit](#editing-a-company--edit) them accordingly. 
+it will not show in the GUI. You can [edit](#editing-a-company--edit) them accordingly.
 
 **Q**: What causes the occurrence of multiple records for companies sharing the same name, email, phone, and tag?<br>
-**A**: We apologise for the confusion. Please refer to [known issues](#known-issues-construction). Different application records may 
+**A**: We apologise for the confusion. Please refer to [known issues](#known-issues-construction). Different application records may
 be stored if there are distinctions in their name, phone number, email address, start date, end date, or tags. However,
 if only the start date or end date is available, those dates won't be displayed, potentially leading to confusion.
 
 **Q**: Can different companies be tagged to the same email address?<br>
-**A**: Yes, it's possible. We permit multiple company names to share the same email address. For instance, consider 
-inputs like OCBC Tech or OCBC Finance. We offer users the flexibility to customise company names, including departmental 
+**A**: Yes, it's possible. We permit multiple company names to share the same email address. For instance, consider
+inputs like OCBC Tech or OCBC Finance. We offer users the flexibility to customise company names, including departmental
 distinctions, even if they share an email address.
 
 **Q**: Why is it possible to add applications with dates that have already passed?<br>
-**A**: Users are permitted to add applications with past dates because we're in the process of developing new 
+**A**: Users are permitted to add applications with past dates because we're in the process of developing new
 [features](#future-enhancements-hammer). These features will enable users to take notes about specific companies, which they can
 refer back to when considering future applications.
 
 **Q**: When is a company classified as a duplicate?<br>
-**A**: A company is identified as a duplicate when you attempt to add a record with identical name, phone number, email 
+**A**: A company is identified as a duplicate when you attempt to add a record with identical name, phone number, email
 address, tags, start date, and end date as an existing entry. If all these fields matches, the system flags it as a duplicate,
 preventing the addition of such an application.
 
 **Q**: Why do applications with no dates appear between sorted applications by start or end date? <br>
-**A**: We apologise for the confusion caused. This occurs because some applications may have only a start date or an end 
-date entered, causing them not to display any dates. However, when sorting by start date, applications with only a start 
+**A**: We apologise for the confusion caused. This occurs because some applications may have only a start date or an end
+date entered, causing them not to display any dates. However, when sorting by start date, applications with only a start
 date will also be considered in the sorting process.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -569,7 +569,7 @@ date will also be considered in the sorting process.
 ![date sort](images/datesorterror.png)
 
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
-4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags. 
+4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags.
 5. When tags begin or end with "/", the error message is wrong.
 
 --------------------------------------------------------------------------------------------------------------------

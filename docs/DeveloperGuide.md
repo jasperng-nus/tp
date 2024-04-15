@@ -176,7 +176,7 @@ The reminder feature is supported by the `Reminder` class, which is associated w
 An example usage scenario for setting reminder is as follows:
 Step 1: The user launches the application and the `Ui` loads up.
 Step 2: The user inputs a command to set reminder using the `reminder` command.
-Step 3: The `LogicManager` takes the user input and parses it using `SetReminderParser`, which in turn creates a `SetReminderCommand` 
+Step 3: The `LogicManager` takes the user input and parses it using `SetReminderParser`, which in turn creates a `SetReminderCommand`.
 object.
 Step 4: `SetReminderCommand#execute` is called,  which keeps track of the `reminder` passed into the constructor.
 Step 5: The `Model` saves the user's input into a json file.
@@ -201,6 +201,10 @@ The activity diagram below summarizes the process of setting a reminder:
 3. **Separation of Concerns**
    * Separate the parsing of user input from the execution logic to improve code.
    * Consider creating a dedicated parser class responsible for converting user input into a `Reminder` object.
+
+4. **Storing of User's Input**
+   * Storing user's preference for reminder feature into a json file.
+   * Preference is saved for future usage.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -520,7 +524,6 @@ their preferences regarding reminders.
 7. internBook updates the user's preference to turn off reminders
 
        Use case ends.
-
 **Extensions**
 * 1a. User input is invalid
   * 1a1. internBook shows an error message.

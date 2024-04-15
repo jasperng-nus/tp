@@ -18,8 +18,8 @@ public class SortCommandTest {
 
     @Test
     public void execute_sortCompanyListAlphabetical() {
-        SortCommand command = new SortCommand(SortType.ALPHABETICAL_ASCENDING);
-        String expectedMessage = SortCommand.MESSAGE_SUCCESS + SortCommand.MESSAGE_ALPHABETICAL;
+        SortCommand command = new SortCommand(SortType.ALPHANUMERICAL_ASCENDING);
+        String expectedMessage = SortCommand.MESSAGE_SUCCESS + SortCommand.MESSAGE_ALPHANUMERICAL;
         model.sortCompanyListByName();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(model.getFilteredCompanyList(), expectedModel.getFilteredCompanyList());

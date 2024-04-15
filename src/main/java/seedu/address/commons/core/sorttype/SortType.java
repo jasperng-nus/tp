@@ -4,7 +4,7 @@ package seedu.address.commons.core.sorttype;
  * Enumeration of the different sort types for Company objects
  */
 public enum SortType {
-    ALPHABETICAL_ASCENDING('a'),
+    ALPHANUMERICAL_ASCENDING('a'),
     STARTDATE_ASCENDING('s'),
     ENDDATE_ASCENDING('e');
 

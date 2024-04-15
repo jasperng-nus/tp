@@ -35,7 +35,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/sherwynng.png" width="200px">
 
-[[github](http://github.com/SherwynNg)] [[portfolio](team/sherwyn.md)]
+[[github](http://github.com/SherwynNg)] [[portfolio](team/SherwynNg)]
 
 - Role: Developer
 - Responsibilities: Data

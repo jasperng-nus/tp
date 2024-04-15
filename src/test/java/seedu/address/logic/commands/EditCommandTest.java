@@ -12,7 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BMW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ANALYST;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showCompanyAtIndex;
 import static seedu.address.testutil.TypicalCompanies.getTypicalInternBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COMPANY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_COMPANY;
@@ -89,7 +89,7 @@ public class EditCommandTest {
      */
     @Test
     public void execute_invalidCompanyIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_COMPANY);
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
         Index outOfBoundIndex = INDEX_SECOND_COMPANY;
         // ensures that outOfBoundIndex is still in bounds of internbook list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternBook().getCompanyList().size());
@@ -343,7 +343,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_COMPANY);
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
 
         Company companyInFilteredList = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
         Company editedCompany = new CompanyBuilder(companyInFilteredList).withName(VALID_NAME_BMW).build();
@@ -370,7 +370,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicatePersonFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_COMPANY);
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
 
         // edit company in filtered list into a duplicate in address book
         Company companyInList = model.getInternBook().getCompanyList().get(INDEX_SECOND_COMPANY.getZeroBased());

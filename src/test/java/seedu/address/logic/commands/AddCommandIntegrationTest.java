@@ -27,7 +27,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
+    public void execute_newCompany_success() {
         Company validCompany = new CompanyBuilder().build();
 
         Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
@@ -39,7 +39,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateCompany_throwsCommandException() {
         Company companyInList = model.getInternBook().getCompanyList().get(0);
         assertCommandFailure(new AddCommand(companyInList), model,
                 AddCommand.MESSAGE_DUPLICATE_COMPANY);

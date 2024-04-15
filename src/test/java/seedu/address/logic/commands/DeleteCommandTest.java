@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.showCompanyAtIndex;
 import static seedu.address.testutil.TypicalCompanies.getTypicalInternBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COMPANY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_COMPANY;
@@ -51,7 +51,7 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_COMPANY);
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
 
         Company companyToDelete = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_COMPANY);
@@ -61,17 +61,17 @@ public class DeleteCommandTest {
 
         Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
         expectedModel.deleteCompany(companyToDelete);
-        showNoPerson(expectedModel);
+        showNoCompany(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showPersonAtIndex(model, INDEX_FIRST_COMPANY);
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
 
         Index outOfBoundIndex = INDEX_SECOND_COMPANY;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of intern book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternBook().getCompanyList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
@@ -110,9 +110,9 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no company.
      */
-    private void showNoPerson(Model model) {
+    private void showNoCompany(Model model) {
         model.updateFilteredCompanyList(p -> false);
 
         assertTrue(model.getFilteredCompanyList().isEmpty());

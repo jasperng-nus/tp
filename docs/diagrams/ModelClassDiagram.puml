@@ -39,16 +39,17 @@ InternBook *--> "1" UniqueCompanyList
 UniqueCompanyList --> "~* all" Company
 
 Company *--> Name
-Company --> "0..1" Phone
 Company *--> Email
 Company *--> "1..*" Tag
+Company --> "0..1" Phone
 Company --> "0..2" Date
-
 
 Company -[hidden]up--> I
 UniqueCompanyList -[hidden]right-> I
 
-Name -[hidden]right-> Phone
+Name -[hidden]right-> Email
+Email -[hidden]right-> Tag
+Tag -[hidden]right-> Date
 
 ModelManager --> "~* filtered" Company
 @enduml

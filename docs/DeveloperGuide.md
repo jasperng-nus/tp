@@ -38,7 +38,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -70,7 +70,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -87,7 +87,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -119,7 +119,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -161,10 +161,12 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+
 ### Find feature
 
 
 ### Implementation
+
 
 The find mechanism is facilitated in two parts, the first by the `FindCommandParser`, and then the `FindCommand`
 
@@ -191,6 +193,39 @@ Step 7. The `Model` filters the Company List based on the predicate, and returns
 The sequence diagram below traces the pathway of the find command within the `Logic` component, taking `find ABC` API call as an example.
 
 <puml src="diagrams/FindSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `find ABC` Command" />
+
+
+### Edit feature
+
+
+### Implementation
+
+The edit mechanism is facilitated in two parts, the first by the `EditCommandParser`, and then the `EditCommand`
+
+Given below is a step-by-step detailed guide on how the edit mechanism works.
+
+Step 1. The user launches the application. This does not affect anything in the edit command pathway.
+
+Step 2. The user executes `edit 1 -n ABC` command in order to edit the name in the first index.
+
+Step 3. The `EditCommandParser` parses the information through `ParserUtil` in the command to identify each component.
+
+Displayed in the diagram below is how the `EditCommandParser` interacts while parsing the information.
+
+<puml src="diagrams/EditParserClass.puml" alt="Interactions of EditCommandParser while parsing information" />
+
+Step 4. This information is encapsulated inside an `editCompanyDescriptor`, which contains all the values associated with the changed prefixes. In this case, it will set the name of the descriptor to `ABC`.
+
+Step 5. An `EditCommand` instance is created, initializing the `index` and `editCompanyDescriptor` as relevant.
+
+Step 6. The `EditCommand` goes through its execution cycle, facilitated by `Model`
+
+Step 7. The `Model` retrieves the Company List, and sets the edited company described in the `editCompanyDescriptor` to the company at index `index`.
+
+The sequence diagram below traces the pathway of the edit command within the `Logic` component, taking `edit 1 -n ABC` API call as an example.
+
+<puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -491,6 +526,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. InternBook shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Edit a company (UC-08)**
+
+**MSS**
+
+1.  User requests to edit a company
+2.  InternBook shows User the company it is going to edit
+3.  InternBook edits company
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. InternBook shows an error message.
+
+      Use case ends.
 
 
 ### Non-Functional Requirements

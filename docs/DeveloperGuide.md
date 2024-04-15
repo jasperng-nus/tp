@@ -688,6 +688,16 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Setting reminder
+
+1. Setting number of days for reminder window to show applications that is number of days till the end date.
+   1. Test case: `reminder -r -1`
+       Expected: Error message should be shown as the number of days should be positive.
+   2. Test case: `reminder -r 10`
+      Expected: Number of days is set to 10 so the reminder window should contain applications with end date 10 days away.
+   3. Test case: `reminder -r off`
+      Expected: The reminder feature is switched off.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files

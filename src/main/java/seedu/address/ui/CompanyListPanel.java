@@ -11,28 +11,28 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.company.Company;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of companies.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class CompanyListPanel extends UiPart<Region> {
+    private static final String FXML = "CompanyListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(CompanyListPanel.class);
 
     @FXML
-    private ListView<Company> personListView;
+    private ListView<Company> companyListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code CompanyListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Company> companyList) {
+    public CompanyListPanel(ObservableList<Company> companyList) {
         super(FXML);
-        personListView.setItems(companyList);
-        personListView.setCellFactory(listView -> new PersonListViewCell());
+        companyListView.setItems(companyList);
+        companyListView.setCellFactory(listView -> new CompanyListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code CompanyCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Company} using a {@code CompanyCard}.
      */
-    class PersonListViewCell extends ListCell<Company> {
+    class CompanyListViewCell extends ListCell<Company> {
         @Override
         protected void updateItem(Company company, boolean empty) {
             super.updateItem(company, empty);

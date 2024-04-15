@@ -31,7 +31,7 @@ public class Phone {
     /**
      * Constructs a {@code Phone}.
      */
-    public Phone() {
+    private Phone() {
         value = null;
     }
 
@@ -87,6 +87,6 @@ public class Phone {
     }
 
     public boolean isPhonePresent() {
-        return !(this == DEFAULT_PHONE);
+        return !(this.equals(DEFAULT_PHONE));
     }
 }

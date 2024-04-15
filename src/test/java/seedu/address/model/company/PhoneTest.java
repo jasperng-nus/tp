@@ -37,20 +37,32 @@ public class PhoneTest {
         assertFalse(Phone.isValidPhone("9312 1534")); // spaces within digits
 
         // valid phone numbers
+        assertTrue(Phone.isValidPhone(null));
         assertTrue(Phone.isValidPhone("911")); // exactly 3 numbers
         assertTrue(Phone.isValidPhone("93121534"));
         assertTrue(Phone.isValidPhone("124293842033123")); // long phone numbers
     }
 
     @Test
+    public void isPhonePresent() {
+        Phone defaultPhone = Phone.getDefaultPhone();
+        Phone phone = new Phone("995");
+        assertTrue(phone.isPhonePresent());
+        assertFalse(defaultPhone.isPhonePresent());
+    }
+
+    @Test
     public void equals() {
         Phone phone = new Phone("999");
-
+        Phone defaultPhone = Phone.getDefaultPhone();
         // same values -> returns true
         assertTrue(phone.equals(new Phone("999")));
 
         // same object -> returns true
         assertTrue(phone.equals(phone));
+
+        //two phones with default values -> return true
+        assertTrue(defaultPhone.equals(Phone.getDefaultPhone()));
 
         // null -> returns false
         assertFalse(phone.equals(null));
@@ -60,5 +72,16 @@ public class PhoneTest {
 
         // different values -> returns false
         assertFalse(phone.equals(new Phone("995")));
+
+        //one default phone, one non default phone -> returns false
+        assertFalse(defaultPhone.equals(new Phone("995")));
+    }
+
+    @Test
+    public void testToString() {
+        Phone defaultPhone = Phone.getDefaultPhone();
+        assertTrue(defaultPhone.toString().equals("No phone number"));
+        Phone phone = new Phone("995");
+        assertTrue(phone.toString().equals("995"));
     }
 }

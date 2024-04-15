@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.company.NameContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.InternBookBuilder;
 
 public class ModelManagerTest {
 
@@ -25,7 +25,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new InternBook(), new InternBook(modelManager.getAddressBook()));
+        assertEquals(new InternBook(), new InternBook(modelManager.getInternBook()));
     }
 
     @Test
@@ -61,14 +61,14 @@ public class ModelManagerTest {
 
     @Test
     public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setAddressBookFilePath(null));
+        assertThrows(NullPointerException.class, () -> modelManager.setInternBookFilePath(null));
     }
 
     @Test
     public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
         Path path = Paths.get("address/book/file/path");
-        modelManager.setAddressBookFilePath(path);
-        assertEquals(path, modelManager.getAddressBookFilePath());
+        modelManager.setInternBookFilePath(path);
+        assertEquals(path, modelManager.getInternBookFilePath());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        InternBook internBook = new AddressBookBuilder().withPerson(AMAZON).withPerson(BYTEDANCE).build();
+        InternBook internBook = new InternBookBuilder().withPerson(AMAZON).withPerson(BYTEDANCE).build();
         InternBook differentInternBook = new InternBook();
         UserPrefs userPrefs = new UserPrefs();
 

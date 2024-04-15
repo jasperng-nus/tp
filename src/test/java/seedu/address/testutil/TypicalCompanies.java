@@ -3,12 +3,14 @@ package seedu.address.testutil;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ADIDAS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BMW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_CITI;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ADIDAS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BMW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_CITI;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ADIDAS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BMW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_CITI;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ANALYST;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ENGINEER;
 
@@ -20,7 +22,7 @@ import seedu.address.model.InternBook;
 import seedu.address.model.company.Company;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Company} objects to be used in tests.
  */
 public class TypicalCompanies {
 
@@ -60,22 +62,24 @@ public class TypicalCompanies {
 
     // Manually added - Company's details found in {@code CommandTestUtil}
     public static final Company ADIDAS = new CompanyBuilder().withName(VALID_NAME_ADIDAS).withPhone(VALID_PHONE_ADIDAS)
-            .withEmail(VALID_EMAIL_ADIDAS).withTags(VALID_TAG_ANALYST).build();
+            .withEmail(VALID_EMAIL_ADIDAS).withTags(VALID_TAG_ANALYST).withStartDate(VALID_START_DATE)
+            .withEndDate(VALID_END_DATE).build();
     public static final Company BMW = new CompanyBuilder().withName(VALID_NAME_BMW).withPhone(VALID_PHONE_BMW)
-            .withEmail(VALID_EMAIL_BMW).withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST)
-            .build();
+            .withEmail(VALID_EMAIL_BMW).withTags(VALID_TAG_ENGINEER, VALID_TAG_ANALYST).withStartDate(VALID_START_DATE)
+            .withEndDate(VALID_END_DATE).build();
 
     public static final Company CITI = new CompanyBuilder().withName(VALID_NAME_CITI).withPhone(VALID_PHONE_CITI)
-            .withEmail(VALID_EMAIL_CITI).withTags(VALID_TAG_ENGINEER).build();
+            .withEmail(VALID_EMAIL_CITI).withTags(VALID_TAG_ENGINEER).withStartDate(VALID_START_DATE)
+            .withEndDate(VALID_END_DATE).build();
 
     public static final String KEYWORD_MATCHING_ENGINEER = "Engineer"; // A keyword that matches ENGINEER
 
     private TypicalCompanies() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical companies.
+     * Returns an {@code InternBook} with all the typical companies.
      */
-    public static InternBook getTypicalAddressBook() {
+    public static InternBook getTypicalInternBook() {
         InternBook ab = new InternBook();
         for (Company company : getTypicalCompanies()) {
             ab.addCompany(company);

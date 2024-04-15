@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
@@ -27,7 +28,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInternBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.company.Company;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonInternBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.CompanyBuilder;
@@ -44,10 +45,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonInternBookStorage internBookStorage =
+                new JsonInternBookStorage(temporaryFolder.resolve("internBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(internBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -110,7 +111,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -136,10 +137,10 @@ public class LogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(prefPath) {
+        // Inject LogicManager with an InternBookStorage that throws the IOException e when saving
+        JsonInternBookStorage internBookStorage = new JsonInternBookStorage(prefPath) {
             @Override
-            public void saveAddressBook(ReadOnlyInternBook addressBook, Path filePath)
+            public void saveInternBook(ReadOnlyInternBook internBook, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -147,16 +148,65 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(internBookStorage, userPrefsStorage);
 
         logic = new LogicManager(model, storage);
 
-        // Triggers the saveAddressBook method by executing an add command
+        // Triggers the saveInternBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_ADIDAS + PHONE_DESC_ADIDAS
                 + EMAIL_DESC_ADIDAS;
         Company expectedCompany = new CompanyBuilder(ADIDAS).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addCompany(expectedCompany);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void getAddressBookFilePath_returnsCorrectPath() {
+        Path expectedPath = Path.of("sample/path/internBook.json");
+
+        Model model = new ModelManager();
+        model.setInternBookFilePath(expectedPath);
+
+        Logic logic = new LogicManager(model, null);
+
+        Path actualPath = logic.getAddressBookFilePath();
+        assertEquals(expectedPath, actualPath);
+    }
+
+    @Test
+    public void getGuiSettings_returnsModelGuiSettings() {
+        // Create a sample GuiSettings
+        GuiSettings expectedGuiSettings = new GuiSettings(1000, 600, 200, 100);
+
+        // Create a mock model that returns this GuiSettings
+        Model model = new ModelManager();
+        model.setGuiSettings(expectedGuiSettings);
+
+        // Set up LogicManager with the model
+        Logic logic = new LogicManager(model, null);
+
+        // Ensure the returned GuiSettings matches the expected GuiSettings
+        GuiSettings actualGuiSettings = logic.getGuiSettings();
+        assertEquals(expectedGuiSettings, actualGuiSettings);
+    }
+
+    @Test
+    public void setGuiSettings_setsModelGuiSettings() {
+        // Create a sample GuiSettings
+        GuiSettings guiSettings = new GuiSettings(1000, 600, 200, 100);
+
+        // Create a mock model
+        Model model = new ModelManager();
+
+        // Set up LogicManager with the model
+        Logic logic = new LogicManager(model, null);
+
+        // Set the GuiSettings via LogicManager
+        logic.setGuiSettings(guiSettings);
+
+        // Ensure the model's GuiSettings have been updated
+        GuiSettings modelGuiSettings = model.getGuiSettings();
+        assertEquals(guiSettings, modelGuiSettings);
     }
 }

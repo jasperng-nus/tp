@@ -37,10 +37,10 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 
 InternBook *--> "1" UniqueCompanyList
 UniqueCompanyList --> "~* all" Company
-Company *--> Name
-Company *--> Email
+Company *--> "1" Name
+Company *--> "1" Email
 Company *--> "1..*" Tag
-Company --> Phone
+Company --> "0..1" Phone
 Company --> "0..2" Date
 
 Company -[hidden]up--> I

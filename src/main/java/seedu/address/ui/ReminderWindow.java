@@ -23,12 +23,12 @@ public class ReminderWindow extends UiPart<Stage> {
     private static final Logger logger = LogsCenter.getLogger(ReminderWindow.class);
     private static final String FXML = "ReminderWindow.fxml";
     private Logic logic;
-    private PersonListPanel personListPanel;
+    private CompanyListPanel companyListPanel;
     private ResultDisplay resultDisplay;
     @FXML
     private Label reminderMessage;
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane companyListPanelPlaceholder;
     @FXML
     private StackPane resultDisplayPlaceholder;
 
@@ -52,8 +52,8 @@ public class ReminderWindow extends UiPart<Stage> {
     void fillInnerParts() {
         assert logic != null;
         ObservableList<Company> filteredList = logic.getFilteredCompaniesRemindersList();
-        personListPanel = new PersonListPanel(filteredList);
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        companyListPanel = new CompanyListPanel(filteredList);
+        companyListPanelPlaceholder.getChildren().add(companyListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
 

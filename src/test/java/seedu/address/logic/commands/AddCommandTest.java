@@ -35,21 +35,21 @@ public class AddCommandTest {
 
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+        ModelStubAcceptingCompanyAdded modelStub = new ModelStubAcceptingCompanyAdded();
         Company validCompany = new CompanyBuilder().build();
 
         CommandResult commandResult = new AddCommand(validCompany).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validCompany)),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validCompany), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validCompany), modelStub.companiesAdded);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Company validCompany = new CompanyBuilder().build();
         AddCommand addCommand = new AddCommand(validCompany);
-        ModelStub modelStub = new ModelStubWithPerson(validCompany);
+        ModelStub modelStub = new ModelStubWithCompany(validCompany);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_COMPANY, () -> addCommand.execute(modelStub));
     }
@@ -125,12 +125,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getInternBookFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setInternBookFilePath(Path internBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -140,12 +140,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyInternBook newData) {
+        public void setInternBook(ReadOnlyInternBook internBook) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyInternBook getAddressBook() {
+        public ReadOnlyInternBook getInternBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -213,10 +213,10 @@ public class AddCommandTest {
     /**
      * A Model stub that contains a single company.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithCompany extends ModelStub {
         private final Company company;
 
-        ModelStubWithPerson(Company company) {
+        ModelStubWithCompany(Company company) {
             requireNonNull(company);
             this.company = company;
         }
@@ -231,23 +231,23 @@ public class AddCommandTest {
     /**
      * A Model stub that always accept the company being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Company> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingCompanyAdded extends ModelStub {
+        final ArrayList<Company> companiesAdded = new ArrayList<>();
 
         @Override
         public boolean hasCompany(Company company) {
             requireNonNull(company);
-            return personsAdded.stream().anyMatch(company::isSameCompany);
+            return companiesAdded.stream().anyMatch(company::isSameCompany);
         }
 
         @Override
         public void addCompany(Company company) {
             requireNonNull(company);
-            personsAdded.add(company);
+            companiesAdded.add(company);
         }
 
         @Override
-        public ReadOnlyInternBook getAddressBook() {
+        public ReadOnlyInternBook getInternBook() {
             return new InternBook();
         }
     }

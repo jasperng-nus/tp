@@ -45,16 +45,16 @@ public class PhoneTest {
 
     @Test
     public void isPhonePresent() {
-        Phone default_phone = Phone.getDefaultPhone();
+        Phone defaultPhone = Phone.getDefaultPhone();
         Phone phone = new Phone("995");
         assertTrue(phone.isPhonePresent());
-        assertFalse(default_phone.isPhonePresent());
+        assertFalse(defaultPhone.isPhonePresent());
     }
 
     @Test
     public void equals() {
         Phone phone = new Phone("999");
-        Phone default_phone = Phone.getDefaultPhone();
+        Phone defaultPhone = Phone.getDefaultPhone();
         // same values -> returns true
         assertTrue(phone.equals(new Phone("999")));
 
@@ -62,7 +62,7 @@ public class PhoneTest {
         assertTrue(phone.equals(phone));
 
         //two phones with default values -> return true
-        assertTrue(default_phone.equals(Phone.getDefaultPhone()));
+        assertTrue(defaultPhone.equals(Phone.getDefaultPhone()));
 
         // null -> returns false
         assertFalse(phone.equals(null));
@@ -74,13 +74,13 @@ public class PhoneTest {
         assertFalse(phone.equals(new Phone("995")));
 
         //one default phone, one non default phone -> returns false
-        assertFalse(default_phone.equals(new Phone("995")));
+        assertFalse(defaultPhone.equals(new Phone("995")));
     }
 
     @Test
     public void testToString() {
-        Phone default_phone = Phone.getDefaultPhone();
-        assertTrue(default_phone.toString().equals("No phone number"));
+        Phone defaultPhone = Phone.getDefaultPhone();
+        assertTrue(defaultPhone.toString().equals("No phone number"));
         Phone phone = new Phone("995");
         assertTrue(phone.toString().equals("995"));
     }

@@ -740,7 +740,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `add -e abc@abc.com -t XYZ`
        Expected: No company is added. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `add`, `add -n ABC -t XYZ`, `...` 
+    1. Other incorrect add commands to try: `add`, `add -n ABC -t XYZ`, `...` 
        Expected: Similar to previous.
 
 ### Deleting a company
@@ -770,7 +770,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `edit 0 -e abc@abc.com -t XYZ`
        Expected: No company is edited. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `edit`, `edit x -n ABC`, `edit -n ABC -t XYZ`, `...` (x is an index our of range) 
+    1. Other incorrect edit commands to try: `edit`, `edit x -n ABC`, `edit -n ABC -t XYZ`, `...` (x is an index our of range) 
        Expected: Similar to previous.
 
 ### Locating a company
@@ -797,7 +797,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `mark 0`
        Expected: No company is marked. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `mark`, `mark x`, `mark t`, `...` (x is an index our of range, t is an index which is already marked) 
+    1. Other incorrect mark commands to try: `mark`, `mark x`, `mark t`, `...` (x is an index our of range, t is an index which is already marked) 
        Expected: Similar to previous.
 
 ### Unmarking a company
@@ -812,7 +812,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `unmark 0`
        Expected: No company is unmarked. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `unmark`, `unmark x`, `unmark t`, `...` (x is an index our of range, t is an index which is already unmarked) 
+    1. Other incorrect unmark commands to try: `unmark`, `unmark x`, `unmark t`, `...` (x is an index our of range, t is an index which is already unmarked) 
        Expected: Similar to previous.
 
 ### Sorting companies
@@ -827,7 +827,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `sort g`
        Expected: No company is sorted. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `sort`, `sort a bc`, `sort 1`, `...` 
+    1. Other incorrect sort commands to try: `sort`, `sort a bc`, `sort 1`, `...` 
        Expected: Similar to previous.
 
 ### Setting reminder

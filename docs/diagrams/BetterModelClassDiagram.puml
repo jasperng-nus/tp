@@ -16,5 +16,7 @@ Company *-up-> Tag
 
 Company *--> Name
 Company --> "0..1"Phone
+Company --> "0..1"Start_Date
+Company --> "0..1"End_Date
 Company *--> Email
 @enduml

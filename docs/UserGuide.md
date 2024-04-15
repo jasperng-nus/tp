@@ -44,11 +44,11 @@ available functionalities. Alternatively, utilise our convenient [Table of Conte
 access specific sections of interest. It provides the field constraints, including permitted values and compulsory
 or optional parameters.
 
-We have also included details about our [future enhancements](#future-enhancements-hammer), giving you a glimpse of what
+We have also included details about our [future enhancements](#future-enhancements), giving you a glimpse of what
 features to anticipate.
 
-Don't forget to check out our [frequently asked questions](#faq-questionquestionquestion) section, where you'll find answers to common queries.
-We understand that perfection takes time, so we appreciate your patience as we work to resolve any [known issues](#known-issues-construction)
+Don't forget to check out our [frequently asked questions](#faq) section, where you'll find answers to common queries.
+We understand that perfection takes time, so we appreciate your patience as we work to resolve any [known issues](#known-issues)
 you may encounter.
 
 For quick reference, consult our [command summary](#command-summary), which outlines key commands used throughout InternBook.
@@ -96,9 +96,9 @@ The InternBook Team :rocket:
   * [List](#listing-all-companies--list)
   * [Adding Company](#adding-a-company-add)
   * [Editing Company](#editing-a-company--edit)
-  * [Locating Company and Tags](#locating-companies-and-tags-by-keywords-find-mag)
+  * [Locating Company and Tags](#locating-companies-and-tags-by-keywords-find)
   * [Deleting Company](#deleting-a-company--delete)
-  * [Marking Company](#marking-a-company--mark-heavy_check_mark)
+  * [Marking Company](#marking-a-company--mark)
   * [Unmarking Company](#unmarking-a-company--unmark)
   * [Sorting](#sorting-the-list--sort)
   * [Setting Reminders](#setting-reminders--reminder)
@@ -106,9 +106,9 @@ The InternBook Team :rocket:
   * [Exiting Program](#exiting-the-program--exit)
   * [Saving Data](#saving-the-data)
   * [Editing Data File](#editing-the-data-file)
-* [Future Enhancements](#future-enhancements-hammer)
-* [Frequently Asked Questions](#faq-questionquestionquestion)
-* [Known Issues](#known-issues-construction)
+* [Future Enhancements](#future-enhancements)
+* [Frequently Asked Questions](#faq)
+* [Known Issues](#known-issues)
 * [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -299,10 +299,10 @@ Here are the steps to edit the fields of a company:
       ![result for 'post-editing'](images/post_edit_dates.png)
 
 >:bulb: **TIP**:
-> When editing the dates of an application, it is recommended to edit both start and end dates.
-> If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq-questionquestionquestion).
+> When editing the dates of an application, it is recommended to edit both start and end dates. 
+> If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq).
 
-### Locating companies and tags by keywords: `find` :mag:
+### Locating companies and tags by keywords: `find`
 
 Finds companies whose names or tags begin with the given keyword.
 
@@ -344,7 +344,7 @@ Examples:
 > If you know what company you want to delete, you should search for it by using `find COMPANY`, followed by `delete INDEX`
 > instead of going through all entries to look for the company.
 
-### Marking a company : `mark` :heavy_check_mark:
+### Marking a company : `mark`
 
 Marks the specified company as applied.
 
@@ -479,7 +479,7 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Future Enhancements :hammer:
+## Future Enhancements
 * Notes :notebook_with_decorative_cover:
   * We acknowledge the need for jotting down notes, such as the questions asked during interviews or specific requirements
   like seeking penultimate students. Therefore, we aim to introduce a feature enabling you to document notes for each
@@ -500,7 +500,7 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ :question::question::question:
+## FAQ
 
 **Q**: How do I transfer my data to another Computer? <br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InternBook home folder.
@@ -546,7 +546,7 @@ distinctions, even if they share an email address.
 
 **Q**: Why is it possible to add applications with dates that have already passed?<br>
 **A**: Users are permitted to add applications with past dates because we're in the process of developing new
-[features](#future-enhancements-hammer). These features will enable users to take notes about specific companies, which they can
+[features](#future-enhancements). These features will enable users to take notes about specific companies, which they can
 refer back to when considering future applications.
 
 **Q**: When is a company classified as a duplicate?<br>
@@ -561,7 +561,7 @@ date will also be considered in the sorting process.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues :construction:
+## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **Only when both start and end dates are present, will the date be shown in the GUI**. If only one of the dates is present, the sorts will take them into account while sorting, leading to misleading errors such as the one below.

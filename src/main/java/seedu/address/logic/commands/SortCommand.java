@@ -7,7 +7,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
- * Sorts the companies in the list in alphabetical order.
+ * Sorts the companies in the list in alphanumerical order.
  * Sorting is case insensitive.
  */
 public class SortCommand extends Command {
@@ -19,7 +19,7 @@ public class SortCommand extends Command {
             + "Parameters: PREF (must be a single char in [a, s, e])\n"
             + "Example: " + COMMAND_WORD + " a";
 
-    public static final String MESSAGE_ALPHABETICAL = "in alphabetical order";
+    public static final String MESSAGE_ALPHANUMERICAL = "in alphabetical order";
     public static final String MESSAGE_END_DATE = "in order of ending date";
     public static final String MESSAGE_START_DATE = "in order of starting date";
 
@@ -37,9 +37,9 @@ public class SortCommand extends Command {
             throw new CommandException("Invalid sorting preference.");
         }
         switch (sortType) {
-        case ALPHABETICAL_ASCENDING:
+        case ALPHANUMERICAL_ASCENDING:
             model.sortCompanyListByName();
-            outMessage = MESSAGE_SUCCESS + MESSAGE_ALPHABETICAL;
+            outMessage = MESSAGE_SUCCESS + MESSAGE_ALPHANUMERICAL;
             break;
         case STARTDATE_ASCENDING:
             model.sortCompanyListByStartDate();

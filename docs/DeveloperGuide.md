@@ -162,6 +162,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Setting Reminder
+
 #### Implementation
 The reminder feature is supported by the `Reminder` class, which is associated with the `Days` and `ReminderOnOff` class.
 `Reminder` class keeps track of two values which are `days` and `reminderOnOff`.
@@ -182,10 +183,12 @@ Step 4: `SetReminderCommand#execute` is called,  which keeps track of the `remin
 Step 5: The `Model` saves the user's input into a json file.
 
 The sequence diagram below shows how the `reminder` command works within the `Logic` component.
-<puml src="diagrams/ReminderSequenceDiagram.uml" width="550">
+
+<puml src="diagrams/ReminderSequenceDiagram.puml" width="550" />
 
 The activity diagram below summarizes the process of setting a reminder:
-<puml src="diagrams/ReminderActivityDiagram.uml" width="550">
+
+<puml src="diagrams/ReminderActivityDiagram.puml" width="550" />
 
 #### Design considerations:
 
@@ -206,11 +209,10 @@ The activity diagram below summarizes the process of setting a reminder:
    * Storing user's preference for reminder feature into a json file.
    * Preference is saved for future usage.
 
+
 ### Find feature
 
-
 #### Implementation
-
 
 The find mechanism is facilitated in two parts, the first by the `FindCommandParser`, and then the `FindCommand`
 
@@ -232,7 +234,7 @@ Step 5. A `FindCommand` instance is created, initializing the `NameContainsKeywo
 
 Step 6. The `FindCommand` goes through its execution cycle, facilitated by `Model`
 
-Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list. 
+Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list.
 
 The sequence diagram below traces the pathway of the find command within the `Logic` component, taking `find ABC` API call as an example.
 
@@ -240,7 +242,6 @@ The sequence diagram below traces the pathway of the find command within the `Lo
 
 
 ### Edit feature
-
 
 #### Implementation
 
@@ -269,6 +270,62 @@ Step 7. The `Model` retrieves the Company List, and sets the edited company desc
 The sequence diagram below traces the pathway of the edit command within the `Logic` component, taking `edit 1 -n ABC` API call as an example.
 
 <puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
+
+
+### Sort Feature
+
+#### Implementation
+
+The sort feature is facilitated by `Model` and `SortType` enum. The SortCommand is responsible for sorting the list of companies in the application based on the user's preference. The command supports three sorting types: alphabetical order, start date order, and end date order.
+
+The `SortType` Enum has 3 values:
+* `ALPHABETICAL_ASCENDING`: Sorts the companies alphanumerically.
+* `STARTDATE_ASCENDING`: Sorts the companies by their starting date.
+* `ENDDATE_ASCENDING`: Sorts the companies by their ending date.
+
+`Sort` implements the following relevant operations:
+* `model.sortCompanyListByName()` - Sorts `UniqueCompanyList` in `InternBook` in ascending alphanumerical order.
+* `model.sortCompanyListByStartDate()` - Sorts `UniqueCompanyList` in `InternBook` in order of ascending start date.
+* `model.sortCompanyListByEndDate()` - Sorts `UniqueCompanyList` in `InternBook` in order of ascending end date.
+
+Given below is a step-by-step detailed guide on how the sort mechanism behaves.
+
+Step 1. The user launches the application.
+
+Step 2. The user inputs a command to sort the companies in the intern book in a specified order using the `sort` command.
+
+Step 3. The `SortCommandParser` is responsible for processing user input. It takes the user's input and parses it into one of the three different `SortType` options available.
+
+Step 4: A `SortCommand` object will then be called with the chosen `SortType` as the argument.
+
+Step 5: `SortCommand#execute` is called, which calls the corresponding `model.sortCompanyList`
+
+Step 6: The GUI will display the newly sorted company list.
+
+The following activity diagram illustrates the workflow of the `SortCommand` feature:
+
+<puml src="diagrams/SortCommandActivityDiagram.puml" alt="Activity diagram of SortCommand" />
+
+The following sequence diagram shows how sort operation is executed:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="Sequence diagram of SortCommand" />
+
+### Design considerations:
+**Aspect: Extensibility:**
+
+Support for Future Enhancements:
+
+* Alternative 1 (current choice): Use a fixed set of sorting criteria (e.g., alphabetical order, start date order, end date order) implemented as switch cases within the SortCommand class.
+    * Pros: Simplified implementation, straightforward to understand and maintain.
+    * Cons: Limited flexibility for adding new sorting criteria in the future, may require modifications to the SortCommand class and switch cases if new sorting criteria are introduced.
+
+* Alternative 2: Implement a more flexible sorting system using a strategy pattern, where each sorting criteria is encapsulated in its own class.
+    * Pros: Improved extensibility, easier to add new sorting criteria without modifying existing code.
+    * Cons: Increased complexity in implementation, potential overhead in managing multiple sorting strategy classes.
+
+* Alternative 3: Introduce a dynamic sorting configuration where users can define custom sorting criteria through a configuration file or user interface.
+    * Pros: Highly customizable, allows users to define sorting criteria based on their specific needs.
+    * Cons: Increased complexity in implementation and management, potential challenges in ensuring user-friendly configuration interfaces.
 
 
 ### Mark/Unmark feature
@@ -312,9 +369,11 @@ Step 9. The `MarkCommand` class returns a `CommandResult` object with a success 
 Step 10. The `LogicManager` class updates the `ResultDisplay` in the UI with the success message.
 
 The sequence diagram below shows how the MarkCommand executes the mark operation within the Logic component:
+
 <puml src="diagrams/MarkSequenceDiagram.uml" width="550">
 
 The activity diagram below summarizes the process of marking a company:
+
 <puml src="diagrams/MarkActivityDiagram.puml" width="550" />
 
 The Unmark feature follows a similar process, with the `UnmarkCommand` class calling the `unmarkCompany(Company company)` method of the ModelManager to update the `isMarked` attribute of the specified `Company` object to `false`.

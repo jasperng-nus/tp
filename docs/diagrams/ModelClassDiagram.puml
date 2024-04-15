@@ -18,8 +18,7 @@ Class Email
 Class Name
 Class Phone
 Class Tag
-Class Start_Date
-Class End_Date
+Class Date
 
 Class I #FFFFFF
 }
@@ -43,8 +42,7 @@ Company *--> Name
 Company --> "0..1" Phone
 Company *--> Email
 Company *--> "1..*" Tag
-Company --> "0..1" Start_Date
-Company --> "0..1" End_Date
+Company --> "0..2" Date
 
 
 Company -[hidden]up--> I

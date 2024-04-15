@@ -570,9 +570,12 @@ date will also be considered in the sorting process.
 
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
 4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags.
-5. **Error messages** for tags, due not account for the fact that tags cannot begin and end with "/"
-6. The text displayed within the command box may be difficult to discern.
-    ![command box issue](images/command_box_issue.png)
+5. **Error messages** for tags, due not account for the fact that tags cannot begin and end with "/".
+![tag_error_message](images/tagerrormessage.png)
+6. **Due to the colour scheme**, the text displayed within the command box may be difficult to discern.
+![command box issue](images/command_box_issue.png)
+7. **CommandResult** for `sort a` is not fully accurate. It should state "Sorted all entries in alphanumerical order" instead.
+![sort_a_commandresult](images/sort_a_commandresult.png)
 
 --------------------------------------------------------------------------------------------------------------------
 

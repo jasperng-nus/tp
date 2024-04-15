@@ -161,6 +161,37 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Edit feature
+
+
+### Implementation
+
+The edit mechanism is facilitated in two parts, the first by the `EditCommandParser`, and then the `EditCommand`
+
+Given below is a step-by-step detailed guide on how the edit mechanism works.
+
+Step 1. The user launches the application. This does not affect anything in the edit command pathway.
+
+Step 2. The user executes `edit 1 -n ABC` command in order to edit the name in the first index.
+
+Step 3. The `EditCommandParser` parses the information through `ParserUtil` in the command to identify each component.
+
+Displayed in the diagram below is how the `EditCommandParser` interacts while parsing the information.
+
+<puml src="diagrams/EditParserClass.puml" alt="Interactions of EditCommandParser while parsing information" />
+
+Step 4. This information is encapsulated inside an `editCompanyDescriptor`, which contains all the values associated with the changed prefixes. In this case, it will set the name of the descriptor to `ABC`.
+
+Step 5. An `EditCommand` instance is created, initializing the `index` and `editCompanyDescriptor` as relevant.
+
+Step 6. The `EditCommand` goes through its execution cycle, facilitated by `Model`
+
+Step 7. The `Model` retrieves the Company List, and sets the edited company described in the `editCompanyDescriptor` to the company at index `index`.
+
+The sequence diagram below traces the pathway of the edit command within the `Logic` component, taking `edit 1 -n ABC` API call as an example.
+
+<puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -461,7 +492,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use case: Edit a company (UC-08)**
+
+**MSS**
+
+1.  User requests to edit a company
+2.  InternBook shows User the company it is going to edit
+3.  InternBook edits company
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. InternBook shows an error message.
+
+      Use case ends.
 
 ### Non-Functional Requirements
 

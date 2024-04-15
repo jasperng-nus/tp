@@ -571,6 +571,8 @@ date will also be considered in the sorting process.
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
 4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags.
 5. When tags begin or end with "/", the error message is wrong.
+6. The text displayed within the command box may be difficult to discern.
+    ![command box issue](images/command_box_issue.png)
 
 --------------------------------------------------------------------------------------------------------------------
 

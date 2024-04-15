@@ -571,7 +571,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-<<<<<<< HEAD
 **Use case: Setting reminders (UC-08)**
 
 **Brief Description:** This use case outlines the steps for a user to set reminders within internBook application and manage
@@ -596,9 +595,7 @@ their preferences regarding reminders.
   
     Use case resumes at step 2
 
-*{More to be added}*
-=======
-**Use case: Edit a company (UC-08)**
+**Use case: Edit a company (UC-09)**
 
 **MSS**
 
@@ -616,7 +613,7 @@ their preferences regarding reminders.
 
       Use case ends.
 
->>>>>>> master
+*{More to be added}*
 
 ### Non-Functional Requirements
 

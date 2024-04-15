@@ -92,18 +92,18 @@ The InternBook Team :rocket:
 ## Table of Contents
 * [Getting Started](#getting-started)
 * [Features](#features)
-  * [Help](#viewing-help--help)
-  * [List](#listing-all-companies--list)
+  * [Help](#viewing-help-help)
+  * [List](#listing-all-companies-list)
   * [Adding Company](#adding-a-company-add)
-  * [Editing Company](#editing-a-company--edit)
+  * [Editing Company](#editing-a-company-edit)
   * [Locating Company and Tags](#locating-companies-and-tags-by-keywords-find)
-  * [Deleting Company](#deleting-a-company--delete)
-  * [Marking Company](#marking-a-company--mark)
-  * [Unmarking Company](#unmarking-a-company--unmark)
-  * [Sorting](#sorting-the-list--sort)
-  * [Setting Reminders](#setting-reminders--reminder)
-  * [Clearing All Entries](#clearing-all-entries--clear)
-  * [Exiting Program](#exiting-the-program--exit)
+  * [Deleting Company](#deleting-a-company-delete)
+  * [Marking Company](#marking-a-company-mark)
+  * [Unmarking Company](#unmarking-a-company-unmark)
+  * [Sorting](#sorting-the-list-sort)
+  * [Setting Reminders](#setting-reminders-reminder)
+  * [Clearing All Entries](#clearing-all-entries-clear)
+  * [Exiting Program](#exiting-the-program-exit)
   * [Saving Data](#saving-the-data)
   * [Editing Data File](#editing-the-data-file)
 * [Future Enhancements](#future-enhancements)
@@ -117,11 +117,11 @@ The InternBook Team :rocket:
 
 > **IMPORTANT**
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
-> Not sure if you have Java `11` downloaded, here's how to [check](#faq-questionquestionquestion).
+> Not sure if you have Java `11` downloaded, here's how to [check](#faq).
 1. Download the latest `internBook.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-2/tp/releases).
 2. Copy the file to the folder you want to use as the _home folder_ for your InternBook.
 >:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder.
-> Check our [FAQ](#faq-questionquestionquestion) to see how to open it in your terminal.
+> Check our [FAQ](#faq) to see how to open it in your terminal.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internBook.jar` command to run the application.
 > :bulb: **TIP**:
@@ -212,7 +212,7 @@ Examples:
 :information_source: Remark:
 * We allow the adding of duplicate companies with different start dates and end dates.
 * This is fully intended and not a bug as this can allow users to keep track of different application windows of the same role in the same company.
-* Check out our [FAQ](#faq-questionquestionquestion) to understand how we distinguish duplicate entries.
+* Check out our [FAQ](#faq) to understand how we distinguish duplicate entries.
 * Start date can be added without the end date, and vice versa. However, when either dates are not entered, the record will
 not show the dates. As shown below.
 
@@ -243,7 +243,7 @@ Here are the steps to add a company with examples of error messages and how to d
    * Error: Incorrect tag format.
    ![tag error message](images/tag_error_msg.png)
    * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise
-   for the confusing error message and have reported it under [known issues](#known-issues-construction).
+   for the confusing error message and have reported it under [known issues](#known-issues).
 7. Success: Company added successfully. <br>
    ![Successfully added](images/add_successful.png)
 
@@ -412,7 +412,7 @@ Examples:
 
 :information_source: Remarks:
 - After sorting by start date or end date, if you notice that there are companies without dates displayed interspersed
-between companies with their dates displayed, please refer to our [FAQ](#faq-questionquestionquestion).
+between companies with their dates displayed, please refer to our [FAQ](#faq).
 - After adding an application or editing the dates of an application, the sort command has to be run again,
 for it to be sorted.
 
@@ -532,10 +532,10 @@ For **Mac** users:
 
 **Q**: Why are my dates missing in the GUI?<br>
 **A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,
-it will not show in the GUI. You can [edit](#editing-a-company--edit) them accordingly.
+it will not show in the GUI. You can [edit](#editing-a-company-edit) them accordingly.
 
 **Q**: What causes the occurrence of multiple records for companies sharing the same name, email, phone, and tag?<br>
-**A**: We apologise for the confusion. Please refer to [known issues](#known-issues-construction). Different application records may
+**A**: We apologise for the confusion. Please refer to [known issues](#known-issues). Different application records may
 be stored if there are distinctions in their name, phone number, email address, start date, end date, or tags. However,
 if only the start date or end date is available, those dates won't be displayed, potentially leading to confusion.
 
@@ -570,7 +570,7 @@ date will also be considered in the sorting process.
 
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
 4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags.
-5. When tags begin or end with "/", the error message is wrong.
+5. **Error messages** for tags, due not account for the fact that tags cannot begin and end with "/"
 6. The text displayed within the command box may be difficult to discern.
     ![command box issue](images/command_box_issue.png)
 

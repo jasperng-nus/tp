@@ -161,6 +161,37 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Find feature
+
+
+### Implementation
+
+The find mechanism is facilitated in two parts, the first by the `FindCommandParser`, and then the `FindCommand`
+
+Given below is a step-by-step detailed guide on how the find mechanism works.
+
+Step 1. The user launches the application. This does not affect anything in the find command pathway.
+
+Step 2. The user executes `find ABC` command in order to find all entries matching the name or tag ABC.
+
+Step 3. The `FindCommandParser` parses the information directly to identify the keyword to be found.
+
+Displayed in the diagram below is how the `FindCommandParser` interacts while parsing the information.
+
+<puml src="diagrams/FindParserClass.puml" alt="Interactions of FindCommandParser while parsing information" />
+
+Step 4. A `NameContainsKeywordPredicate` object is created, which inherits `Predicate<Company>` and overrides a `Test` method which determines whether a certain company is a match.
+
+Step 5. A `FindCommand` instance is created, initializing the `NameContainsKeywordPredicate` as relevant.
+
+Step 6. The `FindCommand` goes through its execution cycle, facilitated by `Model`
+
+Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list. 
+
+The sequence diagram below traces the pathway of the find command within the `Logic` component, taking `find ABC` API call as an example.
+
+<puml src="diagrams/FindSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `find ABC` Command" />
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -461,7 +492,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
 
 ### Non-Functional Requirements
 

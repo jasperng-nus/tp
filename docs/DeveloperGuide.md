@@ -164,7 +164,7 @@ This section describes some noteworthy details on how certain features are imple
 ### Setting Reminder
 #### Implementation
 The reminder feature is supported by the `Reminder` class, which is associated with the `Days` and `ReminderOnOff` class.
-`Reminder` class keeps track of two values which are `days` and `reminderOnOff`. \
+`Reminder` class keeps track of two values which are `days` and `reminderOnOff`.
 * `days` - A `Days` type that keeps track of the number of days, the user input, from the end date of an application.
 * `reminderOnOff` - A `ReminderOnOff` type that keeps track whether the reminder feature is on or off.
 
@@ -269,6 +269,68 @@ Step 7. The `Model` retrieves the Company List, and sets the edited company desc
 The sequence diagram below traces the pathway of the edit command within the `Logic` component, taking `edit 1 -n ABC` API call as an example.
 
 <puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
+
+
+### Mark/Unmark feature
+
+#### Implementation
+
+The mark/unmark mechanism is facilitated in two parts, the first by the `MarkCommandParser`, and then the `MarkCommand` and `UnmarkCommand` which extends the `Command` abstract class.
+These commands allow users to mark and unmark companies, respectively, to keep track of their application status and interest.
+
+Both commands interact with the Model and Company classes to update the application status of a company.
+
+The following operations are implemented to support the Mark and Unmark feature:
+
+* `ModelManager#markCompany(Company company)` — Updates the isMarked attribute of the specified Company object to true.
+* `ModelManager#unmarkCompany(Company company)` — Updates the isMarked attribute of the specified Company object to false.
+* `ModelManager#isCompanyMarked(Company company)` — Returns true if the specified Company object is marked, and false otherwise.
+
+These operations are exposed in the Model interface and are used by the MarkCommand and UnmarkCommand classes to modify the application status of a company.
+The `mark()` and `unmark()` methods in the Company class are also used to update the checkbox in the CompanyCard class to reflect the application status in the UI.
+
+Given below is an example usage scenario and how the mark/unmark mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The ModelManager will be initialized with the initial intern book state.
+
+Step 2. The user executes `mark 1` command to mark the 1st company in the InternBook.
+
+Step 3. The `LogicManager` class will parse the user input and create a `MarkCommand` object with the index of the company to be marked.
+
+Step 4. The `MarkCommand` class extracts the `Company` object at the specified index from the ModelManager.
+
+Step 5. The `MarkCommand` class calls the `markCompany(Company company)` method of the ModelManager, passing the extracted `Company` object as a parameter.
+
+Step 6. The `ModelManager` class updates the `isMarked` attribute of the specified `Company` object to `true`.
+
+Step 7. The `CompanyCard` class updates the checkbox in the UI by using the method `checkboxIsMarked()` in the Company class to reflect the marked status of the company.
+
+Step 8. The `ModelManager` class updates the filtered company list in the ModelManager to reflect the changes made to the `Company` object.
+
+Step 9. The `MarkCommand` class returns a `CommandResult` object with a success message to the `LogicManager`.
+
+Step 10. The `LogicManager` class updates the `ResultDisplay` in the UI with the success message.
+
+The sequence diagram below shows how the MarkCommand executes the mark operation within the Logic component:
+<puml src="diagrams/MarkSequenceDiagram.uml" width="550">
+
+The activity diagram below summarizes the process of marking a company:
+<puml src="diagrams/MarkActivityDiagram.puml" width="550" />
+
+The Unmark feature follows a similar process, with the `UnmarkCommand` class calling the `unmarkCompany(Company company)` method of the ModelManager to update the `isMarked` attribute of the specified `Company` object to `false`.
+
+#### Design considerations:
+**Aspect: How mark/unmark executes:**
+
+* **Alternative 1 (current choice):** Uses a boolean attribute in the `Company` class to track the application status.
+    * Pros: This approach keeps all company data within a single list, making it easier to manage and update the application status.
+    * Cons: May not be suitable for more complex application status tracking requirements.
+* **Alternative 2:** Uses a separate `Mark` class to track the application status.
+    * Pros: Allows for more complex application status tracking requirements.
+    * Cons: May require additional classes and methods to manage the application status, making it more complex to implement and maintain.
+
+We chose Alternative 1 because it is simpler to implement and maintain, and meets the current requirements for tracking the application status of companies.
+
 
 
 ### \[Proposed\] Undo/redo feature
@@ -606,35 +668,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Setting reminders (UC-08)**
 
-**Brief Description:** This use case outlines the steps for a user to set reminders within internBook application and manage
+**Brief Description:** This use case outlines the steps for a user to set reminders within InternBook application and manage
 their preferences regarding reminders.
 
 **Preconditions:**
-* The user has launched internBook.
+* The user has launched InternBook.
 
 **MSS**
-1. The user requests to set a reminder.
-2. internBook saves the reminder based on the user's input.
-3. The user exits internBook.
-4. At a later time, the user launches internBook again.
-5. internBook displays a separate window showing applications that needs reminder.
-6. The user requests to switch off reminders.
-7. internBook updates the user's preference to turn off reminders
 
-       Use case ends.
+1. User requests to set a reminder.
+2. InternBook saves the reminder based on the user's input.
+3. User exits InternBook.
+4. At a later time, the user launches InternBook again.
+5. InternBook displays a separate window showing applications that needs reminder.
+6. User requests to switch off reminders.
+7. InternBook updates the user's preference to turn off reminders
+
+    Use case ends.
+
 **Extensions**
-* 1a. User input is invalid
-  * 1a1. internBook shows an error message.
+* 1a. The given input is invalid.
+
+    * 1a1. InternBook shows an error message.
   
-    Use case resumes at step 2
+        Use case resumes from step 2.
+
 
 **Use case: Edit a company (UC-09)**
 
 **MSS**
 
-1.  User requests to edit a company
-2.  InternBook shows User the company it is going to edit
-3.  InternBook edits company
+1.  User requests to edit a company.
+2.  InternBook shows User the company it is going to edit.
+3.  InternBook edits company.
 
     Use case ends.
 

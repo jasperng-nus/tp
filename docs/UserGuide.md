@@ -92,18 +92,18 @@ The InternBook Team :rocket:
 ## Table of Contents
 * [Getting Started](#getting-started)
 * [Features](#features)
-  * [Help](#viewing-help--help)
-  * [List](#listing-all-companies--list)
+  * [Help](#viewing-help-help)
+  * [List](#listing-all-companies-list)
   * [Adding Company](#adding-a-company-add)
-  * [Editing Company](#editing-a-company--edit)
+  * [Editing Company](#editing-a-company-edit)
   * [Locating Company and Tags](#locating-companies-and-tags-by-keywords-find)
-  * [Deleting Company](#deleting-a-company--delete)
-  * [Marking Company](#marking-a-company--mark)
-  * [Unmarking Company](#unmarking-a-company--unmark)
-  * [Sorting](#sorting-the-list--sort)
-  * [Setting Reminders](#setting-reminders--reminder)
-  * [Clearing All Entries](#clearing-all-entries--clear)
-  * [Exiting Program](#exiting-the-program--exit)
+  * [Deleting Company](#deleting-a-company-delete)
+  * [Marking Company](#marking-a-company-mark)
+  * [Unmarking Company](#unmarking-a-company-unmark)
+  * [Sorting](#sorting-the-list-sort)
+  * [Setting Reminders](#setting-reminders-reminder)
+  * [Clearing All Entries](#clearing-all-entries-clear)
+  * [Exiting Program](#exiting-the-program-exit)
   * [Saving Data](#saving-the-data)
   * [Editing Data File](#editing-the-data-file)
 * [Future Enhancements](#future-enhancements)
@@ -117,11 +117,11 @@ The InternBook Team :rocket:
 
 > **IMPORTANT**
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
-> Not sure if you have Java `11` downloaded, here's how to [check](#faq-questionquestionquestion).
+> Not sure if you have Java `11` downloaded, here's how to [check](#faq).
 1. Download the latest `internBook.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-2/tp/releases).
 2. Copy the file to the folder you want to use as the _home folder_ for your InternBook.
 >:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder.
-> Check our [FAQ](#faq-questionquestionquestion) to see how to open it in your terminal.
+> Check our [FAQ](#faq) to see how to open it in your terminal.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internBook.jar` command to run the application.
 > :bulb: **TIP**:
@@ -180,9 +180,10 @@ The InternBook Team :rocket:
 
 Shows a pop-up window of our user guide for easier access.
 
+Format: `help`
+
 ![help message](images/help.png)
 
-Format: `help`
 
 ### Listing all companies : `list`
 
@@ -212,39 +213,41 @@ Examples:
 :information_source: Remark:
 * We allow the adding of duplicate companies with different start dates and end dates.
 * This is fully intended and not a bug as this can allow users to keep track of different application windows of the same role in the same company.
-* Check out our [FAQ](#faq-questionquestionquestion) to understand how we distinguish duplicate entries.
+* Check out our [FAQ](#faq) to understand how we distinguish duplicate entries.
 * Start date can be added without the end date, and vice versa. However, when either dates are not entered, the record will
 not show the dates. As shown below.
 
 ![record_without_both_dates](images/application_without_both_dates.png)
 
 Here are the steps to add a company with examples of error messages and how to deal with them:
-1. Input: `add -n Tik_Tok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+1. Input: `add -n Tik_Tok -p 91234-567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Name cannot contain "_".
    ![name error message](images/name_error_msg.png)
    * Correction: Remove "_".
-2. Input: `add -n TikTok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+2. Input: `add -n TikTok -p 91234-567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Phone number should only contain numbers.
    ![phone error message](images/phone_error_msg.png)
    * Correction: Remove non-numeric characters.
-3. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+3. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Date format should be YYYY-MM-DD.
+   ![date_error_message1](images/date_error_msg.png)
    * Correction: Adjust date format.
-4. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-04-14`<br>
+4. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-04-14`<br>
    * Error: Start date should precede end date.
-   ![date error message](images/startDate_endDate_error.png)
+   ![date error message2](images/startDate_endDate_error.png)
    * Correction: Swap date order.
-5. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
+5. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect email format.
    ![email error message](images/email_error.png)
    For the complete error message, please consult the "Remarks" column in the [Adding a Company](#adding-a-company-add) table.
    * Correction: Adjust email format.
-6. Input: `add -n TikTok -p 91234567 -e tiktok@example.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
+6. Input: `add -n TikTok -p 91234567 -e ada@sd.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect tag format.
    ![tag error message](images/tag_error_msg.png)
    * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise
-   for the confusing error message and have reported it under [known issues](#known-issues-construction).
+   for the confusing error message and have reported it under [known issues](#known-issues).
 7. Success: Company added successfully. <br>
+    Final input: `add -n TikTok -p 91234567 -e ada@sd.com -t Software Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    ![Successfully added](images/add_successful.png)
 
 
@@ -412,7 +415,7 @@ Examples:
 
 :information_source: Remarks:
 - After sorting by start date or end date, if you notice that there are companies without dates displayed interspersed
-between companies with their dates displayed, please refer to our [FAQ](#faq-questionquestionquestion).
+between companies with their dates displayed, please refer to our [FAQ](#faq).
 - After adding an application or editing the dates of an application, the sort command has to be run again,
 for it to be sorted.
 
@@ -522,20 +525,22 @@ For **Mac** users:
 1. Open Finder.
 2. Navigate to the parent folder of the target folder but do not double-click into it (the folder you want to open a terminal window into)
 3. Right-Click on the folder and hover over Services (At the bottom), Click New Terminal at Folder.
-![mac terminal](images/mac_open_terminal.jpg)
 
-   * If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
-    ![mac settings](images/mac_settings.jpg)
+   <img src="images/mac_open_terminal.jpg" alt="mac terminal" width="500">
+   
+   If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
 
-5. Now try again,
+   <img src="images/mac_settings.jpg" alt="mac settings" width="500">
+   
+4. Now try again,
    * A Terminal at the folder location will pop up.
 
 **Q**: Why are my dates missing in the GUI?<br>
 **A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,
-it will not show in the GUI. You can [edit](#editing-a-company--edit) them accordingly.
+it will not show in the GUI. You can [edit](#editing-a-company-edit) them accordingly.
 
 **Q**: What causes the occurrence of multiple records for companies sharing the same name, email, phone, and tag?<br>
-**A**: We apologise for the confusion. Please refer to [known issues](#known-issues-construction). Different application records may
+**A**: We apologise for the confusion. Please refer to [known issues](#known-issues). Different application records may
 be stored if there are distinctions in their name, phone number, email address, start date, end date, or tags. However,
 if only the start date or end date is available, those dates won't be displayed, potentially leading to confusion.
 
@@ -570,9 +575,12 @@ date will also be considered in the sorting process.
 
 3. **Only when both start and end dates are present, will the date be shown in the GUI**, this allows users to seemingly add in duplicate companies when in fact the start/end dates are different.
 4. **Duplicate tags**, are allowed to be added into the same company, however they will still only show unique tags.
-5. When tags begin or end with "/", the error message is wrong.
-6. The text displayed within the command box may be difficult to discern.
-    ![command box issue](images/command_box_issue.png)
+5. **Error messages** for tags, due not account for the fact that tags cannot begin and end with "/".
+![tag_error_message](images/tagerrormessage.png)
+6. **Due to the colour scheme**, the text displayed within the command box may be difficult to discern.
+![command box issue](images/command_box_issue.png)
+7. **CommandResult** for `sort a` is not fully accurate. It should state "Sorted all entries in alphanumerical order" instead.
+![sort_a_commandresult](images/sort_a_commandresult.png)
 
 --------------------------------------------------------------------------------------------------------------------
 

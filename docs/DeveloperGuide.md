@@ -142,7 +142,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -165,7 +165,7 @@ This section describes some noteworthy details on how certain features are imple
 ### Find feature
 
 
-### Implementation
+#### Implementation
 
 
 The find mechanism is facilitated in two parts, the first by the `FindCommandParser`, and then the `FindCommand`
@@ -198,7 +198,7 @@ The sequence diagram below traces the pathway of the find command within the `Lo
 ### Edit feature
 
 
-### Implementation
+#### Implementation
 
 The edit mechanism is facilitated in two parts, the first by the `EditCommandParser`, and then the `EditCommand`
 
@@ -342,7 +342,7 @@ Step 2. The user executes `Archive JSON` command to archive the active InternBoo
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **Documentation, testing, logging, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -372,15 +372,19 @@ Step 2. The user executes `Archive JSON` command to archive the active InternBoo
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                  | I want to …​           | So that I can…​                                                        |
-|----------|------------------------------------------|------------------------|------------------------------------------------------------------------|
-| `* * *`  | user                                     | add details of company | easily keep track of companies I am interested in                      |
-| `* * *`  | user                                     | list companies added   | view all the companies that I am currently interested in               |
-| `* * *`  | user                                     | delete a company       | remove company that I am no longer interested in                       |
-| `* * *`  | user                                     | save my data           | view my list from previous sessions without re-entering my list        |
-| `* *`    | user                                     | find a company by name | locate details of company without having to go through the entire list |
-| `* *`    | user who is interested in many companies | sort companies         | view the list in my preferred order                                    |
-| `* *`    | user                                     | get reminders          | ensure that I will not miss out on any applications                    |
+| Priority | As a …​                                  | I want to …​                                     | So that I can…​                                                        |
+|----------|------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | user                                     | add details of company                           | easily keep track of companies I am interested in                      |
+| `* * *`  | user                                     | list companies added                             | view all the companies that I am currently interested in               |
+| `* * *`  | user                                     | delete a company                                 | remove company that I am no longer interested in                       |
+| `* * *`  | user                                     | save my data                                     | view my list from previous sessions without re-entering my list        |
+| `* *`    | user                                     | find a company by name                           | locate details of company without having to go through the entire list |
+| `* *`    | user who is interested in many companies | sort companies                                   | view the list in my preferred order                                    |
+| `* *`    | user                                     | set application dates                            | easily keep track of the company's applications openings and deadlines |
+| `* *`    | user                                     | get reminders                                    | ensure that I will not miss out on any applications                    |
+| `* *`    | user                                     | mark a company as applied                        | easily identify companies that I have applied for                      |
+| `* *`    | user                                     | unmark a company as applied                      | easily undo a mistake when I marked a company as applied               |
+| `*`      | user                                     | archive companies that I have already applied to | keep my company list organized and refer to it when I need to          |
 
 *{More to be added}*
 
@@ -392,9 +396,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to add a company
-2.  InternBook shows User the company it is going to add
-3.  InternBook adds company
+1.  User requests to add a company.
+2.  InternBook shows User the company it is going to add.
+3.  InternBook adds company.
 
     Use case ends.
 
@@ -406,126 +410,155 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+* 1b. The company already exists in the current InternBook.
+
+    * 1b1. InternBook shows an error message.
+
+      Use case ends.
+
 
 **Use case: Delete a company (UC-02)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
-3.  User requests to delete a specific company in the list
-4.  InternBook deletes the company
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
+3.  User requests to delete a specific company in the list.
+4.  InternBook shows User the company it is going to delete.
+5.  InternBook deletes the company.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 * 3a. The given index is invalid.
 
     * 3a1. InternBook shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 
 **Use case: List all companies (UC-03)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 
 **Use case: Sort all companies (UC-04)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
-3.  User requests to sort the list in specified order
-4.  InternBook shows User a sorted list of companies
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
+3.  User requests to sort the list in specified order.
+4.  InternBook shows User a sorted list of companies.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
+
+* 3a. The given preference is invalid.
+
+    * 3a1. InternBook shows an error message.
+
+      Use case resumes from step 2.
 
 
 **Use case: Find a company (UC-05)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
-3.  User requests to find companies that satisfies a keyword
-4.  InternBook shows User the companies satisfying the keyword
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
+3.  User requests to find companies and tags that satisfies a keyword.
+4.  InternBook shows User the companies and tags satisfying the keyword.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 * 3a. There are no companies satisfying the keyword.
 
-  Use case ends
+    * 3a1. InternBook shows user an empty list.
+
+      Use case ends.
 
 
 **Use case: Mark a company (UC-06)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
-3.  User requests to mark a specific company in the list
-4.  InternBook marks the company
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
+3.  User requests to mark a specific company in the list.
+4.  InternBook marks the company.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 * 3a. The given index is invalid.
 
     * 3a1. InternBook shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
+
+* 3b. The company at the given index is already marked.
+
+    * 3b1. InternBook shows an error message.
+
+      Use case resumes from step 2.
+
 
 **Use case: Unmark a company (UC-07)**
 
 **MSS**
 
-1.  User requests to list companies
-2.  InternBook shows User a list of companies
-3.  User requests to unmark a specific company in the list
-4.  InternBook unmarks the company
+1.  User requests to list companies.
+2.  InternBook shows User a list of companies.
+3.  User requests to unmark a specific company in the list.
+4.  InternBook unmarks the company.
 
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
 
-  Use case ends
+  Use case ends.
 
 * 3a. The given index is invalid.
 
     * 3a1. InternBook shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
+
+* 3b. The company at the given index is already unmarked.
+
+    * 3b1. InternBook shows an error message.
+
+      Use case resumes from step 2.
+
 
 **Use case: Edit a company (UC-08)**
 
@@ -543,7 +576,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1a1. InternBook shows an error message.
 
-      Use case ends.
+        Use case ends.
 
 
 ### Non-Functional Requirements

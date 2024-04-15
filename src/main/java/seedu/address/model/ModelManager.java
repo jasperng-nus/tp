@@ -89,16 +89,16 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setInternBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternBookFilePath(Path internBookFilePath) {
+        requireNonNull(internBookFilePath);
+        userPrefs.setAddressBookFilePath(internBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setInternBook(ReadOnlyInternBook addressBook) {
-        this.internBook.resetData(addressBook);
+    public void setInternBook(ReadOnlyInternBook internBook) {
+        this.internBook.resetData(internBook);
     }
 
     @Override

@@ -51,21 +51,21 @@ public interface Model {
     boolean getReminderStatus();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' intern book file path.
      */
     Path getInternBookFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' intern book file path.
      */
-    void setInternBookFilePath(Path InternBookFilePath);
+    void setInternBookFilePath(Path internBookFilePath);
 
     /**
-     * Replaces intern book data with the data in {@code InternBook}.
+     * Replaces intern book data with the data in {@code internBook}.
      */
-    void setInternBook(ReadOnlyInternBook InternBook);
+    void setInternBook(ReadOnlyInternBook internBook);
 
-    /** Returns the AddressBook */
+    /** Returns the InternBook */
     ReadOnlyInternBook getInternBook();
 
     /**
@@ -87,9 +87,9 @@ public interface Model {
 
     /**
      * Replaces the given company {@code target} with {@code editedCompany}.
-     * {@code target} must exist in the address book.
+     * {@code target} must exist in the intern book.
      * The company identity of {@code editedCompany} must not be the same as another existing company
-     * in the address book.
+     * in the intern book.
      */
     void setCompany(Company target, Company editedCompany);
 

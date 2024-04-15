@@ -8,8 +8,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_ADIDAS;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BMW;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BMW;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ANALYST;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.showCompanyAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalCompanies.getTypicalInternBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_COMPANY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_COMPANY;
@@ -26,6 +29,7 @@ import seedu.address.commons.core.ReminderSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditCommand.EditCompanyDescriptor;
+import seedu.address.model.InternBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInternBook;
@@ -173,7 +177,7 @@ public class EditCommandTest {
         }
 
         @Override
-        public void setInternBookFilePath(Path addressBookFilePath) {
+        public void setInternBookFilePath(Path internBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -183,7 +187,7 @@ public class EditCommandTest {
         }
 
         @Override
-        public void setInternBook(ReadOnlyInternBook newData) {
+        public void setInternBook(ReadOnlyInternBook internBook) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -285,5 +289,94 @@ public class EditCommandTest {
             requireNonNull(company);
             return this.companies.get(0).isSameCompany(company);
         }
+    }
+
+    @Test
+    public void execute_allFieldsSpecifiedUnfilteredList_success() {
+        Company editedCompany = new CompanyBuilder().build();
+        EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder(editedCompany).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY, descriptor);
+
+        String expectedMessage = String.format(
+                EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
+
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
+        expectedModel.setCompany(model.getFilteredCompanyList().get(0), editedCompany);
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_someFieldsSpecifiedUnfilteredList_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredCompanyList().size());
+        Company lastCompany = model.getFilteredCompanyList().get(indexLastPerson.getZeroBased());
+
+        CompanyBuilder personInList = new CompanyBuilder(lastCompany);
+        Company editedCompany = personInList.withName(VALID_NAME_BMW).withPhone(VALID_PHONE_BMW)
+                .withTags(VALID_TAG_ANALYST).build();
+
+        EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder().withName(VALID_NAME_BMW)
+                .withPhone(VALID_PHONE_BMW).withTags(VALID_TAG_ANALYST).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        String expectedMessage = String.format(
+                EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
+
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
+        expectedModel.setCompany(lastCompany, editedCompany);
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY, new EditCompanyDescriptor());
+        Company editedCompany = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+
+        String expectedMessage = String.format(
+                EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
+
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_filteredList_success() {
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
+
+        Company companyInFilteredList = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        Company editedCompany = new CompanyBuilder(companyInFilteredList).withName(VALID_NAME_BMW).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY,
+                new EditCompanyDescriptorBuilder().withName(VALID_NAME_BMW).build());
+
+        String expectedMessage = String.format(
+                EditCommand.MESSAGE_EDIT_COMPANY_SUCCESS, Messages.format(editedCompany));
+
+        Model expectedModel = new ModelManager(new InternBook(model.getInternBook()), new UserPrefs());
+        expectedModel.setCompany(model.getFilteredCompanyList().get(0), editedCompany);
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_duplicatePersonUnfilteredList_failure() {
+        Company firstCompany = model.getFilteredCompanyList().get(INDEX_FIRST_COMPANY.getZeroBased());
+        EditCompanyDescriptor descriptor = new EditCompanyDescriptorBuilder(firstCompany).build();
+        EditCommand editCommand = new EditCommand(INDEX_SECOND_COMPANY, descriptor);
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_COMPANY);
+    }
+
+    @Test
+    public void execute_duplicatePersonFilteredList_failure() {
+        showCompanyAtIndex(model, INDEX_FIRST_COMPANY);
+
+        // edit company in filtered list into a duplicate in address book
+        Company companyInList = model.getInternBook().getCompanyList().get(INDEX_SECOND_COMPANY.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_COMPANY,
+                new EditCompanyDescriptorBuilder(companyInList).build());
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_COMPANY);
     }
 }

@@ -226,6 +226,39 @@ The sequence diagram below traces the pathway of the edit command within the `Lo
 
 <puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
 
+### Application `date` property
+
+#### Implementation
+
+The date property enables users to keep track of application start and end dates. End dates must be the same or later than start dates.
+
+The implementation of this property is similar to the other properties present in the company entity. The difference lies in the link between start and end dates. 
+
+Below are some of the design choices made, as well as alternative implementations possible.
+
+#### Design choices
+1. Start and end dates are represented with the same type.\
+The company entity contains 2 date entities for start and end dates.
+<puml src="diagrams/CompanyObjectDiagram.puml" alt="Object diagram representing the date property in company" /> 
+The following alternative implementations explored:
+    * Have a date range class that represents both the start and end date
+      * Pros: Easier checking of constraints that apply on both the start and end date
+      * Cons: Low extensibility. Potentially high coupling between company and date property.
+
+2. [!IMPORTANT] Checks on constraints that apply to both start and end dates are handled outside the company class, at the point of Date object creation.
+    Since the company constructor does not currently throw any exceptions, it would require a huge refactor to enable constraint checks within the constructor.\
+**Hence, the responsibility lies on the caller to check that the start and end dates provided to the company are correct.**
+
+<puml src="diagrams/AddDateCheckSequenceDiagram.puml" alt="Sequence diagram for date checks in Add Command" />
+
+The above diagram shows that the checks are called by the AddCommandParser object.
+
+<puml src="diagrams/EditDateCheckSequenceDiagram.puml" alt="Sequence diagram for date checks in Edit Command" />
+
+The above diagram shows that the checks are called by the EditCommand instead of the EditCommandParser.
+
+This is admittedly a design flaw that will cause issues when new commands are added. As such, in future implementations, the checks should be done within the company class to ensure that companies cannot be created with dates that violate the constraints.
+
 
 ### \[Proposed\] Undo/redo feature
 

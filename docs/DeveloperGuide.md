@@ -403,7 +403,7 @@ Step 10. The `LogicManager` class updates the `ResultDisplay` in the UI with the
 
 The sequence diagram below shows how the MarkCommand executes the mark operation within the Logic component:
 
-<puml src="diagrams/MarkSequenceDiagram.uml" width="550">
+<puml src="diagrams/MarkSequenceDiagram.puml" width="550" />
 
 The activity diagram below summarizes the process of marking a company:
 

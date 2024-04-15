@@ -183,10 +183,12 @@ Step 4: `SetReminderCommand#execute` is called,  which keeps track of the `remin
 Step 5: The `Model` saves the user's input into a json file.
 
 The sequence diagram below shows how the `reminder` command works within the `Logic` component.
-<puml src="diagrams/ReminderSequenceDiagram.uml" width="550" />
+
+<puml src="diagrams/ReminderSequenceDiagram.puml" width="550" />
 
 The activity diagram below summarizes the process of setting a reminder:
-<puml src="diagrams/ReminderActivityDiagram.uml" width="550" />
+
+<puml src="diagrams/ReminderActivityDiagram.puml" width="550" />
 
 #### Design considerations:
 

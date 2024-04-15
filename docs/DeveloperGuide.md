@@ -343,7 +343,7 @@ The following sequence diagram shows how sort operation is executed:
 
 <puml src="diagrams/SortSequenceDiagram.puml" alt="Sequence diagram of SortCommand" />
 
-### Design considerations:
+#### Design considerations:
 **Aspect: Extensibility:**
 
 Support for Future Enhancements:

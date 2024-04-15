@@ -96,7 +96,7 @@ The InternBook Team :rocket:
   * [List](#listing-all-companies--list)
   * [Adding Company](#adding-a-company-add)
   * [Editing Company](#editing-a-company--edit)
-  * [Locating Company](#locating-companies-by-name-find-mag)
+  * [Locating Company](#locating-companies-and-tags-by-keywords-find-mag)
   * [Deleting Company](#deleting-a-company--delete)
   * [Marking Company](#marking-a-company--mark-heavy_check_mark)
   * [Unmarking Company](#unmarking-a-company--unmark)
@@ -119,9 +119,9 @@ The InternBook Team :rocket:
 > Ensure you have Java `11`  installed in your computer. If you do not have it installed, download it from [here.](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)
 > Not sure if you have Java `11` downloaded, here's how to [check](#faq-questionquestionquestion).
 1. Download the latest `internBook.jar` from [here](https://github.com/AY2324S2-CS2103T-T13-2/tp/releases).
-
 2. Copy the file to the folder you want to use as the _home folder_ for your InternBook. 
->:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder.
+>:bulb: **TIP**: Create a folder with internBook.jar so that the data files created will be stored in the same folder. 
+> Check our [FAQ](#faq-questionquestionquestion) to see how to open it in your terminal.
 
 3. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internBook.jar` command to run the application.
 > :bulb: **TIP**:
@@ -219,27 +219,27 @@ not show the dates. As shown below.
 ![record_without_both_dates](images/application_without_both_dates.png)
 
 Here are the steps to add a company with examples of error messages and how to deal with them:
-1. Input: `add -n Tik_Tok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-03-14`<br>
+1. Input: `add -n Tik_Tok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
    * Error: Name cannot contain "_".
    ![name error message](images/name_error_msg.png)
    * Correction: Remove "_".
-2. Input: `add -n TikTok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-03-14`<br>
+2. Input: `add -n TikTok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
    * Error: Phone number should only contain numbers.
    ![phone error message](images/phone_error_msg.png)
    * Correction: Remove non-numeric characters.
-3. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-03-14`<br>
+3. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
    * Error: Date format should be YYYY-MM-DD.
    * Correction: Adjust date format.
-4. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-03-14`<br>
+4. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-04-14`<br>
    * Error: Start date should precede end date.
    ![date error message](images/startDate_endDate_error.png)
    * Correction: Swap date order.
-5. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-03-15`<br>
+5. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect email format.
    ![email error message](images/email_error.png)
    For the complete error message, please consult the "Remarks" column in the [Adding a Company](#adding-a-company-add) table.
    * Correction: Adjust email format.
-6. Input: `add -n TikTok -p 91234567 -e tiktok@example.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-03-15`<br>
+6. Input: `add -n TikTok -p 91234567 -e tiktok@example.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect tag format.
    ![tag error message](images/tag_error_msg.png)
    * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise 
@@ -302,7 +302,7 @@ Here are the steps to edit the fields of a company:
 > When editing the dates of an application, it is recommended to edit both start and end dates. 
 > If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq-questionquestionquestion).
 
-### Locating companies by name: `find` :mag:
+### Locating companies and tags by keywords: `find` :mag:
 
 Finds companies whose names or tags begin with the given keyword.
 
@@ -315,7 +315,7 @@ Format: `find KEYWORD`
 e.g. `Software` will return a Company with name `Software XYZ` as well as a Company with tag `Software Engineer`.
 * Only Companies/Tags or its words **beginning with** the keyword will be returned.
     e.g. `Test` will return `Test Engineer` or `QA Tester`, but not `QATester`.
-* If there is a space in the keyword, it searches for a substring match with the whole word
+* If there is a space in the keyword, it searches for a substring that matches with the whole word
 e.g. `Software Engineer` will return `Software Engineering` but not `Software Developer` or `Staff Engineer`.
 
 Examples:
@@ -333,9 +333,11 @@ Format: `delete INDEX`
 * Deletes the company at the specified `INDEX`.
 * The index refers to the index number shown in the currently displayed intern book.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Error messages will be displayed when:
+  * The index **is out of bounds**.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd company in the intern book.
+* `delete 2` deletes the 2nd company in the intern book.
 * `find Google` followed by `delete 1` deletes the 1st company in the results of the `find` command.
 
 >:bulb:**TIP**: 
@@ -355,7 +357,7 @@ Format: `mark INDEX`
   * The company at the specified `INDEX` is already marked.
   * The index **is out of bounds**.
 
-  Examples:
+Examples:
 * `mark 2` marks the 2nd company in the listed intern book if it is unmarked.
 * `find Google` followed by `mark 1` marks the 1st company in the results of the `find` command, if it is unmarked.
 
@@ -409,8 +411,8 @@ Examples:
 ![sort example](images/sort.png)
 
 :information_source: Remarks:
-- After sorting by start date or end date, you noticed that application that does not have their dates displayed is in 
-between applications with their dates displayed, please refer to our [FAQ](#faq-questionquestionquestion).
+- After sorting by start date or end date, if you notice that there are companies without dates displayed interspersed 
+between companies with their dates displayed, please refer to our [FAQ](#faq-questionquestionquestion).
 - After adding an application or editing the dates of an application, the sort command has to be run again,
 for it to be sorted.
 
@@ -444,7 +446,6 @@ Steps to set a reminder:
 ![Reminder example](images/reminder_example.png)
 * If there are no applications outstanding, the reminder window below is shown.
 ![No reminder example](images/no_reminder_tasks.png)
-* To switch off, simply input `reminder -r off`.
 
 >:bulb:**TIP**:
 > To switch off reminder, simply key `reminder -r off`. 
@@ -508,10 +509,26 @@ Furthermore, certain edits can cause the InternBook to behave in unexpected ways
 **A**: For MAC users, open up your **Terminal**, and for Windows users, open up your **Command Prompt**.
 Type in `java -version` and you will see the java version.
 
-**Q**: How do I navigate to my folder in my terminal? <br>
+**Q**: How do I navigate to my folder on my terminal? <br>
 **A**: For **Windows** user:
-* Open Windows File Explorer.
-* Navigate to the folder that consist 
+1. Open Windows File Explorer.
+2. Navigate to the parent folder of the target folder and double-click into it (the folder you want to open a command window into)
+![windows file explorer](images/window_file.png)
+3. Click on the file explorer address bar of the folder you are in and copy the File Path (e.g. C:\Users\PC\Downloads\internBook)
+and type "cmd" and press enter.
+![windows file cmd](images/windows_save.png)
+
+For **Mac** users:
+1. Open Finder.
+2. Navigate to the parent folder of the target folder but do not double-click into it (the folder you want to open a terminal window into)
+3. Right-Click on the folder and hover over Services (At the bottom), Click New Terminal at Folder.
+![mac terminal](images/mac_open_terminal.jpg)
+   
+   * If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
+    ![mac settings](images/mac_settings.jpg)
+   
+5. Now try again, 
+   * A Terminal at the folder location will pop up.
 
 **Q**: Why are my dates missing in the GUI?<br>
 **A**: Ensure that you have keyed in the start date and end date for the internship application. If only one date is present,
@@ -537,7 +554,7 @@ refer back to when considering future applications.
 address, tags, start date, and end date as an existing entry. If all these fields matches, the system flags it as a duplicate,
 preventing the addition of such an application.
 
-**Q**: Why do applications with no dates appear between sorted applications by start or end date?
+**Q**: Why do applications with no dates appear between sorted applications by start or end date? <br>
 **A**: We apologise for the confusion caused. This occurs because some applications may have only a start date or an end 
 date entered, causing them not to display any dates. However, when sorting by start date, applications with only a start 
 date will also be considered in the sorting process.

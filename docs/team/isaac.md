@@ -13,5 +13,5 @@ Given below are my contributions to the project.
    1) Changed GUI colours
    2) Changed window title
 3) Implemented date attribute into entries
-4) Updated EditCommand to work with dates in v1.3 
+4) Updated EditCommand to work with dates in v1.3
    1) Editing EditCommandParser and EditCommand to allow users to change application dates

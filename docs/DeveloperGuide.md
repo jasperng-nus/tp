@@ -161,6 +161,50 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Setting Reminder
+#### Implementation
+The reminder feature is supported by the `Reminder` class, which is associated with the `Days` and `ReminderOnOff` class.
+`Reminder` class keeps track of two values which are `days` and `reminderOnOff`. \
+* `days` - A `Days` type that keeps track of the number of days, the user input, from the end date of an application.
+* `reminderOnOff` - A `ReminderOnOff` type that keeps track whether the reminder feature is on or off.
+
+`Reminder` implements the following relevant methods:
+* `Reminder(Days days, ReminderOnOff reminderOnOff)` - Constructor for reminder with days and reminderOnOff specified.
+* `getDays()` - Gets the number of days before the deadline to trigger the reminder.
+* `getReminderOnOff` - Gets the status of the reminder.
+
+An example usage scenario for setting reminder is as follows:
+Step 1: The user launches the application and the `Ui` loads up.
+Step 2: The user inputs a command to set reminder using the `reminder` command.
+Step 3: The `LogicManager` takes the user input and parses it using `SetReminderParser`, which in turn creates a `SetReminderCommand`.
+object.
+Step 4: `SetReminderCommand#execute` is called,  which keeps track of the `reminder` passed into the constructor.
+Step 5: The `Model` saves the user's input into a json file.
+
+The sequence diagram below shows how the `reminder` command works within the `Logic` component.
+<puml src="diagrams/ReminderSequenceDiagram.uml" width="550">
+
+The activity diagram below summarizes the process of setting a reminder:
+<puml src="diagrams/ReminderActivityDiagram.uml" width="550">
+
+#### Design considerations:
+
+1. **Error Handling**
+
+   * Ensure robust error handling to gracefully manage exceptions and failures during command execution.
+   * Utilise the `CommandException` class to handle and propagate errors consistently.
+
+2. **Input Validation:**
+   * Validate user input to ensure it meets the expected format and constraints.
+   * Verify that the number of days provided is a valid integer and within an acceptable range.
+
+3. **Separation of Concerns**
+   * Separate the parsing of user input from the execution logic to improve code.
+   * Consider creating a dedicated parser class responsible for converting user input into a `Reminder` object.
+
+4. **Storing of User's Input**
+   * Storing user's preference for reminder feature into a json file.
+   * Preference is saved for future usage.
 
 ### Find feature
 
@@ -527,7 +571,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Edit a company (UC-08)**
+**Use case: Setting reminders (UC-08)**
+
+**Brief Description:** This use case outlines the steps for a user to set reminders within internBook application and manage
+their preferences regarding reminders.
+
+**Preconditions:**
+* The user has launched internBook.
+
+**MSS**
+1. The user requests to set a reminder.
+2. internBook saves the reminder based on the user's input.
+3. The user exits internBook.
+4. At a later time, the user launches internBook again.
+5. internBook displays a separate window showing applications that needs reminder.
+6. The user requests to switch off reminders.
+7. internBook updates the user's preference to turn off reminders
+
+       Use case ends.
+**Extensions**
+* 1a. User input is invalid
+  * 1a1. internBook shows an error message.
+  
+    Use case resumes at step 2
+
+**Use case: Edit a company (UC-09)**
 
 **MSS**
 
@@ -545,6 +613,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+*{More to be added}*
 
 ### Non-Functional Requirements
 
@@ -618,6 +687,16 @@ testers are expected to do more *exploratory* testing.
        Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+
+### Setting reminder
+
+1. Setting number of days for reminder window to show applications that is number of days till the end date.
+   1. Test case: `reminder -r -1`
+       Expected: Error message should be shown as the number of days should be positive.
+   2. Test case: `reminder -r 10`
+      Expected: Number of days is set to 10 so the reminder window should contain applications with end date 10 days away.
+   3. Test case: `reminder -r off`
+      Expected: The reminder feature is switched off.
 
 ### Saving data
 

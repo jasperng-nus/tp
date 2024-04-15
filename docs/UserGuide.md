@@ -180,9 +180,10 @@ The InternBook Team :rocket:
 
 Shows a pop-up window of our user guide for easier access.
 
+Format: `help`
+
 ![help message](images/help.png)
 
-Format: `help`
 
 ### Listing all companies : `list`
 
@@ -219,32 +220,34 @@ not show the dates. As shown below.
 ![record_without_both_dates](images/application_without_both_dates.png)
 
 Here are the steps to add a company with examples of error messages and how to deal with them:
-1. Input: `add -n Tik_Tok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+1. Input: `add -n Tik_Tok -p 91234-567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Name cannot contain "_".
    ![name error message](images/name_error_msg.png)
    * Correction: Remove "_".
-2. Input: `add -n TikTok -p 91234-567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+2. Input: `add -n TikTok -p 91234-567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Phone number should only contain numbers.
    ![phone error message](images/phone_error_msg.png)
    * Correction: Remove non-numeric characters.
-3. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 15-04-2024 -d2 2024-04-14`<br>
+3. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 04-05-2024 -d2 2024-04-14`<br>
    * Error: Date format should be YYYY-MM-DD.
+   ![date_error_message1](images/date_error_msg.png)
    * Correction: Adjust date format.
-4. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-04-14`<br>
+4. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 2024-04-15 -d2 2024-04-14`<br>
    * Error: Start date should precede end date.
-   ![date error message](images/startDate_endDate_error.png)
+   ![date error message2](images/startDate_endDate_error.png)
    * Correction: Swap date order.
-5. Input: `add -n TikTok -p 91234567 -e tiktokexample -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
+5. Input: `add -n TikTok -p 91234567 -e adasd.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect email format.
    ![email error message](images/email_error.png)
    For the complete error message, please consult the "Remarks" column in the [Adding a Company](#adding-a-company-add) table.
    * Correction: Adjust email format.
-6. Input: `add -n TikTok -p 91234567 -e tiktok@example.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
+6. Input: `add -n TikTok -p 91234567 -e ada@sd.com -t Soft-ware Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    * Error: Incorrect tag format.
    ![tag error message](images/tag_error_msg.png)
    * Correction: Remove non-alphanumeric characters, except "/". However, it should not begin or end with "/". We apologise
    for the confusing error message and have reported it under [known issues](#known-issues).
 7. Success: Company added successfully. <br>
+    Final input: `add -n TikTok -p 91234567 -e ada@sd.com -t Software Engineer -d1 2024-04-14 -d2 2024-04-15`<br>
    ![Successfully added](images/add_successful.png)
 
 
@@ -522,12 +525,14 @@ For **Mac** users:
 1. Open Finder.
 2. Navigate to the parent folder of the target folder but do not double-click into it (the folder you want to open a terminal window into)
 3. Right-Click on the folder and hover over Services (At the bottom), Click New Terminal at Folder.
-![mac terminal](images/mac_open_terminal.jpg)
 
-   * If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
-    ![mac settings](images/mac_settings.jpg)
+   <img src="images/mac_open_terminal.jpg" alt="mac terminal" width="500">
+   
+   If there is no such option, you will have to go to your Settings > Keyboard > Keyboard Shortcuts... > Services > Files and Folders > Tick New Terminal At Folder
 
-5. Now try again,
+   <img src="images/mac_settings.jpg" alt="mac settings" width="500">
+   
+4. Now try again,
    * A Terminal at the folder location will pop up.
 
 **Q**: Why are my dates missing in the GUI?<br>

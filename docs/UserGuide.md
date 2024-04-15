@@ -299,13 +299,8 @@ Here are the steps to edit the fields of a company:
       ![result for 'post-editing'](images/post_edit_dates.png)
 
 >:bulb: **TIP**:
-<<<<<<< HEAD
 > When editing the dates of an application, it is recommended to edit both start and end dates. 
 > If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq).
-=======
-> When editing the dates of an application, it is recommended to edit both start and end dates.
-> If only one of the date is edited, and the record is not showing anything, please refer to our [FAQ](#faq-questionquestionquestion).
->>>>>>> master
 
 ### Locating companies and tags by keywords: `find`
 

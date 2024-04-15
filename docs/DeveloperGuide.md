@@ -38,7 +38,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -70,7 +70,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -87,7 +87,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -119,7 +119,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S2-CS2103T-T13-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -160,6 +160,173 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### Setting Reminder
+
+#### Implementation
+The reminder feature is supported by the `Reminder` class, which is associated with the `Days` and `ReminderOnOff` class.
+`Reminder` class keeps track of two values which are `days` and `reminderOnOff`. \
+* `days` - A `Days` type that keeps track of the number of days, the user input, from the end date of an application.
+* `reminderOnOff` - A `ReminderOnOff` type that keeps track whether the reminder feature is on or off.
+
+`Reminder` implements the following relevant methods:
+* `Reminder(Days days, ReminderOnOff reminderOnOff)` - Constructor for reminder with days and reminderOnOff specified.
+* `getDays()` - Gets the number of days before the deadline to trigger the reminder.
+* `getReminderOnOff` - Gets the status of the reminder.
+
+An example usage scenario for setting reminder is as follows:
+Step 1: The user launches the application and the `Ui` loads up.
+Step 2: The user inputs a command to set reminder using the `reminder` command.
+Step 3: The `LogicManager` takes the user input and parses it using `SetReminderParser`, which in turn creates a `SetReminderCommand`.
+object.
+Step 4: `SetReminderCommand#execute` is called,  which keeps track of the `reminder` passed into the constructor.
+Step 5: The `Model` saves the user's input into a json file.
+
+The sequence diagram below shows how the `reminder` command works within the `Logic` component.
+
+<puml src="diagrams/ReminderSequenceDiagram.puml" width="550" />
+
+The activity diagram below summarizes the process of setting a reminder:
+
+<puml src="diagrams/ReminderActivityDiagram.puml" width="550" />
+
+#### Design considerations:
+
+1. **Error Handling**
+
+   * Ensure robust error handling to gracefully manage exceptions and failures during command execution.
+   * Utilise the `CommandException` class to handle and propagate errors consistently.
+
+2. **Input Validation:**
+   * Validate user input to ensure it meets the expected format and constraints.
+   * Verify that the number of days provided is a valid integer and within an acceptable range.
+
+3. **Separation of Concerns**
+   * Separate the parsing of user input from the execution logic to improve code.
+   * Consider creating a dedicated parser class responsible for converting user input into a `Reminder` object.
+
+4. **Storing of User's Input**
+   * Storing user's preference for reminder feature into a json file.
+   * Preference is saved for future usage.
+
+
+### Find feature
+
+#### Implementation
+
+The find mechanism is facilitated in two parts, the first by the `FindCommandParser`, and then the `FindCommand`
+
+Given below is a step-by-step detailed guide on how the find mechanism works.
+
+Step 1. The user launches the application. This does not affect anything in the find command pathway.
+
+Step 2. The user executes `find ABC` command in order to find all entries matching the name or tag ABC.
+
+Step 3. The `FindCommandParser` parses the information directly to identify the keyword to be found.
+
+Displayed in the diagram below is how the `FindCommandParser` interacts while parsing the information.
+
+<puml src="diagrams/FindParserClass.puml" alt="Interactions of FindCommandParser while parsing information" />
+
+Step 4. A `NameContainsKeywordPredicate` object is created, which inherits `Predicate<Company>` and overrides a `Test` method which determines whether a certain company is a match.
+
+Step 5. A `FindCommand` instance is created, initializing the `NameContainsKeywordPredicate` as relevant.
+
+Step 6. The `FindCommand` goes through its execution cycle, facilitated by `Model`
+
+Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list.
+
+The sequence diagram below traces the pathway of the find command within the `Logic` component, taking `find ABC` API call as an example.
+
+<puml src="diagrams/FindSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `find ABC` Command" />
+
+
+### Edit feature
+
+#### Implementation
+
+The edit mechanism is facilitated in two parts, the first by the `EditCommandParser`, and then the `EditCommand`
+
+Given below is a step-by-step detailed guide on how the edit mechanism works.
+
+Step 1. The user launches the application. This does not affect anything in the edit command pathway.
+
+Step 2. The user executes `edit 1 -n ABC` command in order to edit the name in the first index.
+
+Step 3. The `EditCommandParser` parses the information through `ParserUtil` in the command to identify each component.
+
+Displayed in the diagram below is how the `EditCommandParser` interacts while parsing the information.
+
+<puml src="diagrams/EditParserClass.puml" alt="Interactions of EditCommandParser while parsing information" />
+
+Step 4. This information is encapsulated inside an `editCompanyDescriptor`, which contains all the values associated with the changed prefixes. In this case, it will set the name of the descriptor to `ABC`.
+
+Step 5. An `EditCommand` instance is created, initializing the `index` and `editCompanyDescriptor` as relevant.
+
+Step 6. The `EditCommand` goes through its execution cycle, facilitated by `Model`
+
+Step 7. The `Model` retrieves the Company List, and sets the edited company described in the `editCompanyDescriptor` to the company at index `index`.
+
+The sequence diagram below traces the pathway of the edit command within the `Logic` component, taking `edit 1 -n ABC` API call as an example.
+
+<puml src="diagrams/EditSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `edit 1 -n ABC` Command" />
+
+
+### Sort Feature
+
+#### Implementation
+
+The sort feature is facilitated by `Model` and `SortType` enum. The SortCommand is responsible for sorting the list of companies in the application based on the user's preference. The command supports three sorting types: alphabetical order, start date order, and end date order.
+
+The `SortType` Enum has 3 values:
+* `ALPHABETICAL_ASCENDING`: Sorts the companies alphanumerically.
+* `STARTDATE_ASCENDING`: Sorts the companies by their starting date.
+* `ENDDATE_ASCENDING`: Sorts the companies by their ending date.
+
+`Sort` implements the following relevant operations:
+* `model.sortCompanyListByName()` - Sorts `UniqueCompanyList` in `InternBook` in ascending alphanumerical order.
+* `model.sortCompanyListByStartDate()` - Sorts `UniqueCompanyList` in `InternBook` in order of ascending start date.
+* `model.sortCompanyListByEndDate()` - Sorts `UniqueCompanyList` in `InternBook` in order of ascending end date.
+
+Given below is a step-by-step detailed guide on how the sort mechanism behaves.
+
+Step 1. The user launches the application.
+
+Step 2. The user inputs a command to sort the companies in the intern book in a specified order using the `sort` command.
+
+Step 3. The `SortCommandParser` is responsible for processing user input. It takes the user's input and parses it into one of the three different `SortType` options available.
+
+Step 4: A `SortCommand` object will then be called with the chosen `SortType` as the argument.
+
+Step 5: `SortCommand#execute` is called, which calls the corresponding `model.sortCompanyList`
+
+Step 6: The GUI will display the newly sorted company list.
+
+The following activity diagram illustrates the workflow of the `SortCommand` feature:
+
+<puml src="diagrams/SortCommandActivityDiagram.puml" alt="Activity diagram of SortCommand" />
+
+The following sequence diagram shows how sort operation is executed:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="Sequence diagram of SortCommand" />
+
+### Design considerations:
+**Aspect: Extensibility:**
+
+Support for Future Enhancements:
+
+* Alternative 1 (current choice): Use a fixed set of sorting criteria (e.g., alphabetical order, start date order, end date order) implemented as switch cases within the SortCommand class.
+    * Pros: Simplified implementation, straightforward to understand and maintain.
+    * Cons: Limited flexibility for adding new sorting criteria in the future, may require modifications to the SortCommand class and switch cases if new sorting criteria are introduced.
+
+* Alternative 2: Implement a more flexible sorting system using a strategy pattern, where each sorting criteria is encapsulated in its own class.
+    * Pros: Improved extensibility, easier to add new sorting criteria without modifying existing code.
+    * Cons: Increased complexity in implementation, potential overhead in managing multiple sorting strategy classes.
+
+* Alternative 3: Introduce a dynamic sorting configuration where users can define custom sorting criteria through a configuration file or user interface.
+    * Pros: Highly customizable, allows users to define sorting criteria based on their specific needs.
+    * Cons: Increased complexity in implementation and management, potential challenges in ensuring user-friendly configuration interfaces.
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -461,6 +628,48 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Setting reminders (UC-08)**
+
+**Brief Description:** This use case outlines the steps for a user to set reminders within internBook application and manage
+their preferences regarding reminders.
+
+**Preconditions:**
+* The user has launched internBook.
+
+**MSS**
+1. The user requests to set a reminder.
+2. internBook saves the reminder based on the user's input.
+3. The user exits internBook.
+4. At a later time, the user launches internBook again.
+5. internBook displays a separate window showing applications that needs reminder.
+6. The user requests to switch off reminders.
+7. internBook updates the user's preference to turn off reminders
+
+       Use case ends.
+**Extensions**
+* 1a. User input is invalid
+  * 1a1. internBook shows an error message.
+
+    Use case resumes at step 2
+
+**Use case: Edit a company (UC-09)**
+
+**MSS**
+
+1.  User requests to edit a company
+2.  InternBook shows User the company it is going to edit
+3.  InternBook edits company
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. InternBook shows an error message.
+
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -535,6 +744,16 @@ testers are expected to do more *exploratory* testing.
        Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+
+### Setting reminder
+
+1. Setting number of days for reminder window to show applications that is number of days till the end date.
+   1. Test case: `reminder -r -1`
+       Expected: Error message should be shown as the number of days should be positive.
+   2. Test case: `reminder -r 10`
+      Expected: Number of days is set to 10 so the reminder window should contain applications with end date 10 days away.
+   3. Test case: `reminder -r off`
+      Expected: The reminder feature is switched off.
 
 ### Saving data
 

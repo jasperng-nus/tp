@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditCompanyDescriptor;
@@ -18,6 +19,10 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MarkCommand;
+import seedu.address.logic.commands.SetReminderCommand;
+import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.UnmarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.company.Company;
 import seedu.address.model.company.NameContainsKeywordsPredicate;
@@ -34,8 +39,31 @@ public class InternBookParserTest {
     public void parseCommand_add() throws Exception {
         Company company = new CompanyBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(CompanyUtil.getAddCommand(company));
-        //assertEquals(new AddCommand(company), command);
-        System.out.println(command);
+        assertEquals(new AddCommand(company), command);
+    }
+
+    @Test
+    public void parseCommand_sort() throws Exception {
+        Command command = parser.parseCommand(SortCommand.COMMAND_WORD + " " + 'a');
+        assertTrue(command instanceof SortCommand);
+    }
+
+    @Test
+    public void parseCommand_setReminder() throws Exception {
+        Command command = parser.parseCommand(SetReminderCommand.COMMAND_WORD + " -r 10");
+        assertTrue(command instanceof SetReminderCommand);
+    }
+
+    @Test
+    public void parseCommand_mark() throws Exception {
+        Command command = parser.parseCommand(MarkCommand.COMMAND_WORD + " 1");
+        assertTrue(command instanceof MarkCommand);
+    }
+
+    @Test
+    public void parseCommand_unmark() throws Exception {
+        Command command = parser.parseCommand(UnmarkCommand.COMMAND_WORD + " 1");
+        assertTrue(command instanceof UnmarkCommand);
     }
 
     @Test

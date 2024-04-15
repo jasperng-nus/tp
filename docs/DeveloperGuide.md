@@ -232,7 +232,7 @@ Step 5. A `FindCommand` instance is created, initializing the `NameContainsKeywo
 
 Step 6. The `FindCommand` goes through its execution cycle, facilitated by `Model`
 
-Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list. 
+Step 7. The `Model` filters the Company List based on the predicate, and returns the filtered list.
 
 The sequence diagram below traces the pathway of the find command within the `Logic` component, taking `find ABC` API call as an example.
 
@@ -325,7 +325,7 @@ Support for Future Enhancements:
     * Pros: Highly customizable, allows users to define sorting criteria based on their specific needs.
     * Cons: Increased complexity in implementation and management, potential challenges in ensuring user-friendly configuration interfaces.
 
-    
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -647,7 +647,7 @@ their preferences regarding reminders.
 **Extensions**
 * 1a. User input is invalid
   * 1a1. internBook shows an error message.
-  
+
     Use case resumes at step 2
 
 **Use case: Edit a company (UC-09)**
